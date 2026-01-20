@@ -1,0 +1,29 @@
+input,Netherlands,Germany,Spain,UK
+Mean electricity residential consumption annual (kWH),2800,3500,3500,3600
+consumer cost p/kwh inc VAT,30,38,14,24
+wholesale avg daily minimum p/kWH,2.8,3.2,3.6,6.2
+wholesale avg daily spreads p/KWH,13,13,10,8
+max power kw,17.3,30,5,11
+max kwh battery appetite due to physical limits,15,15,15,15
+battery install cost,400,400,400,400
+kw per kwh of battery capacity,0.5,0.5,0.5,0.5
+"battery cost per kwh (inc wires, controller, inverter, etc)",220,220,220,220
+wholesale_discount_battery,15%,15%,15%,15%
+battery cost inc install,2600,2600,2600,2600
+battery removal cost,400,400,400,400
+residential min grid cost p/kwh avg daily (lowest hour),0,0,0.2,1.5
+residential min grid cost PA (euros),456,0,0,0
+electricity company annual levy per customer,0,0,0,95
+energy tax p/kwh (excluding VAT),9,0,0,0
+VAT on electricity %,21,36,21,5
+Cost per kw power load reduced,0,0,0,0
+battery charge recharge efficiency %,90.00%,90.00%,90.00%,90.00%
+Frequency response per kw per year,,,,34
+Capacity market /kW/year,,,,40
+Balancing mechanism (BM) avg win rate,,,,10.00%
+Avg £/kwh uplift for BM,,,,5.00%
+Battery charge use %,95.00%,95.00%,95.00%,95.00%
+Cost of managing customers per customer per annum if electricity company,10,10,10,10
+Cost of managing customers per customer per annum if VLP,10,10,10,10
+battery capacity kwh,10,10,10,10
+battery power kw,5,5,5,5

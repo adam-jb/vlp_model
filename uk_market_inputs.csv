@@ -1,0 +1,54 @@
+input,UK,notes
+# CAPACITY MARKET PARAMETERS (Source: NESO EMR DB 2024/25),,,
+capacity_market_clearing_price_t4_gbp_kw,65,"T-4 2024 auction for DY 2027/28, highest ever"
+capacity_market_clearing_price_t1_gbp_kw,36,"T-1 2024 auction for DY 2024/25, down 40% from prior year"
+derating_factor_1hr,0.1047,"EMR DB 2024/25 Scaled EFC methodology"
+derating_factor_2hr,0.2094,"EMR DB 2024/25 Scaled EFC methodology"
+derating_factor_4hr,0.37,"Estimated from scaling pattern"
+derating_factor_8hr,0.92,"Long duration batteries near full capacity credit"
+cm_penalty_rate_fraction,0.0417,"1/24 of clearing price per settlement period"
+cm_max_annual_penalty_pct,1.0,"Capped at 100% of annual CM revenue"
+cm_contract_years_t4,15,"Max term for T-4 new build"
+cm_contract_years_t1,1,"Standard T-1 term"
+technical_availability_twcaa,0.9437,"Two-week continuous adjustment average"
+# FREQUENCY RESPONSE (Source: National Grid ESO 2024),,,
+fr_dc_rate_gbp_mw_hr,1.5,"Dynamic Containment collapsed from ~£17 to £1-5/MW/h"
+fr_dm_rate_gbp_mw_hr,2.0,"Dynamic Moderation rate"
+fr_dr_rate_gbp_mw_hr,2.5,"Dynamic Regulation rate"
+fr_annual_rate_gbp_kw,34,"UK model_input value: full 24h commitment"
+fr_peak_hours_morning_start,7,"Morning peak demand period start"
+fr_peak_hours_morning_end,9,"Morning peak demand period end"
+fr_peak_hours_evening_start,17,"Evening peak demand period start"
+fr_peak_hours_evening_end,21,"Evening peak demand period end"
+fr_soc_requirement,0.5,"State of charge requirement during FR commitment"
+fr_soc_tolerance,0.1,"Tolerance band around 50% SoC"
+# BALANCING MECHANISM (Source: Modo Energy / NESO 2024),,,
+bm_win_rate,0.10,"Average win rate for arbitrage bids accepted into BM"
+bm_avg_uplift_if_won,0.05,"Average £/kWh uplift when BM bid accepted"
+bm_dispatch_rate,0.04,"4-6% of time battery dispatched via BM"
+# QUICK RESERVE (New service Dec 2024+),,,
+quick_reserve_positive_gbp_mw_hr,8.75,"Positive reserve (generation) rate"
+quick_reserve_negative_gbp_mw_hr,5.12,"Negative reserve (demand) rate"
+quick_reserve_hours_per_day,4,"Typical commitment hours"
+# ARBITRAGE MARKET DATA (Source: ENTSO-E / EPEX 2024),,,
+wholesale_avg_daily_min_pence_kwh,6.2,"From model_input.csv UK value"
+wholesale_avg_daily_spread_pence_kwh,8,"From model_input.csv UK value"
+wholesale_price_volatility_factor,1.2,"Price swing multiplier in high demand periods"
+# BATTERY TECHNICAL PARAMETERS,,,
+battery_roundtrip_efficiency,0.90,"90% round-trip (split as sqrt for charge/discharge)"
+battery_calendar_degradation_pct_pa,0.015,"1.5% per year calendar aging"
+battery_cycle_degradation_pct_per_cycle,0.0002,"0.02% per full cycle"
+battery_max_cycles_per_day,2,"Practical limit for daily cycling"
+battery_depth_of_discharge_max,0.9,"Max DoD to preserve battery life"
+# EPT TESTING REQUIREMENTS,,,
+ept_threshold_pct,0.95,"Must deliver 95% of nameplate capacity"
+ept_test_frequency_years,3,"Test every 3 years after first"
+ept_first_test_timing,first_winter,"During winter of first delivery year"
+ept_test_cost_estimate_gbp,15000,"Typical cost for larger batteries"
+# REVENUE STACK COMPOSITION (2024 market shares),,,
+revenue_share_arbitrage,0.50,"50% of battery revenue from wholesale trading"
+revenue_share_fr,0.20,"20% from frequency response (declining)"
+revenue_share_cm,0.15,"15% from capacity market"
+revenue_share_bm,0.15,"15% from balancing mechanism"
+# COST PARAMETERS,,,
+gbp_to_eur_rate,1.17,"Approximate GBP to EUR conversion"
