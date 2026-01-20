@@ -1,2 +1,1 @@
-# vlp_model
-# vlp_model
+See CLAUDE.md for more info
