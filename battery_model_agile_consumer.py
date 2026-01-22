@@ -317,13 +317,16 @@ def solve_daily_milp(agile_prices_24h, wholesale_prices_24h, consumer_demand_24h
         wholesale_rate_gbp = (wholesale_prices_24h[h] / 1000) * EUR_TO_GBP  # EUR/MWh to £/kWh
 
         # Consumer value: discharge saves them from paying Agile rate at this hour
-        consumer_value.append(d_consumer[h] * agile_rate_gbp * eta)
+        # NOTE: Efficiency is already in energy balance - we can only discharge what we stored
+        # Financial calculation is simply: delivered kWh × rate
+        consumer_value.append(d_consumer[h] * agile_rate_gbp)
 
         # Grid revenue: sell to wholesale market
-        grid_revenue.append(d_grid[h] * wholesale_rate_gbp * eta)
+        grid_revenue.append(d_grid[h] * wholesale_rate_gbp)
 
         # Charge cost: buy from wholesale market
-        charge_cost.append(c[h] * wholesale_rate_gbp / eta)
+        # We pay for actual kWh bought from grid (not adjusted for efficiency)
+        charge_cost.append(c[h] * wholesale_rate_gbp)
 
         # FR income
         fr_income.append(fr[h] * fr_rate_hourly * battery_kw)
@@ -384,20 +387,21 @@ def solve_daily_milp(agile_prices_24h, wholesale_prices_24h, consumer_demand_24h
 
     # Extract results
     # Consumer value: what consumer saves by getting electricity from battery
+    # (delivered kWh × Agile rate - efficiency already in energy balance)
     total_consumer_value = sum(
-        (d_consumer[h].varValue or 0) * (agile_prices_24h[h] / 100) * eta
+        (d_consumer[h].varValue or 0) * (agile_prices_24h[h] / 100)
         for h in hours
     )
 
     # Grid revenue: what we earn selling to wholesale market
     total_grid_revenue = sum(
-        (d_grid[h].varValue or 0) * ((wholesale_prices_24h[h] / 1000) * EUR_TO_GBP) * eta
+        (d_grid[h].varValue or 0) * ((wholesale_prices_24h[h] / 1000) * EUR_TO_GBP)
         for h in hours
     )
 
-    # Total charge cost
+    # Total charge cost (actual kWh bought from grid)
     total_charge_cost = sum(
-        (c[h].varValue or 0) * ((wholesale_prices_24h[h] / 1000) * EUR_TO_GBP) / eta
+        (c[h].varValue or 0) * ((wholesale_prices_24h[h] / 1000) * EUR_TO_GBP)
         for h in hours
     )
 
