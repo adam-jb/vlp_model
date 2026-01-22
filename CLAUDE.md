@@ -14,6 +14,9 @@ You should output the income, for a full optimal system, which can be made while
 Then costs.
 
 
+see project_notes.md for more detail on project
+
+
 
 ### to improve
 might be able to artificially limit the power on large battery
