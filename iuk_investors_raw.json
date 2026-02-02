@@ -1,0 +1,4330 @@
+[
+  {
+    "id": "69319c169e24cd0435b60830",
+    "field_59": "1818 Venture Capital Limited",
+    "field_59_raw": "1818 Venture Capital Limited",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Digital and Technologies, Financial Services",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Financial Services"
+    ]
+  },
+  {
+    "id": "69319c169e24cd0435b60833",
+    "field_59": "24Haymarket Limited",
+    "field_59_raw": "24Haymarket Limited",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Advanced Manufacturing, Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences",
+    "field_117_raw": [
+      "Advanced Manufacturing",
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences"
+    ]
+  },
+  {
+    "id": "69319c169e24cd0435b60836",
+    "field_59": "6 Degrees Capital",
+    "field_59_raw": "6 Degrees Capital",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Digital and Technologies, Financial Services",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Financial Services"
+    ]
+  },
+  {
+    "id": "69319c169e24cd0435b60839",
+    "field_59": "ACT Venture Partners",
+    "field_59_raw": "ACT Venture Partners",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Clean Energy Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c169e24cd0435b6083c",
+    "field_59": "ADA PARTNERS",
+    "field_59_raw": "ADA PARTNERS",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Digital and Technologies, Advanced Manufacturing, Creative Industries, Financial Services",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Digital and Technologies",
+      "Advanced Manufacturing",
+      "Creative Industries",
+      "Financial Services"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b60842",
+    "field_59": "Aer Ventures",
+    "field_59_raw": "Aer Ventures",
+    "field_118": "Accelerator / Incubator",
+    "field_118_raw": [
+      "Accelerator / Incubator"
+    ],
+    "field_63": "Early Revenue, Pre-Revenue",
+    "field_63_raw": [
+      "Early Revenue",
+      "Pre-Revenue"
+    ],
+    "field_117": "Advanced Manufacturing, Clean Energy Industries",
+    "field_117_raw": [
+      "Advanced Manufacturing",
+      "Clean Energy Industries"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b60845",
+    "field_59": "AgFunder",
+    "field_59_raw": "AgFunder",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "",
+    "field_63_raw": [],
+    "field_117": "Advanced Manufacturing, Clean Energy Industries",
+    "field_117_raw": [
+      "Advanced Manufacturing",
+      "Clean Energy Industries"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b60848",
+    "field_59": "AgriZeroNZ",
+    "field_59_raw": "AgriZeroNZ",
+    "field_118": "Public-Private Partnership",
+    "field_118_raw": [
+      "Public-Private Partnership"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Growth",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Growth"
+    ],
+    "field_117": "Clean Energy Industries, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b6084b",
+    "field_59": "Albion Capital Group LLP",
+    "field_59_raw": "Albion Capital Group LLP",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Creative Industries, Digital and Technologies, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b6084e",
+    "field_59": "ALMA ANGELS LTD",
+    "field_59_raw": "ALMA ANGELS LTD",
+    "field_118": "Angel Network",
+    "field_118_raw": [
+      "Angel Network"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Creative Industries, Life Sciences",
+    "field_117_raw": [
+      "Creative Industries",
+      "Life Sciences"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b60851",
+    "field_59": "Amadeus Capital Partners Ltd",
+    "field_59_raw": "Amadeus Capital Partners Ltd",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "",
+    "field_63_raw": [],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b60854",
+    "field_59": "Angel Academe",
+    "field_59_raw": "Angel Academe",
+    "field_118": "Angel Network",
+    "field_118_raw": [
+      "Angel Network"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Digital and Technologies",
+    "field_117_raw": [
+      "Digital and Technologies"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b60857",
+    "field_59": "Angels@Essex",
+    "field_59_raw": "Angels@Essex",
+    "field_118": "Angel Network",
+    "field_118_raw": [
+      "Angel Network"
+    ],
+    "field_63": "Pre-Revenue",
+    "field_63_raw": [
+      "Pre-Revenue"
+    ],
+    "field_117": "Digital and Technologies, Advanced Manufacturing",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b6085a",
+    "field_59": "Antares Ventures",
+    "field_59_raw": "Antares Ventures",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Life Sciences",
+    "field_117_raw": [
+      "Life Sciences"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b6085d",
+    "field_59": "Anticus Partners",
+    "field_59_raw": "Anticus Partners",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Revenue, Growth, Early Revenue",
+    "field_63_raw": [
+      "Revenue",
+      "Growth",
+      "Early Revenue"
+    ],
+    "field_117": "Digital and Technologies",
+    "field_117_raw": [
+      "Digital and Technologies"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b60860",
+    "field_59": "Antler Management",
+    "field_59_raw": "Antler Management",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "",
+    "field_117_raw": []
+  },
+  {
+    "id": "69319c179e24cd0435b60863",
+    "field_59": "Apollo Health Ventures",
+    "field_59_raw": "Apollo Health Ventures",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Life Sciences",
+    "field_117_raw": [
+      "Life Sciences"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b60866",
+    "field_59": "Ar\u00e3ya Ventures",
+    "field_59_raw": "Ar\u00e3ya Ventures",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Digital and Technologies, Life Sciences",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Life Sciences"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b60869",
+    "field_59": "Archangels",
+    "field_59_raw": "Archangels",
+    "field_118": "Angel Network",
+    "field_118_raw": [
+      "Angel Network"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Digital and Technologies, Life Sciences",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Life Sciences"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b6086c",
+    "field_59": "Ascension Ventures Limited",
+    "field_59_raw": "Ascension Ventures Limited",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Digital and Technologies",
+    "field_117_raw": [
+      "Digital and Technologies"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b6086f",
+    "field_59": "Astanor Ventures",
+    "field_59_raw": "Astanor Ventures",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Advanced Manufacturing",
+    "field_117_raw": [
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b60872",
+    "field_59": "Atlantic Bridge",
+    "field_59_raw": "Atlantic Bridge",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b60875",
+    "field_59": "ATLAS VENTURES SYNDICATE LIMITED",
+    "field_59_raw": "ATLAS VENTURES SYNDICATE LIMITED",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Revenue",
+    "field_63_raw": [
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Digital and Technologies, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Digital and Technologies",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b60878",
+    "field_59": "Backed",
+    "field_59_raw": "Backed",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Digital and Technologies",
+    "field_117_raw": [
+      "Digital and Technologies"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b6087b",
+    "field_59": "Baltic Ventures",
+    "field_59_raw": "Baltic Ventures",
+    "field_118": "Accelerator / Incubator",
+    "field_118_raw": [
+      "Accelerator / Incubator"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Digital and Technologies",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Digital and Technologies"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b6087e",
+    "field_59": "Barclays Climate Ventures",
+    "field_59_raw": "Barclays Climate Ventures",
+    "field_118": "Corporate VC",
+    "field_118_raw": [
+      "Corporate VC"
+    ],
+    "field_63": "Revenue, Growth",
+    "field_63_raw": [
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Advanced Manufacturing, Clean Energy Industries, Life Sciences",
+    "field_117_raw": [
+      "Advanced Manufacturing",
+      "Clean Energy Industries",
+      "Life Sciences"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b60881",
+    "field_59": "BERINGEA",
+    "field_59_raw": "BERINGEA",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Revenue, Growth",
+    "field_63_raw": [
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Creative Industries, Advanced Manufacturing, Life Sciences, Clean Energy Industries, Financial Services",
+    "field_117_raw": [
+      "Creative Industries",
+      "Advanced Manufacturing",
+      "Life Sciences",
+      "Clean Energy Industries",
+      "Financial Services"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b60884",
+    "field_59": "BGF Investment Management Limited",
+    "field_59_raw": "BGF Investment Management Limited",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Digital and Technologies, Life Sciences",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Life Sciences"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b6088a",
+    "field_59": "BLACKFINCH INVESTMENTS LIMITED",
+    "field_59_raw": "BLACKFINCH INVESTMENTS LIMITED",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b60887",
+    "field_59": "BLACK SEED VENTURES",
+    "field_59_raw": "BLACK SEED VENTURES",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Digital and Technologies, Advanced Manufacturing, Clean Energy Industries, Creative Industries, Life Sciences, Financial Services",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Advanced Manufacturing",
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Life Sciences",
+      "Financial Services"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b6088d",
+    "field_59": "Bloc Ventures Ltd",
+    "field_59_raw": "Bloc Ventures Ltd",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Digital and Technologies, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b60890",
+    "field_59": "Blue Lake VC",
+    "field_59_raw": "Blue Lake VC",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Digital and Technologies",
+    "field_117_raw": [
+      "Digital and Technologies"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b60893",
+    "field_59": "Blue Ledge Capital",
+    "field_59_raw": "Blue Ledge Capital",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b60896",
+    "field_59": "Boost Capital Partners",
+    "field_59_raw": "Boost Capital Partners",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Digital and Technologies, Creative Industries, Life Sciences, Financial Services",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Creative Industries",
+      "Life Sciences",
+      "Financial Services"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b60899",
+    "field_59": "Boundary Capital Partners LLP",
+    "field_59_raw": "Boundary Capital Partners LLP",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Creative Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b6089c",
+    "field_59": "bP Ventures",
+    "field_59_raw": "bP Ventures",
+    "field_118": "Corporate VC",
+    "field_118_raw": [
+      "Corporate VC"
+    ],
+    "field_63": "Revenue, Growth, Mature",
+    "field_63_raw": [
+      "Revenue",
+      "Growth",
+      "Mature"
+    ],
+    "field_117": "Creative Industries, Clean Energy Industries, Life Sciences, Digital and Technologies",
+    "field_117_raw": [
+      "Creative Industries",
+      "Clean Energy Industries",
+      "Life Sciences",
+      "Digital and Technologies"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b6089f",
+    "field_59": "British Design Fund Advisors",
+    "field_59_raw": "British Design Fund Advisors",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b608a2",
+    "field_59": "Cambridge Angels",
+    "field_59_raw": "Cambridge Angels",
+    "field_118": "Angel Network",
+    "field_118_raw": [
+      "Angel Network"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b608a5",
+    "field_59": "Cambridge Enterprise",
+    "field_59_raw": "Cambridge Enterprise",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b608a8",
+    "field_59": "Cambridge Future Tech",
+    "field_59_raw": "Cambridge Future Tech",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue",
+    "field_63_raw": [
+      "Pre-Revenue"
+    ],
+    "field_117": "Creative Industries, Digital and Technologies, Advanced Manufacturing",
+    "field_117_raw": [
+      "Creative Industries",
+      "Digital and Technologies",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b608ab",
+    "field_59": "Cambridge innovation Capital",
+    "field_59_raw": "Cambridge innovation Capital",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b608ae",
+    "field_59": "Cancer Research Technology Limited",
+    "field_59_raw": "Cancer Research Technology Limited",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue",
+    "field_63_raw": [
+      "Pre-Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b608b1",
+    "field_59": "Carbon13",
+    "field_59_raw": "Carbon13",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Life Sciences, Advanced Manufacturing, Financial Services, Creative Industries",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Life Sciences",
+      "Advanced Manufacturing",
+      "Financial Services",
+      "Creative Industries"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b608b4",
+    "field_59": "Catapult Venture Managers Limited",
+    "field_59_raw": "Catapult Venture Managers Limited",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Life Sciences",
+    "field_117_raw": [
+      "Life Sciences"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b608b7",
+    "field_59": "Chrysalix Venture Capital",
+    "field_59_raw": "Chrysalix Venture Capital",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b608ba",
+    "field_59": "Cibus Capital LLP",
+    "field_59_raw": "Cibus Capital LLP",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Revenue, Growth, Mature, Exit Ready",
+    "field_63_raw": [
+      "Revenue",
+      "Growth",
+      "Mature",
+      "Exit Ready"
+    ],
+    "field_117": "Advanced Manufacturing, Clean Energy Industries",
+    "field_117_raw": [
+      "Advanced Manufacturing",
+      "Clean Energy Industries"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b608bd",
+    "field_59": "Clarendon Fund Managers Limited",
+    "field_59_raw": "Clarendon Fund Managers Limited",
+    "field_118": "Angel Network, VC",
+    "field_118_raw": [
+      "Angel Network",
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Advanced Manufacturing, Clean Energy Industries, Creative Industries, Digital and Technologies, Life Sciences",
+    "field_117_raw": [
+      "Advanced Manufacturing",
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b608c0",
+    "field_59": "Clay Capital (formerly Vis Vires New Protein)",
+    "field_59_raw": "Clay Capital (formerly Vis Vires New Protein)",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b608c3",
+    "field_59": "Clean Energy Ventures",
+    "field_59_raw": "Clean Energy Ventures",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Clean Energy Industries, Digital and Technologies, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Digital and Technologies",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b608c6",
+    "field_59": "CLEAN GROWTH FUND",
+    "field_59_raw": "CLEAN GROWTH FUND",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "",
+    "field_63_raw": [],
+    "field_117": "Clean Energy Industries, Advanced Manufacturing, Creative Industries, Life Sciences, Digital and Technologies, Financial Services",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Advanced Manufacturing",
+      "Creative Industries",
+      "Life Sciences",
+      "Digital and Technologies",
+      "Financial Services"
+    ]
+  },
+  {
+    "id": "69319c179e24cd0435b608c9",
+    "field_59": "Committed Capital Financial Services",
+    "field_59_raw": "Committed Capital Financial Services",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "",
+    "field_63_raw": [],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b608cc",
+    "field_59": "Concept Ventures",
+    "field_59_raw": "Concept Ventures",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Digital and Technologies, Financial Services, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b608cf",
+    "field_59": "Conduit connect",
+    "field_59_raw": "Conduit connect",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Life Sciences",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Life Sciences"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b608d2",
+    "field_59": "Constructor Capital I GP Ltd.",
+    "field_59_raw": "Constructor Capital I GP Ltd.",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b608d5",
+    "field_59": "CORNERSTONE VENTURES",
+    "field_59_raw": "CORNERSTONE VENTURES",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Digital and Technologies, Life Sciences, Clean Energy Industries, Advanced Manufacturing",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Life Sciences",
+      "Clean Energy Industries",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b608d8",
+    "field_59": "Cottagequinn Enterprises Ltd",
+    "field_59_raw": "Cottagequinn Enterprises Ltd",
+    "field_118": "Family Office",
+    "field_118_raw": [
+      "Family Office"
+    ],
+    "field_63": "",
+    "field_63_raw": [],
+    "field_117": "Clean Energy Industries, Digital and Technologies, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Digital and Technologies",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b608db",
+    "field_59": "Counteract Partners",
+    "field_59_raw": "Counteract Partners",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Advanced Manufacturing, Financial Services",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Advanced Manufacturing",
+      "Financial Services"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b608de",
+    "field_59": "CPT Capital LLP",
+    "field_59_raw": "CPT Capital LLP",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Clean Energy Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b608e1",
+    "field_59": "Creative UK",
+    "field_59_raw": "Creative UK",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Creative Industries",
+    "field_117_raw": [
+      "Creative Industries"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60938",
+    "field_59": "Creator Fund",
+    "field_59_raw": "Creator Fund",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Advanced Manufacturing, Clean Energy Industries, Defence and Security, Digital and Technologies, Financial Services, Life Sciences",
+    "field_117_raw": [
+      "Advanced Manufacturing",
+      "Clean Energy Industries",
+      "Defence and Security",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b608e4",
+    "field_59": "Daring Capital",
+    "field_59_raw": "Daring Capital",
+    "field_118": "Angel Network",
+    "field_118_raw": [
+      "Angel Network"
+    ],
+    "field_63": "",
+    "field_63_raw": [],
+    "field_117": "Creative Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b608ea",
+    "field_59": "Deepbridge Capital",
+    "field_59_raw": "Deepbridge Capital",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b608e7",
+    "field_59": "DEEP SCIENCE VENTURES",
+    "field_59_raw": "DEEP SCIENCE VENTURES",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "",
+    "field_63_raw": [],
+    "field_117": "Advanced Manufacturing, Clean Energy Industries, Life Sciences",
+    "field_117_raw": [
+      "Advanced Manufacturing",
+      "Clean Energy Industries",
+      "Life Sciences"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b608ed",
+    "field_59": "Deeptech Seed Fund",
+    "field_59_raw": "Deeptech Seed Fund",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue",
+    "field_63_raw": [
+      "Pre-Revenue"
+    ],
+    "field_117": "Advanced Manufacturing, Clean Energy Industries, Digital and Technologies, Professional and Business Services",
+    "field_117_raw": [
+      "Advanced Manufacturing",
+      "Clean Energy Industries",
+      "Digital and Technologies",
+      "Professional and Business Services"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b608f0",
+    "field_59": "Delin Ventures Advisors",
+    "field_59_raw": "Delin Ventures Advisors",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Life Sciences",
+    "field_117_raw": [
+      "Life Sciences"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b608f3",
+    "field_59": "Development Bank of Wales",
+    "field_59_raw": "Development Bank of Wales",
+    "field_118": "Corporate VC",
+    "field_118_raw": [
+      "Corporate VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b608f6",
+    "field_59": "Diffusion Capital ",
+    "field_59_raw": "Diffusion Capital ",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b608f9",
+    "field_59": "DSW Venture Capital LLP",
+    "field_59_raw": "DSW Venture Capital LLP",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Creative Industries, Digital and Technologies",
+    "field_117_raw": [
+      "Creative Industries",
+      "Digital and Technologies"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b608fc",
+    "field_59": "EARLYMARKET",
+    "field_59_raw": "EARLYMARKET",
+    "field_118": "Family Office",
+    "field_118_raw": [
+      "Family Office"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b608ff",
+    "field_59": "East Innovate Ltd",
+    "field_59_raw": "East Innovate Ltd",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60902",
+    "field_59": "Ebico",
+    "field_59_raw": "Ebico",
+    "field_118": "Angel Network",
+    "field_118_raw": [
+      "Angel Network"
+    ],
+    "field_63": "Growth",
+    "field_63_raw": [
+      "Growth"
+    ],
+    "field_117": "Clean Energy Industries",
+    "field_117_raw": [
+      "Clean Energy Industries"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60905",
+    "field_59": "Edge VC (Create the Future)",
+    "field_59_raw": "Edge VC (Create the Future)",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Creative Industries, Digital and Technologies, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Creative Industries",
+      "Digital and Technologies",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60908",
+    "field_59": "EHE Venture Studio & AI Fund",
+    "field_59_raw": "EHE Venture Studio & AI Fund",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b6090b",
+    "field_59": "EIT InnoEnergy",
+    "field_59_raw": "EIT InnoEnergy",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "",
+    "field_63_raw": [],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b6090e",
+    "field_59": "EKA VENTURES",
+    "field_59_raw": "EKA VENTURES",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Creative Industries, Advanced Manufacturing, Digital and Technologies",
+    "field_117_raw": [
+      "Creative Industries",
+      "Advanced Manufacturing",
+      "Digital and Technologies"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60911",
+    "field_59": "ELBOW BEACH CAPITAL",
+    "field_59_raw": "ELBOW BEACH CAPITAL",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60914",
+    "field_59": "ELSOMS SEEDS",
+    "field_59_raw": "ELSOMS SEEDS",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60917",
+    "field_59": "Emles Venture",
+    "field_59_raw": "Emles Venture",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b6091a",
+    "field_59": "Empirical Ventures (Spin Up Science Ventures)",
+    "field_59_raw": "Empirical Ventures (Spin Up Science Ventures)",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b6091d",
+    "field_59": "EMV Capital",
+    "field_59_raw": "EMV Capital",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Revenue, Growth, Mature",
+    "field_63_raw": [
+      "Revenue",
+      "Growth",
+      "Mature"
+    ],
+    "field_117": "Clean Energy Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60920",
+    "field_59": "Eos Advisory",
+    "field_59_raw": "Eos Advisory",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Advanced Manufacturing, Creative Industries, Digital and Technologies, Life Sciences",
+    "field_117_raw": [
+      "Advanced Manufacturing",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60923",
+    "field_59": "Epidarex Management Limited",
+    "field_59_raw": "Epidarex Management Limited",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60926",
+    "field_59": "Equity Gap Limited",
+    "field_59_raw": "Equity Gap Limited",
+    "field_118": "Angel Network",
+    "field_118_raw": [
+      "Angel Network"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60929",
+    "field_59": "ETF Partners",
+    "field_59_raw": "ETF Partners",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b6092f",
+    "field_59": "Exceptional Ventures",
+    "field_59_raw": "Exceptional Ventures",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60932",
+    "field_59": "Extantia",
+    "field_59_raw": "Extantia",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60935",
+    "field_59": "Fearless adventures",
+    "field_59_raw": "Fearless adventures",
+    "field_118": "Angel Network",
+    "field_118_raw": [
+      "Angel Network"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Creative Industries, Digital and Technologies, Advanced Manufacturing",
+    "field_117_raw": [
+      "Creative Industries",
+      "Digital and Technologies",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b6093b",
+    "field_59": "Firstminute Capital",
+    "field_59_raw": "Firstminute Capital",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Advanced Manufacturing, Clean Energy Industries, Creative Industries, Defence and Security, Digital and Technologies, Financial Services, Life Sciences",
+    "field_117_raw": [
+      "Advanced Manufacturing",
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Defence and Security",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b6093e",
+    "field_59": "Foresight Group LLP",
+    "field_59_raw": "Foresight Group LLP",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Clean Energy Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60941",
+    "field_59": "Found Capital",
+    "field_59_raw": "Found Capital",
+    "field_118": "Angel Network",
+    "field_118_raw": [
+      "Angel Network"
+    ],
+    "field_63": "Early Revenue, Revenue",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60944",
+    "field_59": "FOV",
+    "field_59_raw": "FOV",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Creative Industries, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Creative Industries",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60947",
+    "field_59": "Future Planet Capital",
+    "field_59_raw": "Future Planet Capital",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Digital and Technologies, Advanced Manufacturing",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b6094a",
+    "field_59": "Gallos Ventures",
+    "field_59_raw": "Gallos Ventures",
+    "field_118": "Accelerator / Incubator",
+    "field_118_raw": [
+      "Accelerator / Incubator"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Digital and Technologies, Advanced Manufacturing",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b6094d",
+    "field_59": "GC ANGELS",
+    "field_59_raw": "GC ANGELS",
+    "field_118": "Angel Network",
+    "field_118_raw": [
+      "Angel Network"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Digital and Technologies, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Digital and Technologies",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60950",
+    "field_59": "Green angel Ventures",
+    "field_59_raw": "Green angel Ventures",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60953",
+    "field_59": "Growth Impact Fund",
+    "field_59_raw": "Growth Impact Fund",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60956",
+    "field_59": "HENLEY BUSINESS ANGELS",
+    "field_59_raw": "HENLEY BUSINESS ANGELS",
+    "field_118": "Angel Network",
+    "field_118_raw": [
+      "Angel Network"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Creative Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60959",
+    "field_59": "HERAN Partners",
+    "field_59_raw": "HERAN Partners",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b6095c",
+    "field_59": "HERMESA",
+    "field_59_raw": "HERMESA",
+    "field_118": "Angel Network",
+    "field_118_raw": [
+      "Angel Network"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Financial Services, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Financial Services",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b6095f",
+    "field_59": "HG Ventures",
+    "field_59_raw": "HG Ventures",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60962",
+    "field_59": "HICO Investment Group",
+    "field_59_raw": "HICO Investment Group",
+    "field_118": "Family Office",
+    "field_118_raw": [
+      "Family Office"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60965",
+    "field_59": "Hiro Capital",
+    "field_59_raw": "Hiro Capital",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60968",
+    "field_59": "Hoxton Ventures",
+    "field_59_raw": "Hoxton Ventures",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Advanced Manufacturing, Clean Energy Industries, Creative Industries, Digital and Technologies, Life Sciences",
+    "field_117_raw": [
+      "Advanced Manufacturing",
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b6096b",
+    "field_59": "Impact Shakers Ventures",
+    "field_59_raw": "Impact Shakers Ventures",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Digital and Technologies, Advanced Manufacturing",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b6096e",
+    "field_59": "Impact X Capital Partners",
+    "field_59_raw": "Impact X Capital Partners",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60971",
+    "field_59": "IP Group Plc",
+    "field_59_raw": "IP Group Plc",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60974",
+    "field_59": "IQ Capital Partners LLP",
+    "field_59_raw": "IQ Capital Partners LLP",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b60977",
+    "field_59": "Jenson Funding Partners LLP",
+    "field_59_raw": "Jenson Funding Partners LLP",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b6097a",
+    "field_59": "Kelvin Capital Limited",
+    "field_59_raw": "Kelvin Capital Limited",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c189e24cd0435b6097d",
+    "field_59": "Kero Limited",
+    "field_59_raw": "Kero Limited",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b60980",
+    "field_59": "KHP VENTURES",
+    "field_59_raw": "KHP VENTURES",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b60983",
+    "field_59": "Kidney Research",
+    "field_59_raw": "Kidney Research",
+    "field_118": "Not-for-Profit VC",
+    "field_118_raw": [
+      "Not-for-Profit VC"
+    ],
+    "field_63": "",
+    "field_63_raw": [],
+    "field_117": "Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b60986",
+    "field_59": "LCR Ventures Limited",
+    "field_59_raw": "LCR Ventures Limited",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b60989",
+    "field_59": "Lifted Ventures",
+    "field_59_raw": "Lifted Ventures",
+    "field_118": "Angel Network",
+    "field_118_raw": [
+      "Angel Network"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Digital and Technologies, Life Sciences, Creative Industries",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Life Sciences",
+      "Creative Industries"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b6098c",
+    "field_59": "London Venture Partners",
+    "field_59_raw": "London Venture Partners",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Digital and Technologies, Advanced Manufacturing, Creative Industries, Financial Services",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Advanced Manufacturing",
+      "Creative Industries",
+      "Financial Services"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b6098f",
+    "field_59": "Longwall Venture Partners LLP",
+    "field_59_raw": "Longwall Venture Partners LLP",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b60998",
+    "field_59": "MACMILLAN CANCER SUPPORT",
+    "field_59_raw": "MACMILLAN CANCER SUPPORT",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "693705bdaf9d366325addba2",
+    "field_59": "Manchester Angels",
+    "field_59_raw": "Manchester Angels",
+    "field_118": "Angel Network",
+    "field_118_raw": [
+      "Angel Network"
+    ],
+    "field_63": "",
+    "field_63_raw": [],
+    "field_117": "Advanced Manufacturing, Digital and Technologies",
+    "field_117_raw": [
+      "Advanced Manufacturing",
+      "Digital and Technologies"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b6099b",
+    "field_59": "Maven Capital partners UK LLP",
+    "field_59_raw": "Maven Capital partners UK LLP",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Clean Energy Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b6099e",
+    "field_59": "Mercia Asset Management Plc",
+    "field_59_raw": "Mercia Asset Management Plc",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609a1",
+    "field_59": "Mercuri GP LLP",
+    "field_59_raw": "Mercuri GP LLP",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Creative Industries, Digital and Technologies, Defence and Security",
+    "field_117_raw": [
+      "Creative Industries",
+      "Digital and Technologies",
+      "Defence and Security"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609a4",
+    "field_59": "Metis Ventures",
+    "field_59_raw": "Metis Ventures",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Creative Industries, Digital and Technologies",
+    "field_117_raw": [
+      "Creative Industries",
+      "Digital and Technologies"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609a7",
+    "field_59": "Mint Ventures",
+    "field_59_raw": "Mint Ventures",
+    "field_118": "Angel Network",
+    "field_118_raw": [
+      "Angel Network"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "",
+    "field_117_raw": []
+  },
+  {
+    "id": "69319c199e24cd0435b60995",
+    "field_59": "M:M BIO LIMITED",
+    "field_59_raw": "M:M BIO LIMITED",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Life Sciences",
+    "field_117_raw": [
+      "Life Sciences"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609aa",
+    "field_59": "MMC Ventures Limited",
+    "field_59_raw": "MMC Ventures Limited",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Revenue",
+    "field_63_raw": [
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b60992",
+    "field_59": "M Ventures",
+    "field_59_raw": "M Ventures",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609ad",
+    "field_59": "Nesta",
+    "field_59_raw": "Nesta",
+    "field_118": "Not-for-Profit VC",
+    "field_118_raw": [
+      "Not-for-Profit VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Advanced Manufacturing, Creative Industries",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Advanced Manufacturing",
+      "Creative Industries"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609b0",
+    "field_59": "NextEnergy Capital",
+    "field_59_raw": "NextEnergy Capital",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "",
+    "field_63_raw": [],
+    "field_117": "Clean Energy Industries, Digital and Technologies",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Digital and Technologies"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609b3",
+    "field_59": "NoBa Capital",
+    "field_59_raw": "NoBa Capital",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Digital and Technologies, Advanced Manufacturing, Life Sciences, Creative Industries",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Advanced Manufacturing",
+      "Life Sciences",
+      "Creative Industries"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609b6",
+    "field_59": "Norrsken Launcher ",
+    "field_59_raw": "Norrsken Launcher ",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609b9",
+    "field_59": "Norrsken VC",
+    "field_59_raw": "Norrsken VC",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609bc",
+    "field_59": "Northern Gritstone Limited",
+    "field_59_raw": "Northern Gritstone Limited",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609bf",
+    "field_59": "Northern Investor Hub",
+    "field_59_raw": "Northern Investor Hub",
+    "field_118": "Angel Network",
+    "field_118_raw": [
+      "Angel Network"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Advanced Manufacturing, Clean Energy Industries, Digital and Technologies, Life Sciences",
+    "field_117_raw": [
+      "Advanced Manufacturing",
+      "Clean Energy Industries",
+      "Digital and Technologies",
+      "Life Sciences"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609c2",
+    "field_59": "Northstar Ventures Limited",
+    "field_59_raw": "Northstar Ventures Limited",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609c5",
+    "field_59": "O2H VENTURES",
+    "field_59_raw": "O2H VENTURES",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Life Sciences",
+    "field_117_raw": [
+      "Life Sciences"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609c8",
+    "field_59": "Octopus Ventures Limited",
+    "field_59_raw": "Octopus Ventures Limited",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609cb",
+    "field_59": "Old College Capital",
+    "field_59_raw": "Old College Capital",
+    "field_118": "Corporate VC",
+    "field_118_raw": [
+      "Corporate VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609ce",
+    "field_59": "ONE PLANET CAPITAL",
+    "field_59_raw": "ONE PLANET CAPITAL",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609d1",
+    "field_59": "Osney Capital",
+    "field_59_raw": "Osney Capital",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Defence and Security, Digital and Technologies",
+    "field_117_raw": [
+      "Defence and Security",
+      "Digital and Technologies"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609d4",
+    "field_59": "Oxford Investment Opportunity Network Limited (OION)",
+    "field_59_raw": "Oxford Investment Opportunity Network Limited (OION)",
+    "field_118": "Angel Network",
+    "field_118_raw": [
+      "Angel Network"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Advanced Manufacturing, Clean Energy Industries, Digital and Technologies, Life Sciences",
+    "field_117_raw": [
+      "Advanced Manufacturing",
+      "Clean Energy Industries",
+      "Digital and Technologies",
+      "Life Sciences"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609d7",
+    "field_59": "Oxford Science Enterprises Plc",
+    "field_59_raw": "Oxford Science Enterprises Plc",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609da",
+    "field_59": "Oxford Technology",
+    "field_59_raw": "Oxford Technology",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Life Sciences, Digital and Technologies, Advanced Manufacturing, Creative Industries, Clean Energy Industries",
+    "field_117_raw": [
+      "Life Sciences",
+      "Digital and Technologies",
+      "Advanced Manufacturing",
+      "Creative Industries",
+      "Clean Energy Industries"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609dd",
+    "field_59": "Oyster Bay",
+    "field_59_raw": "Oyster Bay",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Advanced Manufacturing, Clean Energy Industries",
+    "field_117_raw": [
+      "Advanced Manufacturing",
+      "Clean Energy Industries"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609e3",
+    "field_59": "Paragon Capital",
+    "field_59_raw": "Paragon Capital",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Life Sciences, Digital and Technologies, Clean Energy Industries, Advanced Manufacturing",
+    "field_117_raw": [
+      "Life Sciences",
+      "Digital and Technologies",
+      "Clean Energy Industries",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609e0",
+    "field_59": "Par Equity LLP",
+    "field_59_raw": "Par Equity LLP",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Digital and Technologies, Advanced Manufacturing, Life Sciences, Clean Energy Industries",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Advanced Manufacturing",
+      "Life Sciences",
+      "Clean Energy Industries"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609e6",
+    "field_59": "PDS Ventures",
+    "field_59_raw": "PDS Ventures",
+    "field_118": "Corporate VC",
+    "field_118_raw": [
+      "Corporate VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609e9",
+    "field_59": "Perfect Redd",
+    "field_59_raw": "Perfect Redd",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609ec",
+    "field_59": "Pioneer Group",
+    "field_59_raw": "Pioneer Group",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609ef",
+    "field_59": "Playfair Capital",
+    "field_59_raw": "Playfair Capital",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Digital and Technologies, Advanced Manufacturing, Clean Energy Industries, Advanced Manufacturing, Life Sciences, Creative Industries, Financial Services",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Advanced Manufacturing",
+      "Clean Energy Industries",
+      "Advanced Manufacturing",
+      "Life Sciences",
+      "Creative Industries",
+      "Financial Services"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609f2",
+    "field_59": "Praesidium S.A.",
+    "field_59_raw": "Praesidium S.A.",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Clean Energy Industries, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609f5",
+    "field_59": "Praetura Ventures Limited",
+    "field_59_raw": "Praetura Ventures Limited",
+    "field_118": "Corporate VC",
+    "field_118_raw": [
+      "Corporate VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609f8",
+    "field_59": "PROSTATE CANCER RESEARCH",
+    "field_59_raw": "PROSTATE CANCER RESEARCH",
+    "field_118": "Not-for-Profit VC",
+    "field_118_raw": [
+      "Not-for-Profit VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Creative Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609fb",
+    "field_59": "Puma Growth Partners",
+    "field_59_raw": "Puma Growth Partners",
+    "field_118": "VC (Late-Stage)",
+    "field_118_raw": [
+      "VC (Late-Stage)"
+    ],
+    "field_63": "Growth, Mature, Exit Ready",
+    "field_63_raw": [
+      "Growth",
+      "Mature",
+      "Exit Ready"
+    ],
+    "field_117": "Creative Industries, Digital and Technologies, Advanced Manufacturing",
+    "field_117_raw": [
+      "Creative Industries",
+      "Digital and Technologies",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b609fe",
+    "field_59": "QANTX",
+    "field_59_raw": "QANTX",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b60a01",
+    "field_59": "QUBIS",
+    "field_59_raw": "QUBIS",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue",
+    "field_63_raw": [
+      "Pre-Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b60a04",
+    "field_59": "Rabo Investments",
+    "field_59_raw": "Rabo Investments",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue, Growth, Mature",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue",
+      "Growth",
+      "Mature"
+    ],
+    "field_117": "Clean Energy Industries, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b60a07",
+    "field_59": "Redalpine Venture Partners",
+    "field_59_raw": "Redalpine Venture Partners",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b60a0a",
+    "field_59": "REGENERATE VENTURES",
+    "field_59_raw": "REGENERATE VENTURES",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Digital and Technologies, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Digital and Technologies",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b60a0d",
+    "field_59": "River Capital",
+    "field_59_raw": "River Capital",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b60a10",
+    "field_59": "Round2 Capital",
+    "field_59_raw": "Round2 Capital",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b60a13",
+    "field_59": "Salica Investments (formerly Hambro Perks)",
+    "field_59_raw": "Salica Investments (formerly Hambro Perks)",
+    "field_118": "VC (Late-Stage)",
+    "field_118_raw": [
+      "VC (Late-Stage)"
+    ],
+    "field_63": "Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "6937052bf10e4626fe32e6bd",
+    "field_59": "Salonica Group",
+    "field_59_raw": "Salonica Group",
+    "field_118": "Corporate VC",
+    "field_118_raw": [
+      "Corporate VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Advanced Manufacturing, Clean Energy Industries, Digital and Technologies, Life Sciences",
+    "field_117_raw": [
+      "Advanced Manufacturing",
+      "Clean Energy Industries",
+      "Digital and Technologies",
+      "Life Sciences"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b60a16",
+    "field_59": "Saxovent Smart Eco Investments",
+    "field_59_raw": "Saxovent Smart Eco Investments",
+    "field_118": "Family Office",
+    "field_118_raw": [
+      "Family Office"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries",
+    "field_117_raw": [
+      "Clean Energy Industries"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b60a19",
+    "field_59": "Science Creates Ventures LLP (now SCVC)",
+    "field_59_raw": "Science Creates Ventures LLP (now SCVC)",
+    "field_118": "Accelerator / Incubator",
+    "field_118_raw": [
+      "Accelerator / Incubator"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b60a1c",
+    "field_59": "Scottish National Investment Bank",
+    "field_59_raw": "Scottish National Investment Bank",
+    "field_118": "Corporate VC",
+    "field_118_raw": [
+      "Corporate VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue, Growth, Mature",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue",
+      "Growth",
+      "Mature"
+    ],
+    "field_117": "Clean Energy Industries",
+    "field_117_raw": [
+      "Clean Energy Industries"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b60a1f",
+    "field_59": "Seneca Partners",
+    "field_59_raw": "Seneca Partners",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue, Growth, Mature",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue",
+      "Growth",
+      "Mature"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b60a22",
+    "field_59": "Senfi Uk",
+    "field_59_raw": "Senfi Uk",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b60a25",
+    "field_59": "SETsquared",
+    "field_59_raw": "SETsquared",
+    "field_118": "Accelerator / Incubator",
+    "field_118_raw": [
+      "Accelerator / Incubator"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b60a28",
+    "field_59": "SFC Capital Ltd",
+    "field_59_raw": "SFC Capital Ltd",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Digital and Technologies, Creative Industries, Advanced Manufacturing, Clean Energy Industries, Life Sciences, Financial Services",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Creative Industries",
+      "Advanced Manufacturing",
+      "Clean Energy Industries",
+      "Life Sciences",
+      "Financial Services"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b60a2b",
+    "field_59": "Sie Ventures",
+    "field_59_raw": "Sie Ventures",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Defence and Security, Digital and Technologies, Financial Services",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Defence and Security",
+      "Digital and Technologies",
+      "Financial Services"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b60a2e",
+    "field_59": "Social Tech Trust",
+    "field_59_raw": "Social Tech Trust",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b60a31",
+    "field_59": "SOSV",
+    "field_59_raw": "SOSV",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b60a34",
+    "field_59": "SPEEDINVEST",
+    "field_59_raw": "SPEEDINVEST",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c199e24cd0435b60a37",
+    "field_59": "SPRK Capital",
+    "field_59_raw": "SPRK Capital",
+    "field_118": "Lender",
+    "field_118_raw": [
+      "Lender"
+    ],
+    "field_63": "",
+    "field_63_raw": [],
+    "field_117": "",
+    "field_117_raw": []
+  },
+  {
+    "id": "69319c199e24cd0435b60a3a",
+    "field_59": "Start Codon",
+    "field_59_raw": "Start Codon",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Creative Industries, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Creative Industries",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a3d",
+    "field_59": "SUPERSEED VENTURES LLP",
+    "field_59_raw": "SUPERSEED VENTURES LLP",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a40",
+    "field_59": "SURE VALLEY VENTURES",
+    "field_59_raw": "SURE VALLEY VENTURES",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a43",
+    "field_59": "Sustainable Future Ventures Limited",
+    "field_59_raw": "Sustainable Future Ventures Limited",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Digital and Technologies, Financial Services",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Financial Services"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a46",
+    "field_59": "Sustainable Venture Development Partners Ltd",
+    "field_59_raw": "Sustainable Venture Development Partners Ltd",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a49",
+    "field_59": "SYMVAN CAPITAL LIMITED",
+    "field_59_raw": "SYMVAN CAPITAL LIMITED",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a4c",
+    "field_59": "TECHSTART VENTURES",
+    "field_59_raw": "TECHSTART VENTURES",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a4f",
+    "field_59": "Tern Plc",
+    "field_59_raw": "Tern Plc",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a52",
+    "field_59": "The Games Angels",
+    "field_59_raw": "The Games Angels",
+    "field_118": "Angel Network",
+    "field_118_raw": [
+      "Angel Network"
+    ],
+    "field_63": "",
+    "field_63_raw": [],
+    "field_117": "Creative Industries, Digital and Technologies",
+    "field_117_raw": [
+      "Creative Industries",
+      "Digital and Technologies"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a5b",
+    "field_59": "THENA Capital",
+    "field_59_raw": "THENA Capital",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Life Sciences",
+    "field_117_raw": [
+      "Life Sciences"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a55",
+    "field_59": "The Resolution Foundation",
+    "field_59_raw": "The Resolution Foundation",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Digital and Technologies, Advanced Manufacturing",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a58",
+    "field_59": "The Yield Lab",
+    "field_59_raw": "The Yield Lab",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a5e",
+    "field_59": "Tricapital Angels",
+    "field_59_raw": "Tricapital Angels",
+    "field_118": "Angel Network",
+    "field_118_raw": [
+      "Angel Network"
+    ],
+    "field_63": "Early Revenue, Revenue",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a61",
+    "field_59": "Triple Point Venture",
+    "field_59_raw": "Triple Point Venture",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a64",
+    "field_59": "TSP Ventures Ltd",
+    "field_59_raw": "TSP Ventures Ltd",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Digital and Technologies, Advanced Manufacturing",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a67",
+    "field_59": "Turquoise International Limited",
+    "field_59_raw": "Turquoise International Limited",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Advanced Manufacturing, Digital and Technologies",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Advanced Manufacturing",
+      "Digital and Technologies"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a6a",
+    "field_59": "Twin Path Ventures",
+    "field_59_raw": "Twin Path Ventures",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a6d",
+    "field_59": "Two Magnolias",
+    "field_59_raw": "Two Magnolias",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Digital and Technologies, Advanced Manufacturing, Creative Industries, Life Sciences",
+    "field_117_raw": [
+      "Digital and Technologies",
+      "Advanced Manufacturing",
+      "Creative Industries",
+      "Life Sciences"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a70",
+    "field_59": "Unilever Europe",
+    "field_59_raw": "Unilever Europe",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "",
+    "field_63_raw": [],
+    "field_117": "Clean Energy Industries, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a73",
+    "field_59": "University of Sussex Business Angels",
+    "field_59_raw": "University of Sussex Business Angels",
+    "field_118": "Accelerator / Incubator",
+    "field_118_raw": [
+      "Accelerator / Incubator"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Digital and Technologies, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Digital and Technologies",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a76",
+    "field_59": "University of Warwick (Minerva)",
+    "field_59_raw": "University of Warwick (Minerva)",
+    "field_118": "Angel Network",
+    "field_118_raw": [
+      "Angel Network"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Creative Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a79",
+    "field_59": "VALA CAPITAL VENTURES LTD",
+    "field_59_raw": "VALA CAPITAL VENTURES LTD",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Financial Services, Life Sciences, Defence and Security, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Financial Services",
+      "Life Sciences",
+      "Defence and Security",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a7c",
+    "field_59": "Vectr investment Partners",
+    "field_59_raw": "Vectr investment Partners",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Early Revenue, Revenue, Growth",
+    "field_63_raw": [
+      "Early Revenue",
+      "Revenue",
+      "Growth"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a7f",
+    "field_59": "Velocity Capital Advisors",
+    "field_59_raw": "Velocity Capital Advisors",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Creative Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a82",
+    "field_59": "World Fund",
+    "field_59_raw": "World Fund",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue, Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue",
+      "Revenue"
+    ],
+    "field_117": "Advanced Manufacturing, Digital and Technologies, Life Sciences",
+    "field_117_raw": [
+      "Advanced Manufacturing",
+      "Digital and Technologies",
+      "Life Sciences"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a85",
+    "field_59": "YFM Equity Partners",
+    "field_59_raw": "YFM Equity Partners",
+    "field_118": "VC (Late-Stage)",
+    "field_118_raw": [
+      "VC (Late-Stage)"
+    ],
+    "field_63": "Revenue, Growth, Mature",
+    "field_63_raw": [
+      "Revenue",
+      "Growth",
+      "Mature"
+    ],
+    "field_117": "Life Sciences, Advanced Manufacturing, Digital and Technologies",
+    "field_117_raw": [
+      "Life Sciences",
+      "Advanced Manufacturing",
+      "Digital and Technologies"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a88",
+    "field_59": "Zero Carbon Capital",
+    "field_59_raw": "Zero Carbon Capital",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  },
+  {
+    "id": "69319c1a9e24cd0435b60a8b",
+    "field_59": "ZINC VENTURES",
+    "field_59_raw": "ZINC VENTURES",
+    "field_118": "VC",
+    "field_118_raw": [
+      "VC"
+    ],
+    "field_63": "Pre-Revenue, Early Revenue",
+    "field_63_raw": [
+      "Pre-Revenue",
+      "Early Revenue"
+    ],
+    "field_117": "Clean Energy Industries, Creative Industries, Digital and Technologies, Life Sciences, Advanced Manufacturing",
+    "field_117_raw": [
+      "Clean Energy Industries",
+      "Creative Industries",
+      "Digital and Technologies",
+      "Life Sciences",
+      "Advanced Manufacturing"
+    ]
+  }
+]
