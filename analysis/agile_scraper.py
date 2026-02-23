@@ -10,7 +10,10 @@ from datetime import datetime, timedelta
 import time
 import re
 import csv
+from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
+
+RESULTS_DIR = Path(__file__).parent.parent / "results"
 
 # UK consumption profile (hourly kWh - normalized from watts)
 UK_CONSUMPTION_PROFILE = {
@@ -212,7 +215,7 @@ def main():
         output_data.append(row)
 
     # Save to CSV
-    output_file = '/Users/adambricknail/Desktop/elec/agile_analysis_2025.csv'
+    output_file = str(RESULTS_DIR / 'agile_analysis_2025.csv')
 
     fieldnames = ['date', 'lowest_rate_p', 'highest_rate_p', 'average_rate_p',
                   'spread_p', 'cost_without_battery_p', 'cost_with_battery_p', 'daily_saving_p']

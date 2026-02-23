@@ -129,10 +129,10 @@ MODELING ASSUMPTIONS AND METHODOLOGY
 ================================================================================
 DATA SOURCES
 ================================================================================
-- Hourly wholesale prices: Week plan batteries sprint 1 - NL Data.csv (and nation-specific)
-- Model parameters: Week plan batteries sprint 1 - model_input.csv
-- Consumption profiles: Week plan batteries sprint 1 - use_profiles.csv (UK only)
-- UK market parameters: uk_market_inputs.csv (optional, for enhanced CM modeling)
+- Hourly wholesale prices: data/prices/nl_hourly.csv (and nation-specific)
+- Model parameters: data/inputs/model_input.csv
+- Consumption profiles: data/inputs/use_profiles.csv (UK only)
+- UK market parameters: data/inputs/uk_market_inputs.csv (optional, for enhanced CM modeling)
 
 ================================================================================
 """
@@ -144,17 +144,18 @@ from datetime import datetime
 import pulp
 
 # Configuration
-DATA_DIR = Path(__file__).parent
+PROJECT_ROOT = Path(__file__).parent.parent
+DATA_DIR = PROJECT_ROOT / "data"
 
 # Date range for "latest full year" - derived from available data
 DATE_START = "2024-07-01"
 DATE_END = "2025-06-30"
 
 NATIONS = {
-    "Netherlands": "Week plan batteries sprint 1 - NL Data.csv",
-    "Germany": "Germany.csv",
-    "Spain": "Spain.csv",
-    "UK": "United Kingdom.csv",
+    "Netherlands": "prices/nl_hourly.csv",
+    "Germany": "prices/Germany.csv",
+    "Spain": "prices/Spain.csv",
+    "UK": "prices/United Kingdom.csv",
 }
 
 # Battery size optimization step (kWh) - could also be added to model_input.csv if needed
@@ -181,7 +182,7 @@ def load_uk_market_inputs():
     Load enhanced UK market inputs if available.
     Falls back to defaults if file doesn't exist.
     """
-    uk_file = DATA_DIR / "uk_market_inputs.csv"
+    uk_file = DATA_DIR / "inputs" / "uk_market_inputs.csv"
     if not uk_file.exists():
         return None
 
@@ -230,7 +231,7 @@ def get_derating_factor(battery_kwh, battery_kw):
 
 def load_model_inputs():
     """Load model parameters from CSV."""
-    df = pd.read_csv(DATA_DIR / "Week plan batteries sprint 1 - model_input.csv")
+    df = pd.read_csv(DATA_DIR / "inputs" / "model_input.csv")
     df = df.set_index("input")
 
     params = {}
@@ -286,7 +287,7 @@ def get_wholesale_buy_price(params):
 
 def load_use_profiles():
     """Load hourly consumption profiles. Only UK available, used for all nations per instructions."""
-    df = pd.read_csv(DATA_DIR / "Week plan batteries sprint 1 - use_profiles.csv")
+    df = pd.read_csv(DATA_DIR / "inputs" / "use_profiles.csv")
     # Normalize to daily total = 1
     uk_profile = df[df["Nation"] == "UK"].set_index("hour")["consumption_kwh"]
     uk_profile = uk_profile / uk_profile.sum()  # Normalize

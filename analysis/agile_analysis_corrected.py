@@ -5,6 +5,9 @@ Corrected battery savings calculation that properly accounts for:
 """
 
 import pandas as pd
+from pathlib import Path
+
+RESULTS_DIR = Path(__file__).parent.parent / "results"
 
 # UK consumption profile (hourly kWh)
 UK_CONSUMPTION_PROFILE = {
@@ -201,7 +204,7 @@ print("Reading scraped Agile data...")
 # We need to re-scrape to get all rates, not just summary stats
 # For now, let's use the summary data and estimate
 
-df = pd.read_csv('agile_analysis_2025.csv')
+df = pd.read_csv(RESULTS_DIR / 'agile_analysis_2025.csv')
 
 print("\n" + "="*80)
 print("CORRECTED ANALYSIS - Accounting for Off-Peak Consumption")

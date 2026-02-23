@@ -8,6 +8,7 @@ import requests
 import json
 import time
 import csv
+from pathlib import Path
 
 # Knack API credentials from the page source
 APP_ID = "67f664e4ef6776029638f4d1"
@@ -209,7 +210,7 @@ def main():
     investors = extract_investor_info(all_records)
 
     # Save raw JSON
-    with open('/Users/adambricknail/Desktop/elec/iuk_investors_raw.json', 'w') as f:
+    with open(Path(__file__).parent / 'iuk_investors_raw.json', 'w') as f:
         json.dump(all_records, f, indent=2)
     print(f"\n✓ Saved raw data to iuk_investors_raw.json")
 
@@ -240,7 +241,7 @@ def main():
         for inv in investors:
             all_keys.update(inv.keys())
 
-        with open('/Users/adambricknail/Desktop/elec/iuk_investors.csv', 'w', newline='') as f:
+        with open(Path(__file__).parent / 'iuk_investors.csv', 'w', newline='') as f:
             writer = csv.DictWriter(f, fieldnames=sorted(all_keys))
             writer.writeheader()
             writer.writerows(investors)

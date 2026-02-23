@@ -40,8 +40,9 @@ except ImportError:
     print("WARNING: PuLP not installed. Using simplified optimization.")
 
 # Configuration
-DATA_DIR = Path(__file__).parent
-AGILE_CACHE_FILE = DATA_DIR / "agile_rates_2025_cache.csv"
+PROJECT_ROOT = Path(__file__).parent.parent
+DATA_DIR = PROJECT_ROOT / "data"
+AGILE_CACHE_FILE = DATA_DIR / "agile" / "agile_rates_2025_cache.csv"
 
 # Battery parameters (can be overridden)
 DEFAULT_BATTERY_KWH = 10.0
@@ -54,7 +55,7 @@ EUR_TO_GBP = 0.85
 
 def load_model_inputs():
     """Load model parameters from CSV."""
-    df = pd.read_csv(DATA_DIR / "Week plan batteries sprint 1 - model_input.csv")
+    df = pd.read_csv(DATA_DIR / "inputs" / "model_input.csv")
     df = df.set_index("input")
 
     p = {}
@@ -85,7 +86,7 @@ def load_model_inputs():
 
 def load_use_profiles():
     """Load hourly consumption profiles for UK."""
-    df = pd.read_csv(DATA_DIR / "Week plan batteries sprint 1 - use_profiles.csv")
+    df = pd.read_csv(DATA_DIR / "inputs" / "use_profiles.csv")
     uk_profile = df[df["Nation"] == "UK"].set_index("hour")["consumption_kwh"]
     return uk_profile.to_dict()
 
@@ -197,7 +198,7 @@ def get_hourly_agile_rates(agile_df):
 
 def load_wholesale_prices(year=2025):
     """Load wholesale market prices from United Kingdom.csv."""
-    df = pd.read_csv(DATA_DIR / "United Kingdom.csv")
+    df = pd.read_csv(DATA_DIR / "prices" / "United Kingdom.csv")
     df["datetime"] = pd.to_datetime(df["Datetime (UTC)"])
     df["price_eur_mwh"] = df["Price (EUR/MWhe)"]
     df = df[df["datetime"].dt.year == year]

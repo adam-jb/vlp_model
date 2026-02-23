@@ -5,9 +5,12 @@ Filter and rank by suitability
 """
 
 import json
+from pathlib import Path
+
+_DIR = Path(__file__).parent
 
 # Load the raw data
-with open('/Users/adambricknail/Desktop/elec/iuk_investors_raw.json', 'r') as f:
+with open(_DIR / 'iuk_investors_raw.json', 'r') as f:
     investors = json.load(f)
 
 print(f"Total investors loaded: {len(investors)}")
@@ -204,7 +207,7 @@ if len(tier3) > 20:
 # Save ranked list to CSV
 import csv
 
-with open('/Users/adambricknail/Desktop/elec/iuk_investors_ranked.csv', 'w', newline='') as f:
+with open(_DIR / 'iuk_investors_ranked.csv', 'w', newline='') as f:
     writer = csv.writer(f)
     writer.writerow(['Rank', 'Tier', 'Name', 'Type', 'Stages', 'Sectors', 'Score'])
 

@@ -6,6 +6,7 @@ Get contact details for top investors from IUK Business Connect
 import requests
 import json
 import time
+from pathlib import Path
 
 # Knack API credentials
 APP_ID = "67f664e4ef6776029638f4d1"
@@ -13,7 +14,7 @@ API_KEY = "5c4559c4-7c42-4a1b-81af-857017edeea2"
 BASE_URL = "https://api.knack.com/v1"
 
 # Load the raw data
-with open('/Users/adambricknail/Desktop/elec/iuk_investors_raw.json', 'r') as f:
+with open(Path(__file__).parent / 'iuk_investors_raw.json', 'r') as f:
     investors = json.load(f)
 
 # First, let's see ALL fields in a record to find contact info

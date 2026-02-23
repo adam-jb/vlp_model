@@ -11,6 +11,9 @@ from datetime import datetime, timedelta
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import time
 import csv
+from pathlib import Path
+
+RESULTS_DIR = Path(__file__).parent.parent / "results"
 
 # UK consumption profile (hourly kWh)
 UK_CONSUMPTION_PROFILE = {
@@ -191,7 +194,7 @@ def main():
     total_from_battery = sum(r['energy_from_battery'] for r in all_results)
 
     # Save detailed results
-    output_file = 'agile_analysis_2025_5kw.csv'
+    output_file = str(RESULTS_DIR / 'agile_analysis_2025_5kw.csv')
     with open(output_file, 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(['date', 'cost_without_p', 'cost_with_p', 'saving_p',

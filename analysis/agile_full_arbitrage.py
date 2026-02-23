@@ -14,6 +14,9 @@ from datetime import datetime, timedelta
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import time
 import csv
+from pathlib import Path
+
+RESULTS_DIR = Path(__file__).parent.parent / "results"
 
 # UK consumption profile (hourly kWh)
 UK_CONSUMPTION_PROFILE = {
@@ -370,7 +373,7 @@ def main():
     additional_export_value = fa_total_saving - sc_total_saving
 
     # Save detailed CSV
-    output_file = 'agile_full_arbitrage_2025.csv'
+    output_file = str(RESULTS_DIR / 'agile_full_arbitrage_2025.csv')
     with open(output_file, 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow([
