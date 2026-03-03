@@ -9,6 +9,7 @@
            max-width: 1200px; margin: 0 auto; padding: 20px; background: #f8f9fa; color: #333; }
     h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
     h2 { color: #2c3e50; margin-top: 30px; }
+    h3 { color: #34495e; margin-top: 20px; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
     .section { background: white; padding: 20px; margin: 15px 0; border-radius: 8px;
                 box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
     .data-table { border-collapse: collapse; width: 100%; font-size: 13px; margin: 10px 0; }
@@ -24,27 +25,22 @@
     summary { cursor: pointer; padding: 10px; background: #ecf0f1; border-radius: 5px;
                font-weight: 600; }
     summary:hover { background: #d5dbdb; }
-    .params { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .param-card { background: #ecf0f1; padding: 12px; border-radius: 5px; }
-    .param-card strong { display: block; color: #2c3e50; margin-bottom: 4px; }
     .highlight { background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107;
                   border-radius: 4px; margin: 15px 0; }
+    .assumption { background: #fef3f3; padding: 15px; border-left: 4px solid #e74c3c;
+                   border-radius: 4px; margin: 10px 0; font-size: 13px; }
     img { border-radius: 5px; margin: 10px 0; }
 </style>
 </head>
 <body>
 
-<h1>VLP Battery — Aggressive Customer Offering</h1>
-<p>Battery: 15.36 kWh / 6 kW  |  Cost: £2,800  |
-   Efficiency: 90% RT  |  Life: 10 yrs  |
-   UK prices Jul 2024–Jun 2025</p>
+<h1>VLP Battery — Electricity Company Model</h1>
+<p>Per-customer unit economics for a behind-the-meter battery operated by a licensed electricity supplier.
+   Battery trades on wholesale + ancillary markets. Consumer demand served from grid, offset by battery discharge.</p>
 
 <div class="highlight">
-    <strong>Battery trades independently of consumption.</strong> VLP is a licensed supplier, so
-    battery export price ≈ wholesale. Consumer demand is served from the grid, with the
-    battery discharging behind the meter (consumer demand offset first, excess exported).
-    What changes with consumption: <strong>supply cost (COGS)</strong> and <strong>customer bill
-    revenue</strong> scale with kWh.
+    Battery revenue includes arbitrage (MILP-optimised), frequency response, capacity market, balancing mechanism,
+    and <strong>avoided network charges</strong> on kWh served from battery. Higher consumption = more avoided charges.
     Consumption levels modelled: 4,000 kWh, 5,000 kWh, 6,000 kWh.
 </div>
 
@@ -95,17 +91,205 @@
 
 <div class="section">
 <h2>Key Parameters</h2>
-<div class="params">
-    <div class="param-card"><strong>Grid Services</strong>
-        FR: £34.0/kW/yr | CM: £40.0/kW/yr (de-rated 20.9%)
-        | BM: 10% win × 5% uplift</div>
-    <div class="param-card"><strong>Cost Lines</strong>
-        CAC: £100 (yr 1) | Staff: £50/yr</div>
-    <div class="param-card"><strong>Financing</strong>
-        Loan: 7% p.a. | Corp tax: 25% | Depreciation: £280/yr</div>
-    <div class="param-card"><strong>Spread Compression</strong>
-        Best: α=0.46/β=0.4 | Base: α=0.50/β=0.3 | Worst: α=0.65/β=0.0 |
-        Floor: 20.0 GBP/MWh</div>
+
+<h3>Battery Hardware</h3>
+<table class="data-table">
+<thead><tr><th>Parameter</th><th>Value</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Capacity</td><td>15.36 kWh</td><td>Usable LFP cells</td></tr>
+<tr><td>Inverter power</td><td>6 kW</td><td>Max charge/discharge rate</td></tr>
+<tr><td>Duration</td><td>2.56 hrs</td><td>Capacity / power</td></tr>
+<tr><td>Round-trip efficiency</td><td>90%</td><td>One-way: 94.87%</td></tr>
+<tr><td>SoC operating range</td><td>10% – 90%</td><td>Usable: 12.29 kWh (80% of total)</td></tr>
+<tr><td>Daily SoC start/end</td><td>10% (1.54 kWh)</td><td>Allows full charge-discharge cycle per day</td></tr>
+<tr><td>Grid draw per full charge</td><td>16.19 kWh</td><td>= capacity / one-way efficiency</td></tr>
+<tr><td>Energy delivered per discharge</td><td>14.57 kWh</td><td>= capacity x one-way efficiency</td></tr>
+<tr><td>Charge time (full)</td><td>2.70 hrs</td><td>Inverter-constrained</td></tr>
+<tr><td>Discharge time (full)</td><td>2.43 hrs</td><td>Inverter-constrained</td></tr>
+</tbody>
+</table>
+
+<h3>Battery Cost &amp; Financing</h3>
+<table class="data-table">
+<thead><tr><th>Parameter</th><th>Value</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Total cost (hardware + install)</td><td>£2,800</td><td>Overrides CSV default of £2,600</td></tr>
+<tr><td>Economic life</td><td>10 years</td><td>Straight-line depreciation</td></tr>
+<tr><td>Annual depreciation</td><td>£280/yr</td><td>P&amp;L only — excluded from cashflow</td></tr>
+<tr><td>Loan interest rate</td><td>7% p.a.</td><td>On declining balance, equal principal repayments</td></tr>
+<tr><td>Corporation tax</td><td>25%</td><td>Applied to EBT each year, no loss carry-forward</td></tr>
+<tr><td>Loan periods modelled</td><td>3-yr, 5-yr, 7-yr, 10-yr</td><td></td></tr>
+<tr><td>Model horizon</td><td>12 years</td><td>10-yr loan gets 2 post-payoff years</td></tr>
+</tbody>
+</table>
+
+<h3>Grid Services Revenue</h3>
+<table class="data-table">
+<thead><tr><th>Service</th><th>Rate</th><th>Annual (full battery)</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Frequency Response (FR)</td><td>£34/kW/yr</td><td>£204 max</td><td>MILP jointly optimises FR vs arb hour-by-hour; actual FR &lt; max</td></tr>
+<tr><td>Capacity Market (CM)</td><td>£40/kW/yr</td><td>£50</td><td>De-rated 20.9% (2-hr battery class, 2.6h duration)</td></tr>
+<tr><td>Balancing Mechanism (BM)</td><td>10% win x 5% uplift on arb</td><td>Varies</td><td>Estimated as % of arbitrage, not explicitly dispatched</td></tr>
+<tr><td>Avoided network charges</td><td>5.25p/kWh served from battery</td><td>Varies by consumption</td><td>TNUoS 0.87p + DUoS 3.63p + BSUoS 0.75p</td></tr>
+</tbody>
+</table>
+
+<h3>Wholesale &amp; FX</h3>
+<table class="data-table">
+<thead><tr><th>Parameter</th><th>Value</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Price data source</td><td>United Kingdom.csv</td><td>Day-ahead hourly prices (EUR/MWh)</td></tr>
+<tr><td>Price period</td><td>Jul 2024 – Jun 2025</td><td>Latest full year, 365 days</td></tr>
+<tr><td>Average wholesale price</td><td>99.84 EUR/MWh = 8.49p/kWh</td><td></td></tr>
+<tr><td>EUR/GBP rate</td><td>0.85</td><td>Fixed throughout model</td></tr>
+<tr><td>Use profile source</td><td>use_profiles.csv (UK)</td><td>24-hour shape, 9875 Wh/day = 3,604 kWh/yr base</td></tr>
+<tr><td>Consumption levels</td><td>4,000, 5,000, 6,000 kWh/yr</td><td>Profile scaled proportionally to each level</td></tr>
+</tbody>
+</table>
+
+<h3>Cost Stack (Ofgem Q1 2025 methodology, per customer/yr)</h3>
+<table class="data-table">
+<thead><tr><th>Cost line</th><th>Rate</th><th>At 4,000 kWh</th><th>At 5,000 kWh</th><th>At 6,000 kWh</th></tr></thead>
+<tbody>
+<tr><td><strong>Wholesale electricity (COGS)</strong></td><td>8.49p/kWh</td><td>£339</td><td>£424</td><td>£509</td></tr>
+<tr><td>TNUoS — transmission</td><td>0.87p/kWh + 3.59p/day</td><td>£48</td><td>£57</td><td>£65</td></tr>
+<tr><td>DUoS — distribution</td><td>3.63p/kWh + 7.31p/day</td><td>£172</td><td>£208</td><td>£244</td></tr>
+<tr><td>BSUoS — balancing</td><td>0.75p/kWh</td><td>£30</td><td>£38</td><td>£45</td></tr>
+<tr><td>Smart metering</td><td>0.54p/kWh + 3.56p/day</td><td>£35</td><td>£40</td><td>£45</td></tr>
+<tr><td>Supplier opex</td><td>1.37p/kWh + 13.96p/day - £10</td><td>£96</td><td>£109</td><td>£123</td></tr>
+<tr><td>Bad debt provision</td><td>0.41p/kWh</td><td>£16</td><td>£20</td><td>£25</td></tr>
+<tr><td>Grid levy (policy)</td><td>Fixed</td><td>£95</td><td>£95</td><td>£95</td></tr>
+<tr><td>Customer management</td><td>Fixed</td><td>£10</td><td>£10</td><td>£10</td></tr>
+<tr><td>Staff cost</td><td>Fixed</td><td>£50</td><td>£50</td><td>£50</td></tr>
+<tr><td>CAC (year 1 cashflow only)</td><td>One-off</td><td>£100</td><td>£100</td><td>£100</td></tr>
+</tbody>
+</table>
+<p style="font-size:12px; color:#666;">Avoided network charges on battery-served kWh (TNUoS + DUoS + BSUoS = 5.25p/kWh) are subtracted from opex.</p>
+
+<h3>Tariff Scenarios</h3>
+<table class="data-table">
+<thead><tr><th>Scenario</th><th>Unit rate</th><th>Monthly fee</th><th>Bill at 4,000</th><th>Bill at 5,000</th><th>Bill at 6,000</th><th>Target saving</th></tr></thead>
+<tbody>
+<tr><td>Scenario A — Entry aggressive</td><td>20p/kWh</td><td>£8/mo</td><td>£896</td><td>£1,096</td><td>£1,296</td><td>~25%</td></tr>
+<tr><td>Scenario B — Mid aggressive</td><td>19p/kWh</td><td>£6/mo</td><td>£832</td><td>£1,022</td><td>£1,212</td><td>~30%</td></tr>
+<tr><td>Scenario C — Maximum aggressive</td><td>18p/kWh</td><td>£5/mo</td><td>£780</td><td>£960</td><td>£1,140</td><td>~35%</td></tr>
+
+<tr style="background:#f0f0f0"><td><em>Competitor reference</em></td><td>25p/kWh</td><td>50p/day</td><td>£1,182</td><td>£1,432</td><td>£1,682</td><td>--</td></tr>
+</tbody>
+</table>
+
+<h3>Spread Compression Scenarios</h3>
+<table class="data-table">
+<thead><tr><th>Scenario</th><th>alpha (BESS compression)</th><th>beta (renewable widening)</th><th>Yr 1 scale</th><th>Yr 6 scale</th><th>Yr 12 scale</th></tr></thead>
+<tbody>
+<tr><td>Best</td><td>0.46</td><td>0.4</td><td>1.000</td><td>0.877</td><td>0.880</td></tr>
+<tr><td>Base</td><td>0.5</td><td>0.3</td><td>1.000</td><td>0.815</td><td>0.777</td></tr>
+<tr><td>Worst</td><td>0.65</td><td>0.0</td><td>1.000</td><td>0.654</td><td>0.549</td></tr>
+
+</tbody>
+</table>
+<p style="font-size:12px; color:#666;">
+    Formula: Spread = Floor + (S0 - Floor) x (C0/C)^alpha x (R/R0)^beta<br>
+    Floor: 20.0 GBP/MWh | 2025 baseline spread: 73.0 GBP/MWh |
+    Capacity data: data/inputs/capacity_forecasts.csv<br>
+    Battery revenue (arb + FR + BM) in years 2+ is scaled by each year's factor. CM and avoided network are unscaled.
+</p>
+</div>
+
+<div class="section">
+<h2>Assumptions &amp; Limitations</h2>
+
+<div class="assumption">
+<strong>1. Perfect foresight on prices.</strong>
+The MILP optimises each day's charge/discharge schedule using the full day's actual prices.
+A real dispatch algorithm would achieve a lower spread, potentially 10-30% below this estimate.
+</div>
+
+<div class="assumption">
+<strong>2. No battery degradation.</strong>
+Capacity and efficiency are held constant across all 12 years. Real lithium batteries degrade ~2-3%/yr;
+by year 10 arbitrage revenue and grid services capacity could be 20-25% lower.
+The spread compression scenarios partially capture market-level effects but not individual battery decline.
+</div>
+
+<div class="assumption">
+<strong>3. Static customer tariff.</strong>
+Customer revenue is fixed at the modelled p/kWh + monthly fee for the entire period. In practice tariffs
+are reviewed annually against changing wholesale prices, network charges, and competitor rates.
+</div>
+
+<div class="assumption">
+<strong>4. Grid services assumed contractually secured.</strong>
+FR and CM revenues are modelled as certain annual income. In practice both require competitive tender wins.
+CM payments are subject to interconnector and demand-side response competition. FR rate (£34.0/kW/yr)
+assumes Dynamic Containment or equivalent; actual DC rates have fallen to £1-5/MW/h in recent clearing.
+</div>
+
+<div class="assumption">
+<strong>5. BM estimated, not modelled.</strong>
+Balancing Mechanism revenue is a simple 10% x 5% uplift on arbitrage net,
+not an explicit gate-closure dispatch model. Actual BM participation is volume-based and highly variable.
+</div>
+
+<div class="assumption">
+<strong>6. Fixed equal-principal loan repayment.</strong>
+The model uses equal annual principal instalments (not annuity/amortising). Real facilities typically use
+equal total payments, giving higher early payments and lower later ones — slightly different cashflow profiles.
+</div>
+
+<div class="assumption">
+<strong>7. Interest rate held constant at 7%.</strong>
+Reasonable for a fixed-rate facility but does not capture floating-rate risk or refinancing at maturity.
+</div>
+
+<div class="assumption">
+<strong>8. Corporation tax simplified.</strong>
+Tax at 25% on standalone EBT each year. Group relief, prior-year losses, R&amp;D credits,
+Full Expensing capital allowances, and ring-fencing are all excluded. Effective tax rate likely lower
+in early years due to capital allowances.
+</div>
+
+<div class="assumption">
+<strong>9. No working capital.</strong>
+The cashflow model omits receivables, payables, and cash reserves. A real business would require operating
+capital, increasing the effective funding need above the battery cost alone.
+</div>
+
+<div class="assumption">
+<strong>10. Single customer, single battery.</strong>
+All results are per-customer. Portfolio effects — load diversification, operational leverage, shared grid
+service contracts — are not captured and would improve unit economics at scale.
+</div>
+
+<div class="assumption">
+<strong>11. EUR/GBP fixed at 0.85.</strong>
+GBP appreciation would reduce both supply cost and arbitrage revenue; depreciation would increase both.
+Net effect uncertain depending on pass-through arrangements.
+</div>
+
+<div class="assumption">
+<strong>12. UK use profile applied.</strong>
+Hourly consumption shape from use_profiles.csv (UK). Scaled proportionally to each consumption level.
+Different customer types (heat pumps, EVs) would have different peak patterns affecting avoided network charges.
+</div>
+
+<div class="assumption">
+<strong>13. Spread compression is market-level only.</strong>
+The compression formula models how aggregate BESS build-out reduces wholesale spreads. It does not capture:
+individual battery positioning, intraday price volatility changes, or potential new revenue streams (e.g.
+local flexibility markets, EV smart charging coordination).
+</div>
+
+<div class="assumption">
+<strong>14. MILP allows multiple intraday cycles.</strong>
+The optimiser can charge-discharge more than once per day if profitable (avg ~1.7 cycles/day observed).
+This is physically possible but increases wear; real dispatch may be more conservative to preserve battery life.
+</div>
+
+<div class="assumption">
+<strong>15. CM stress events assumed rare.</strong>
+Capacity Market revenue assumes the battery is usually available for other activities. If CM delivery
+obligations conflict with arbitrage/FR, actual revenue would be lower.
 </div>
 </div>
 
@@ -622,7 +806,7 @@
 
 
 <div class="section" style="text-align: center; color: #999; font-size: 12px;">
-Generated by VLP Battery Model  |  UK prices Jul 2024–Jun 2025
+Generated by VLP Battery Electricity Company Model  |  UK wholesale prices Jul 2024 - Jun 2025
 </div>
 
 </body>

@@ -900,6 +900,27 @@ def build_html_report(all_results, battery_info, out_path):
         </tr>\n"""
     alloc_html += "</tbody></table>\n"
 
+    # Build tariff rows
+    tariff_rows = ""
+    for sk, sc in TARIFF_SCENARIOS.items():
+        b4 = 4000 * sc['pkwh'] / 100 + sc['pmo'] * 12
+        b5 = 5000 * sc['pkwh'] / 100 + sc['pmo'] * 12
+        b6 = 6000 * sc['pkwh'] / 100 + sc['pmo'] * 12
+        tariff_rows += f'<tr><td>{sc["label"]}</td><td>{sc["pkwh"]}p/kWh</td><td>£{sc["pmo"]}/mo</td><td>£{b4:,.0f}</td><td>£{b5:,.0f}</td><td>£{b6:,.0f}</td><td>{sc["saving_target"]}</td></tr>\n'
+
+    comp4 = 4000 * COMP_PKW / 100 + DAYS * COMP_PD / 100
+    comp5 = 5000 * COMP_PKW / 100 + DAYS * COMP_PD / 100
+    comp6 = 6000 * COMP_PKW / 100 + DAYS * COMP_PD / 100
+
+    # Build spread compression table
+    spread_table = ""
+    for sp_name, sp_params in SPREAD_SCENARIOS.items():
+        factors = get_scaling_factors(sp_name)
+        yr1 = factors[1]
+        yr6 = factors[6]
+        yr12 = factors[MODEL_YEARS]
+        spread_table += f'<tr><td>{sp_name}</td><td>{sp_params["alpha"]}</td><td>{sp_params["beta"]}</td><td>{yr1:.3f}</td><td>{yr6:.3f}</td><td>{yr12:.3f}</td></tr>\n'
+
     html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -911,6 +932,7 @@ def build_html_report(all_results, battery_info, out_path):
            max-width: 1200px; margin: 0 auto; padding: 20px; background: #f8f9fa; color: #333; }}
     h1 {{ color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }}
     h2 {{ color: #2c3e50; margin-top: 30px; }}
+    h3 {{ color: #34495e; margin-top: 20px; border-bottom: 1px solid #ddd; padding-bottom: 5px; }}
     .section {{ background: white; padding: 20px; margin: 15px 0; border-radius: 8px;
                 box-shadow: 0 2px 4px rgba(0,0,0,0.1); }}
     .data-table {{ border-collapse: collapse; width: 100%; font-size: 13px; margin: 10px 0; }}
@@ -926,27 +948,22 @@ def build_html_report(all_results, battery_info, out_path):
     summary {{ cursor: pointer; padding: 10px; background: #ecf0f1; border-radius: 5px;
                font-weight: 600; }}
     summary:hover {{ background: #d5dbdb; }}
-    .params {{ display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }}
-    .param-card {{ background: #ecf0f1; padding: 12px; border-radius: 5px; }}
-    .param-card strong {{ display: block; color: #2c3e50; margin-bottom: 4px; }}
     .highlight {{ background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107;
                   border-radius: 4px; margin: 15px 0; }}
+    .assumption {{ background: #fef3f3; padding: 15px; border-left: 4px solid #e74c3c;
+                   border-radius: 4px; margin: 10px 0; font-size: 13px; }}
     img {{ border-radius: 5px; margin: 10px 0; }}
 </style>
 </head>
 <body>
 
-<h1>VLP Battery — Aggressive Customer Offering</h1>
-<p>Battery: {BAT_KWH} kWh / {BAT_KW:.0f} kW  |  Cost: £{BAT_COST:,.0f}  |
-   Efficiency: {EFF_RT*100:.0f}% RT  |  Life: {BAT_LIFE} yrs  |
-   UK prices Jul 2024–Jun 2025</p>
+<h1>VLP Battery — Electricity Company Model</h1>
+<p>Per-customer unit economics for a behind-the-meter battery operated by a licensed electricity supplier.
+   Battery trades on wholesale + ancillary markets. Consumer demand served from grid, offset by battery discharge.</p>
 
 <div class="highlight">
-    <strong>Battery trades independently of consumption.</strong> VLP is a licensed supplier, so
-    battery export price ≈ wholesale. Consumer demand is served from the grid, with the
-    battery discharging behind the meter (consumer demand offset first, excess exported).
-    What changes with consumption: <strong>supply cost (COGS)</strong> and <strong>customer bill
-    revenue</strong> scale with kWh.
+    Battery revenue includes arbitrage (MILP-optimised), frequency response, capacity market, balancing mechanism,
+    and <strong>avoided network charges</strong> on kWh served from battery. Higher consumption = more avoided charges.
     Consumption levels modelled: {', '.join(f'{c:,} kWh' for c in CONSUMPTION_LEVELS)}.
 </div>
 
@@ -957,17 +974,199 @@ def build_html_report(all_results, battery_info, out_path):
 
 <div class="section">
 <h2>Key Parameters</h2>
-<div class="params">
-    <div class="param-card"><strong>Grid Services</strong>
-        FR: £{FR_PER_KW}/kW/yr | CM: £{CM_PER_KW}/kW/yr (de-rated {CM_DERATING*100:.1f}%)
-        | BM: {BM_WIN_RATE*100:.0f}% win × {BM_UPLIFT*100:.0f}% uplift</div>
-    <div class="param-card"><strong>Cost Lines</strong>
-        CAC: £{CAC:.0f} (yr 1) | Staff: £{STAFF_COST:.0f}/yr</div>
-    <div class="param-card"><strong>Financing</strong>
-        Loan: {LOAN_RATE*100:.0f}% p.a. | Corp tax: {CORP_TAX*100:.0f}% | Depreciation: £{DEPRECIATION:.0f}/yr</div>
-    <div class="param-card"><strong>Spread Compression</strong>
-        Best: α=0.46/β=0.4 | Base: α=0.50/β=0.3 | Worst: α=0.65/β=0.0 |
-        Floor: {SPREAD_FLOOR} GBP/MWh</div>
+
+<h3>Battery Hardware</h3>
+<table class="data-table">
+<thead><tr><th>Parameter</th><th>Value</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Capacity</td><td>{BAT_KWH} kWh</td><td>Usable LFP cells</td></tr>
+<tr><td>Inverter power</td><td>{BAT_KW:.0f} kW</td><td>Max charge/discharge rate</td></tr>
+<tr><td>Duration</td><td>{BAT_KWH/BAT_KW:.2f} hrs</td><td>Capacity / power</td></tr>
+<tr><td>Round-trip efficiency</td><td>{EFF_RT*100:.0f}%</td><td>One-way: {ETA*100:.2f}%</td></tr>
+<tr><td>SoC operating range</td><td>10% – 90%</td><td>Usable: {BAT_KWH*0.8:.2f} kWh ({BAT_KWH*0.8/BAT_KWH*100:.0f}% of total)</td></tr>
+<tr><td>Daily SoC start/end</td><td>10% ({BAT_KWH*0.1:.2f} kWh)</td><td>Allows full charge-discharge cycle per day</td></tr>
+<tr><td>Grid draw per full charge</td><td>{GRID_DRAW:.2f} kWh</td><td>= capacity / one-way efficiency</td></tr>
+<tr><td>Energy delivered per discharge</td><td>{DISCHARGE:.2f} kWh</td><td>= capacity x one-way efficiency</td></tr>
+<tr><td>Charge time (full)</td><td>{T_CHARGE:.2f} hrs</td><td>Inverter-constrained</td></tr>
+<tr><td>Discharge time (full)</td><td>{T_DISCHARGE:.2f} hrs</td><td>Inverter-constrained</td></tr>
+</tbody>
+</table>
+
+<h3>Battery Cost &amp; Financing</h3>
+<table class="data-table">
+<thead><tr><th>Parameter</th><th>Value</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Total cost (hardware + install)</td><td>£{BAT_COST:,.0f}</td><td>Overrides CSV default of £{PARAMS.get("battery cost inc install", 2600):,.0f}</td></tr>
+<tr><td>Economic life</td><td>{BAT_LIFE} years</td><td>Straight-line depreciation</td></tr>
+<tr><td>Annual depreciation</td><td>£{DEPRECIATION:,.0f}/yr</td><td>P&amp;L only — excluded from cashflow</td></tr>
+<tr><td>Loan interest rate</td><td>{LOAN_RATE*100:.0f}% p.a.</td><td>On declining balance, equal principal repayments</td></tr>
+<tr><td>Corporation tax</td><td>{CORP_TAX*100:.0f}%</td><td>Applied to EBT each year, no loss carry-forward</td></tr>
+<tr><td>Loan periods modelled</td><td>{', '.join(str(y)+'-yr' for y in LOAN_YEARS)}</td><td></td></tr>
+<tr><td>Model horizon</td><td>{MODEL_YEARS} years</td><td>10-yr loan gets 2 post-payoff years</td></tr>
+</tbody>
+</table>
+
+<h3>Grid Services Revenue</h3>
+<table class="data-table">
+<thead><tr><th>Service</th><th>Rate</th><th>Annual (full battery)</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Frequency Response (FR)</td><td>£{FR_PER_KW:.0f}/kW/yr</td><td>£{BAT_KW*FR_PER_KW:,.0f} max</td><td>MILP jointly optimises FR vs arb hour-by-hour; actual FR &lt; max</td></tr>
+<tr><td>Capacity Market (CM)</td><td>£{CM_PER_KW:.0f}/kW/yr</td><td>£{BAT_KW*CM_PER_KW*CM_DERATING:,.0f}</td><td>De-rated {CM_DERATING*100:.1f}% (2-hr battery class, {BAT_KWH/BAT_KW:.1f}h duration)</td></tr>
+<tr><td>Balancing Mechanism (BM)</td><td>{BM_WIN_RATE*100:.0f}% win x {BM_UPLIFT*100:.0f}% uplift on arb</td><td>Varies</td><td>Estimated as % of arbitrage, not explicitly dispatched</td></tr>
+<tr><td>Avoided network charges</td><td>5.25p/kWh served from battery</td><td>Varies by consumption</td><td>TNUoS 0.87p + DUoS 3.63p + BSUoS 0.75p</td></tr>
+</tbody>
+</table>
+
+<h3>Wholesale &amp; FX</h3>
+<table class="data-table">
+<thead><tr><th>Parameter</th><th>Value</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Price data source</td><td>United Kingdom.csv</td><td>Day-ahead hourly prices (EUR/MWh)</td></tr>
+<tr><td>Price period</td><td>Jul 2024 – Jun 2025</td><td>Latest full year, 365 days</td></tr>
+<tr><td>Average wholesale price</td><td>{WHOLESALE_EUR_MWH} EUR/MWh = {WHOLESALE_P_KWH*100:.2f}p/kWh</td><td></td></tr>
+<tr><td>EUR/GBP rate</td><td>{EUR_TO_GBP}</td><td>Fixed throughout model</td></tr>
+<tr><td>Use profile source</td><td>use_profiles.csv (UK)</td><td>24-hour shape, {SHAPE_DAILY_WH:.0f} Wh/day = {SHAPE_ANNUAL_KWH:,.0f} kWh/yr base</td></tr>
+<tr><td>Consumption levels</td><td>{', '.join(f'{c:,}' for c in CONSUMPTION_LEVELS)} kWh/yr</td><td>Profile scaled proportionally to each level</td></tr>
+</tbody>
+</table>
+
+<h3>Cost Stack (Ofgem Q1 2025 methodology, per customer/yr)</h3>
+<table class="data-table">
+<thead><tr><th>Cost line</th><th>Rate</th><th>At 4,000 kWh</th><th>At 5,000 kWh</th><th>At 6,000 kWh</th></tr></thead>
+<tbody>
+<tr><td><strong>Wholesale electricity (COGS)</strong></td><td>{WHOLESALE_P_KWH*100:.2f}p/kWh</td><td>£{4000*WHOLESALE_P_KWH:,.0f}</td><td>£{5000*WHOLESALE_P_KWH:,.0f}</td><td>£{6000*WHOLESALE_P_KWH:,.0f}</td></tr>
+<tr><td>TNUoS — transmission</td><td>0.87p/kWh + 3.59p/day</td><td>£{4000*0.0087+365*0.0359:,.0f}</td><td>£{5000*0.0087+365*0.0359:,.0f}</td><td>£{6000*0.0087+365*0.0359:,.0f}</td></tr>
+<tr><td>DUoS — distribution</td><td>3.63p/kWh + 7.31p/day</td><td>£{4000*0.0363+365*0.0731:,.0f}</td><td>£{5000*0.0363+365*0.0731:,.0f}</td><td>£{6000*0.0363+365*0.0731:,.0f}</td></tr>
+<tr><td>BSUoS — balancing</td><td>0.75p/kWh</td><td>£{4000*0.0075:,.0f}</td><td>£{5000*0.0075:,.0f}</td><td>£{6000*0.0075:,.0f}</td></tr>
+<tr><td>Smart metering</td><td>0.54p/kWh + 3.56p/day</td><td>£{4000*0.0054+365*0.0356:,.0f}</td><td>£{5000*0.0054+365*0.0356:,.0f}</td><td>£{6000*0.0054+365*0.0356:,.0f}</td></tr>
+<tr><td>Supplier opex</td><td>1.37p/kWh + 13.96p/day - £10</td><td>£{4000*0.0137+365*0.1396-10:,.0f}</td><td>£{5000*0.0137+365*0.1396-10:,.0f}</td><td>£{6000*0.0137+365*0.1396-10:,.0f}</td></tr>
+<tr><td>Bad debt provision</td><td>0.41p/kWh</td><td>£{4000*0.0041:,.0f}</td><td>£{5000*0.0041:,.0f}</td><td>£{6000*0.0041:,.0f}</td></tr>
+<tr><td>Grid levy (policy)</td><td>Fixed</td><td>£{GRID_LEVY:,.0f}</td><td>£{GRID_LEVY:,.0f}</td><td>£{GRID_LEVY:,.0f}</td></tr>
+<tr><td>Customer management</td><td>Fixed</td><td>£{CUST_MGMT:,.0f}</td><td>£{CUST_MGMT:,.0f}</td><td>£{CUST_MGMT:,.0f}</td></tr>
+<tr><td>Staff cost</td><td>Fixed</td><td>£{STAFF_COST:,.0f}</td><td>£{STAFF_COST:,.0f}</td><td>£{STAFF_COST:,.0f}</td></tr>
+<tr><td>CAC (year 1 cashflow only)</td><td>One-off</td><td>£{CAC:,.0f}</td><td>£{CAC:,.0f}</td><td>£{CAC:,.0f}</td></tr>
+</tbody>
+</table>
+<p style="font-size:12px; color:#666;">Avoided network charges on battery-served kWh (TNUoS + DUoS + BSUoS = 5.25p/kWh) are subtracted from opex.</p>
+
+<h3>Tariff Scenarios</h3>
+<table class="data-table">
+<thead><tr><th>Scenario</th><th>Unit rate</th><th>Monthly fee</th><th>Bill at 4,000</th><th>Bill at 5,000</th><th>Bill at 6,000</th><th>Target saving</th></tr></thead>
+<tbody>
+{tariff_rows}
+<tr style="background:#f0f0f0"><td><em>Competitor reference</em></td><td>{COMP_PKW}p/kWh</td><td>{COMP_PD}p/day</td><td>£{comp4:,.0f}</td><td>£{comp5:,.0f}</td><td>£{comp6:,.0f}</td><td>--</td></tr>
+</tbody>
+</table>
+
+<h3>Spread Compression Scenarios</h3>
+<table class="data-table">
+<thead><tr><th>Scenario</th><th>alpha (BESS compression)</th><th>beta (renewable widening)</th><th>Yr 1 scale</th><th>Yr 6 scale</th><th>Yr 12 scale</th></tr></thead>
+<tbody>
+{spread_table}
+</tbody>
+</table>
+<p style="font-size:12px; color:#666;">
+    Formula: Spread = Floor + (S0 - Floor) x (C0/C)^alpha x (R/R0)^beta<br>
+    Floor: {SPREAD_FLOOR} GBP/MWh | 2025 baseline spread: {BASELINE_SPREAD} GBP/MWh |
+    Capacity data: data/inputs/capacity_forecasts.csv<br>
+    Battery revenue (arb + FR + BM) in years 2+ is scaled by each year's factor. CM and avoided network are unscaled.
+</p>
+</div>
+
+<div class="section">
+<h2>Assumptions &amp; Limitations</h2>
+
+<div class="assumption">
+<strong>1. Perfect foresight on prices.</strong>
+The MILP optimises each day's charge/discharge schedule using the full day's actual prices.
+A real dispatch algorithm would achieve a lower spread, potentially 10-30% below this estimate.
+</div>
+
+<div class="assumption">
+<strong>2. No battery degradation.</strong>
+Capacity and efficiency are held constant across all {MODEL_YEARS} years. Real lithium batteries degrade ~2-3%/yr;
+by year 10 arbitrage revenue and grid services capacity could be 20-25% lower.
+The spread compression scenarios partially capture market-level effects but not individual battery decline.
+</div>
+
+<div class="assumption">
+<strong>3. Static customer tariff.</strong>
+Customer revenue is fixed at the modelled p/kWh + monthly fee for the entire period. In practice tariffs
+are reviewed annually against changing wholesale prices, network charges, and competitor rates.
+</div>
+
+<div class="assumption">
+<strong>4. Grid services assumed contractually secured.</strong>
+FR and CM revenues are modelled as certain annual income. In practice both require competitive tender wins.
+CM payments are subject to interconnector and demand-side response competition. FR rate (£{FR_PER_KW}/kW/yr)
+assumes Dynamic Containment or equivalent; actual DC rates have fallen to £1-5/MW/h in recent clearing.
+</div>
+
+<div class="assumption">
+<strong>5. BM estimated, not modelled.</strong>
+Balancing Mechanism revenue is a simple {BM_WIN_RATE*100:.0f}% x {BM_UPLIFT*100:.0f}% uplift on arbitrage net,
+not an explicit gate-closure dispatch model. Actual BM participation is volume-based and highly variable.
+</div>
+
+<div class="assumption">
+<strong>6. Fixed equal-principal loan repayment.</strong>
+The model uses equal annual principal instalments (not annuity/amortising). Real facilities typically use
+equal total payments, giving higher early payments and lower later ones — slightly different cashflow profiles.
+</div>
+
+<div class="assumption">
+<strong>7. Interest rate held constant at {LOAN_RATE*100:.0f}%.</strong>
+Reasonable for a fixed-rate facility but does not capture floating-rate risk or refinancing at maturity.
+</div>
+
+<div class="assumption">
+<strong>8. Corporation tax simplified.</strong>
+Tax at {CORP_TAX*100:.0f}% on standalone EBT each year. Group relief, prior-year losses, R&amp;D credits,
+Full Expensing capital allowances, and ring-fencing are all excluded. Effective tax rate likely lower
+in early years due to capital allowances.
+</div>
+
+<div class="assumption">
+<strong>9. No working capital.</strong>
+The cashflow model omits receivables, payables, and cash reserves. A real business would require operating
+capital, increasing the effective funding need above the battery cost alone.
+</div>
+
+<div class="assumption">
+<strong>10. Single customer, single battery.</strong>
+All results are per-customer. Portfolio effects — load diversification, operational leverage, shared grid
+service contracts — are not captured and would improve unit economics at scale.
+</div>
+
+<div class="assumption">
+<strong>11. EUR/GBP fixed at {EUR_TO_GBP}.</strong>
+GBP appreciation would reduce both supply cost and arbitrage revenue; depreciation would increase both.
+Net effect uncertain depending on pass-through arrangements.
+</div>
+
+<div class="assumption">
+<strong>12. UK use profile applied.</strong>
+Hourly consumption shape from use_profiles.csv (UK). Scaled proportionally to each consumption level.
+Different customer types (heat pumps, EVs) would have different peak patterns affecting avoided network charges.
+</div>
+
+<div class="assumption">
+<strong>13. Spread compression is market-level only.</strong>
+The compression formula models how aggregate BESS build-out reduces wholesale spreads. It does not capture:
+individual battery positioning, intraday price volatility changes, or potential new revenue streams (e.g.
+local flexibility markets, EV smart charging coordination).
+</div>
+
+<div class="assumption">
+<strong>14. MILP allows multiple intraday cycles.</strong>
+The optimiser can charge-discharge more than once per day if profitable (avg ~1.7 cycles/day observed).
+This is physically possible but increases wear; real dispatch may be more conservative to preserve battery life.
+</div>
+
+<div class="assumption">
+<strong>15. CM stress events assumed rare.</strong>
+Capacity Market revenue assumes the battery is usually available for other activities. If CM delivery
+obligations conflict with arbitrage/FR, actual revenue would be lower.
 </div>
 </div>
 
@@ -979,7 +1178,7 @@ def build_html_report(all_results, battery_info, out_path):
 {detail_sections}
 
 <div class="section" style="text-align: center; color: #999; font-size: 12px;">
-Generated by VLP Battery Model  |  UK prices Jul 2024–Jun 2025
+Generated by VLP Battery Electricity Company Model  |  UK wholesale prices Jul 2024 - Jun 2025
 </div>
 
 </body>
