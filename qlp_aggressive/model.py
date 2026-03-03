@@ -31,6 +31,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
+import json
 
 try:
     import pulp
@@ -71,6 +72,13 @@ MODEL_YEARS  = 12
 
 # ── consumption levels to model ──────────────────────────────────────────────
 CONSUMPTION_LEVELS = [4000, 5000, 6000]   # kWh/yr
+
+# ── battery degradation ──────────────────────────────────────────────────────
+DEGRADATION_PA = 0.02   # 2% capacity loss per year
+
+def degradation_factor(year):
+    """Capacity retention factor at start of a given year (year 1 = 1.0)."""
+    return (1 - DEGRADATION_PA) ** (year - 1)
 
 # ── load model_input.csv — UK column ─────────────────────────────────────────
 def load_model_inputs():
@@ -433,14 +441,16 @@ def unit_economics(pkwh, pmo, annual_kwh, battery_info_entry):
 
 
 def build_pl(ue, loan_years, scaling_factors):
-    """Build P&L — revenue from arbitrage/FR/BM scales year-over-year."""
+    """Build P&L — revenue from arbitrage/FR/BM scales year-over-year,
+    with battery degradation applied."""
     loan_bal = float(BAT_COST)
     ann_prin = BAT_COST / loan_years
     rows = []
     for yr in range(1, MODEL_YEARS + 1):
         sf = scaling_factors.get(yr, 1.0)
-        # Battery-derived revenue scales; customer bill is fixed
-        battery_rev_yr = ue["battery_rev"] * sf
+        df = degradation_factor(yr)
+        # Battery-derived revenue scales by spread compression AND degradation
+        battery_rev_yr = ue["battery_rev"] * sf * df
         rev_yr = ue["cust_bill"] + battery_rev_yr
         gross_yr = rev_yr - ue["supply_cost"]
         ebitda_yr = gross_yr - ue["opex"]
@@ -459,6 +469,7 @@ def build_pl(ue, loan_years, scaling_factors):
             "  Customer Bill":  round(ue["cust_bill"], 2),
             "  Battery Rev":    round(battery_rev_yr, 2),
             "  Spread Scale":   round(sf, 3),
+            "  Degrade Scale":  round(df, 3),
             "COGS (£)":         round(ue["supply_cost"], 2),
             "Gross Profit (£)": round(gross_yr, 2),
             "Opex (£)":         round(ue["opex"], 2),
@@ -476,14 +487,16 @@ def build_pl(ue, loan_years, scaling_factors):
 
 def build_cashflow(ue, loan_years, scaling_factors):
     """Build cashflow — no depreciation (non-cash, balance sheet only).
-    Includes CAC (yr 1) and battery replacement (yr = BAT_LIFE)."""
+    Includes CAC (yr 1) and battery replacement (yr = BAT_LIFE).
+    Battery degradation applied year-over-year."""
     loan_bal = float(BAT_COST)
     ann_prin = BAT_COST / loan_years
     cum_cash = 0.0
     rows = []
     for yr in range(1, MODEL_YEARS + 1):
         sf = scaling_factors.get(yr, 1.0)
-        battery_rev_yr = ue["battery_rev"] * sf
+        df = degradation_factor(yr)
+        battery_rev_yr = ue["battery_rev"] * sf * df
         rev_yr   = ue["cust_bill"] + battery_rev_yr
         gross_yr = rev_yr - ue["supply_cost"]
         ebitda_yr = gross_yr - ue["opex"]
@@ -552,6 +565,68 @@ def build_loan_schedule(loan_years):
         "Closing Balance (£)":   "",
     }])
     return pd.concat([df, totals], ignore_index=True)
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+# BREAK-EVEN TARIFF CALCULATOR
+# ═════════════════════════════════════════════════════════════════════════════
+
+def _simulate_cum_cash(cust_bill_annual, battery_rev_base, supply_cost, opex,
+                       loan_years, scaling_factors):
+    """Simulate cumulative cash at end of loan period for a given annual customer bill."""
+    loan_bal = float(BAT_COST)
+    ann_prin = BAT_COST / loan_years
+    cum = 0.0
+    for yr in range(1, loan_years + 1):
+        sf = scaling_factors.get(yr, 1.0)
+        df = degradation_factor(yr)
+        bat_rev = battery_rev_base * sf * df
+        rev = cust_bill_annual + bat_rev
+        gross = rev - supply_cost
+        ebitda = gross - opex
+        ebit = ebitda - DEPRECIATION
+        interest = loan_bal * LOAN_RATE
+        ebt = ebit - interest
+        tax = max(0.0, ebt * CORP_TAX)
+        ocf = ebitda - tax
+        principal = min(ann_prin, loan_bal) if loan_bal > 0.001 else 0.0
+        loan_bal = max(0.0, loan_bal - principal)
+        cac_out = CAC if yr == 1 else 0.0
+        cum += ocf - interest - principal - cac_out
+    return cum
+
+
+def find_breakeven_tariffs(battery_rev_base, supply_cost, opex,
+                           loan_years, scaling_factors):
+    """Find break-even tariff expressed multiple ways.
+
+    Returns dict with:
+      - min_bill: minimum annual customer bill for cumulative cash = 0 at end of loan
+      - pkwh_at_sc: for several standing charges, the required p/kWh at each consumption level
+    """
+    # Binary search for total annual customer bill that gives cum cash = 0
+    lo, hi = 0.0, 10000.0
+    for _ in range(200):
+        mid = (lo + hi) / 2
+        if _simulate_cum_cash(mid, battery_rev_base, supply_cost, opex,
+                              loan_years, scaling_factors) < 0:
+            lo = mid
+        else:
+            hi = mid
+    min_bill = (lo + hi) / 2
+
+    # Express as p/kWh for a few standing charge levels, at each consumption
+    standing_charges_monthly = [0, 5, 8, 10, 15]
+    pkwh_table = {}
+    for ckwh in CONSUMPTION_LEVELS:
+        pkwh_table[ckwh] = {}
+        for sc_mo in standing_charges_monthly:
+            sc_annual = sc_mo * 12
+            remaining = max(0, min_bill - sc_annual)
+            pkwh = remaining / ckwh * 100  # convert £ to pence
+            pkwh_table[ckwh][sc_mo] = round(pkwh, 2)
+
+    return {"min_bill": round(min_bill, 2), "pkwh_table": pkwh_table}
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -740,7 +815,226 @@ def plot_summary_chart(all_results, spread_name, consumption, out_path):
 # HTML REPORT
 # ═════════════════════════════════════════════════════════════════════════════
 
-def build_html_report(all_results, battery_info, out_path):
+def _build_report_js(battery_info):
+    """Build JavaScript for interactive report recalculation."""
+    all_sf = {}
+    for sp_name in SPREAD_SCENARIOS:
+        factors = get_scaling_factors(sp_name)
+        all_sf[sp_name] = {str(k): round(v, 6) for k, v in factors.items()}
+
+    bi_data = {}
+    for ckwh, bi in battery_info.items():
+        bi_data[str(ckwh)] = {
+            "total_battery_rev": round(bi["total_battery_rev"], 2),
+            "avoided_network": round(bi["avoided_network"], 2),
+        }
+
+    tariff_data = {}
+    for tk, sc in TARIFF_SCENARIOS.items():
+        tariff_data[tk] = {
+            "pkwh": sc["pkwh"], "pmo": sc["pmo"],
+            "label": sc["label"], "saving_target": sc["saving_target"],
+        }
+
+    data = {
+        "BAT_COST": BAT_COST, "DEPRECIATION": DEPRECIATION,
+        "LOAN_RATE": LOAN_RATE, "CORP_TAX": CORP_TAX,
+        "MODEL_YEARS": MODEL_YEARS, "DEGRADATION_PA": DEGRADATION_PA,
+        "LOAN_YEARS": LOAN_YEARS, "CONSUMPTION_LEVELS": CONSUMPTION_LEVELS,
+        "WHOLESALE_P_KWH": round(WHOLESALE_P_KWH, 6),
+        "GRID_LEVY": GRID_LEVY,
+        "COMP_PKW": COMP_PKW, "COMP_PD": COMP_PD, "DAYS": DAYS,
+        "DEF_CAC": CAC, "DEF_STAFF": STAFF_COST, "DEF_MGMT": CUST_MGMT,
+        "battery_info": bi_data,
+        "scaling": all_sf,
+        "tariffs": tariff_data,
+        "spread_names": list(SPREAD_SCENARIOS.keys()),
+    }
+
+    js = "const D=" + json.dumps(data) + ";\n"
+    js += r"""
+function fmt(v){return v.toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function fmt0(v){return Math.round(v).toLocaleString('en-GB');}
+function degradeFactor(yr){return Math.pow(1-D.DEGRADATION_PA,yr-1);}
+function getInputs(){
+    return {
+        cac:parseFloat(document.getElementById('inp-cac').value)||0,
+        staff:parseFloat(document.getElementById('inp-staff').value)||0,
+        mgmt:parseFloat(document.getElementById('inp-mgmt').value)||0
+    };
+}
+function calcOpex(kwh,staff,mgmt){
+    return D.GRID_LEVY+mgmt+kwh*0.0087+365*0.0359+kwh*0.0363+365*0.0731
+        +kwh*0.0075+kwh*0.0054+365*0.0356+kwh*0.0137+365*0.1396-10+kwh*0.0041+staff;
+}
+function calcSupply(kwh){return kwh*D.WHOLESALE_P_KWH;}
+function compBill(kwh){return kwh*D.COMP_PKW/100+D.DAYS*D.COMP_PD/100;}
+function unitEcon(pkwh,pmo,kwh,inp){
+    var bi=D.battery_info[String(kwh)];
+    var custBill=kwh*pkwh/100+pmo*12;
+    var batteryRev=bi.total_battery_rev, avoidedNw=bi.avoided_network;
+    var totalRev=custBill+batteryRev;
+    var sc=calcSupply(kwh);
+    var opex=calcOpex(kwh,inp.staff,inp.mgmt)-avoidedNw;
+    var gross=totalRev-sc, ebitda=gross-opex, ebit=ebitda-D.DEPRECIATION;
+    return {custBill:custBill,batteryRev:batteryRev,totalRev:totalRev,
+            supplyCost:sc,opex:opex,gross:gross,ebitda:ebitda,ebit:ebit};
+}
+function buildCF(ue,loanYrs,sf,cac){
+    var bal=D.BAT_COST,annP=D.BAT_COST/loanYrs,cum=0,rows=[];
+    for(var yr=1;yr<=D.MODEL_YEARS;yr++){
+        var s=sf[String(yr)]||1, df=degradeFactor(yr);
+        var batRev=ue.batteryRev*s*df, rev=ue.custBill+batRev;
+        var gross=rev-ue.supplyCost, ebitda=gross-ue.opex;
+        var ebit=ebitda-D.DEPRECIATION, interest=bal*D.LOAN_RATE;
+        var ebt=ebit-interest, tax=Math.max(0,ebt*D.CORP_TAX), ocf=ebitda-tax;
+        var prin=bal>0.001?Math.min(annP,bal):0; bal=Math.max(0,bal-prin);
+        var cacOut=yr===1?cac:0, fc=ocf-interest-prin-cacOut; cum+=fc;
+        rows.push({yr:yr,rev:rev,batRev:batRev,s:s,df:df,gross:gross,
+            ebitda:ebitda,ebit:ebit,interest:interest,ebt:ebt,tax:tax,
+            netInc:ebt-tax,ocf:ocf,prin:prin,cacOut:cacOut,fc:fc,cum:cum});
+    }
+    return rows;
+}
+function renderSummary(){
+    var inp=getInputs();
+    var h='<table class="data-table summary-table"><thead><tr>';
+    ['Tariff','Spread','Consumption','Cust Bill £','Battery Rev £',
+     'Total Rev £','Supply Cost £','Opex £','EBIT £',
+     'Yr1 FCF £',D.MODEL_YEARS+'yr Cum £','Break-even'].forEach(function(c){h+='<th>'+c+'</th>';});
+    h+='</tr></thead><tbody>';
+    Object.keys(D.tariffs).forEach(function(tk){
+        var t=D.tariffs[tk];
+        D.spread_names.forEach(function(sp){
+            var sf=D.scaling[sp];
+            D.CONSUMPTION_LEVELS.forEach(function(ckwh){
+                var ue=unitEcon(t.pkwh,t.pmo,ckwh,inp);
+                var cf=buildCF(ue,5,sf,inp.cac);
+                var yr1=cf[0].fc, cumF=cf[cf.length-1].cum;
+                var beYr='Never';
+                for(var i=0;i<cf.length;i++){if(cf[i].cum>=0){beYr=i+1;break;}}
+                var cls=beYr==='Never'?' class="negative"':'';
+                h+='<tr><td>'+t.pkwh+'p+\u00a3'+t.pmo+'/mo</td><td>'+sp+'</td>';
+                h+='<td>'+ckwh.toLocaleString()+'</td>';
+                h+='<td>'+fmt0(ue.custBill)+'</td><td>'+fmt0(ue.batteryRev)+'</td>';
+                h+='<td>'+fmt0(ue.totalRev)+'</td><td>'+fmt0(ue.supplyCost)+'</td>';
+                h+='<td>'+fmt0(ue.opex)+'</td><td>'+fmt0(ue.ebit)+'</td>';
+                h+='<td>'+fmt0(yr1)+'</td><td>'+fmt0(cumF)+'</td>';
+                h+='<td'+cls+'>'+beYr+'</td></tr>';
+            });
+        });
+    });
+    h+='</tbody></table>';
+    document.getElementById('summary-dashboard').innerHTML=h;
+}
+function renderPLTable(ue,loanYrs,sf){
+    var bal=D.BAT_COST,annP=D.BAT_COST/loanYrs;
+    var h='<table class="data-table"><thead><tr>';
+    ['Year','Revenue (£)','  Cust Bill','  Battery Rev','  Spread','  Degrade',
+     'COGS (£)','Gross (£)','Opex (£)','EBITDA (£)','Depr (£)','EBIT (£)',
+     'Interest (£)','EBT (£)','Tax 25% (£)','Net Inc (£)'].forEach(function(c){h+='<th>'+c+'</th>';});
+    h+='</tr></thead><tbody>';
+    for(var yr=1;yr<=D.MODEL_YEARS;yr++){
+        var s=sf[String(yr)]||1, df=degradeFactor(yr);
+        var batRev=ue.batteryRev*s*df, rev=ue.custBill+batRev;
+        var gross=rev-ue.supplyCost, ebitda=gross-ue.opex;
+        var ebit=ebitda-D.DEPRECIATION, interest=bal*D.LOAN_RATE;
+        var ebt=ebit-interest, tax=Math.max(0,ebt*D.CORP_TAX), ni=ebt-tax;
+        var prin=bal>0.001?Math.min(annP,bal):0; bal=Math.max(0,bal-prin);
+        h+='<tr><td>'+yr+'</td><td>'+fmt(rev)+'</td><td>'+fmt(ue.custBill)+'</td>';
+        h+='<td>'+fmt(batRev)+'</td><td>'+s.toFixed(3)+'</td><td>'+df.toFixed(3)+'</td>';
+        h+='<td>'+fmt(ue.supplyCost)+'</td><td>'+fmt(gross)+'</td><td>'+fmt(ue.opex)+'</td>';
+        h+='<td>'+fmt(ebitda)+'</td><td>'+fmt(D.DEPRECIATION)+'</td><td>'+fmt(ebit)+'</td>';
+        h+='<td>'+fmt(interest)+'</td><td>'+fmt(ebt)+'</td><td>'+fmt(tax)+'</td>';
+        h+='<td>'+fmt(ni)+'</td></tr>';
+    }
+    h+='</tbody></table>'; return h;
+}
+function renderCFTable(ue,loanYrs,sf,cac){
+    var cf=buildCF(ue,loanYrs,sf,cac);
+    var h='<table class="data-table"><thead><tr>';
+    ['Year','EBITDA (£)','Tax (£)','Op CF (£)','Interest (£)','Principal (£)',
+     'CAC (£)','Free Cash (£)','Cumulative (£)'].forEach(function(c){h+='<th>'+c+'</th>';});
+    h+='</tr></thead><tbody>';
+    cf.forEach(function(r){
+        var cls=r.fc<0?' class="negative"':' class="positive"';
+        h+='<tr><td>'+r.yr+'</td><td>'+fmt(r.ebitda)+'</td><td>'+fmt(r.tax)+'</td>';
+        h+='<td>'+fmt(r.ocf)+'</td><td>'+fmt(r.interest)+'</td><td>'+fmt(r.prin)+'</td>';
+        h+='<td>'+fmt(r.cacOut)+'</td><td'+cls+'>'+fmt(r.fc)+'</td><td>'+fmt(r.cum)+'</td></tr>';
+    });
+    h+='</tbody></table>'; return h;
+}
+function renderDetails(){
+    var inp=getInputs(), sf=D.scaling['Base'];
+    Object.keys(D.tariffs).forEach(function(tk){
+        var t=D.tariffs[tk], h='';
+        D.CONSUMPTION_LEVELS.forEach(function(ckwh){
+            var ue=unitEcon(t.pkwh,t.pmo,ckwh,inp);
+            h+='<details><summary>\ud83d\udccb P&L \u2014 Base spread, '+ckwh.toLocaleString()+' kWh/yr, 5-yr loan</summary>';
+            h+=renderPLTable(ue,5,sf)+'</details>';
+            h+='<details><summary>\ud83d\udccb Cashflow \u2014 Base spread, '+ckwh.toLocaleString()+' kWh/yr, 5-yr loan</summary>';
+            h+=renderCFTable(ue,5,sf,inp.cac)+'</details>';
+        });
+        document.getElementById('detail-tables-'+tk).innerHTML=h;
+    });
+}
+function findBreakevenBill(batteryRev,supplyCost,opex,loanYrs,sf,cac){
+    var lo=0,hi=10000;
+    for(var i=0;i<200;i++){
+        var mid=(lo+hi)/2, bal=D.BAT_COST, annP=D.BAT_COST/loanYrs, cum=0;
+        for(var yr=1;yr<=loanYrs;yr++){
+            var s=sf[String(yr)]||1, df=degradeFactor(yr);
+            var batRev=batteryRev*s*df, rev=mid+batRev;
+            var gross=rev-supplyCost, ebitda=gross-opex;
+            var ebit=ebitda-D.DEPRECIATION, interest=bal*D.LOAN_RATE;
+            var ebt=ebit-interest, tax=Math.max(0,ebt*D.CORP_TAX), ocf=ebitda-tax;
+            var prin=bal>0.001?Math.min(annP,bal):0; bal=Math.max(0,bal-prin);
+            var cacOut=yr===1?cac:0; cum+=ocf-interest-prin-cacOut;
+        }
+        if(cum<0) lo=mid; else hi=mid;
+    }
+    return (lo+hi)/2;
+}
+function renderBreakeven(){
+    var inp=getInputs(), sf=D.scaling['Base'], scs=[0,5,8,10,15];
+    var h='<div class="section"><h2>Break-Even Tariff Analysis</h2>';
+    h+='<p>Minimum tariff for <strong>cumulative FCF = 0</strong> at end of loan. ';
+    h+='Includes degradation, spread compression (Base), loan repayments, tax, CAC, and all opex.</p>';
+    [5,7,10].forEach(function(loanYr){
+        h+='<h3>'+loanYr+'-Year Loan Break-Even</h3>';
+        D.CONSUMPTION_LEVELS.forEach(function(ckwh){
+            var bi=D.battery_info[String(ckwh)];
+            var opex=calcOpex(ckwh,inp.staff,inp.mgmt)-bi.avoided_network;
+            var sc=calcSupply(ckwh);
+            var minBill=findBreakevenBill(bi.total_battery_rev,sc,opex,loanYr,sf,inp.cac);
+            var comp=compBill(ckwh);
+            h+='<details open><summary>'+ckwh.toLocaleString()+' kWh/yr \u2014 minimum annual bill: \u00a3'+fmt0(minBill)+'</summary>';
+            h+='<table class="data-table"><thead><tr><th>Standing charge (\u00a3/mo)</th>';
+            h+='<th>Required p/kWh</th><th>Annual bill \u00a3</th><th>vs competitor saving</th></tr></thead><tbody>';
+            scs.forEach(function(scMo){
+                var remaining=Math.max(0,minBill-scMo*12);
+                var pkwh=remaining/ckwh*100;
+                var bill=ckwh*pkwh/100+scMo*12;
+                var savPct=comp>0?(comp-bill)/comp*100:0;
+                var cls=savPct>0?'positive':'negative';
+                h+='<tr><td>\u00a3'+scMo+'/mo</td><td>'+pkwh.toFixed(1)+'p</td>';
+                h+='<td>\u00a3'+fmt0(bill)+'</td>';
+                h+='<td class="'+cls+'">'+(savPct>=0?'+':'')+savPct.toFixed(1)+'%</td></tr>';
+            });
+            h+='</tbody></table></details>';
+        });
+    });
+    h+='<div class="highlight"><strong>Reading the table:</strong> Pick a standing charge, ';
+    h+='read across for the minimum p/kWh to break even. "vs competitor" = customer saving (positive = saves).</div></div>';
+    document.getElementById('breakeven-section').innerHTML=h;
+}
+function recalcAll(){renderSummary();renderDetails();renderBreakeven();}
+document.addEventListener('DOMContentLoaded',recalcAll);
+"""
+    return js
+
+
+def build_html_report(all_results, battery_info, breakeven_data, out_path):
     """Generate interactive HTML report with all scenario combinations."""
 
     # Helper: dataframe to HTML table
@@ -779,53 +1073,8 @@ def build_html_report(all_results, battery_info, out_path):
             charts[f"spread_{tk}_{ckwh}"] = plot_spread_comparison(
                 all_results, tk, ckwh, loan_yr=5)
 
-    # Build summary metrics table
-    summary_rows = []
-    for tk in TARIFF_SCENARIOS:
-        sc = TARIFF_SCENARIOS[tk]
-        for sp in SPREAD_SCENARIOS:
-            for ckwh in CONSUMPTION_LEVELS:
-                key5 = (tk, sp, ckwh, 5)
-                ue = all_results["ue"][key5]
-                cf = all_results["cf"][key5]
-                cum_final = cf["Cumulative Cash (£)"].iloc[-1]
-                yr1_fcf   = cf["Free Cash (£)"].iloc[0]
-                # Find break-even year
-                be_yr = "Never"
-                cum_vals = cf["Cumulative Cash (£)"].values
-                for i, v in enumerate(cum_vals):
-                    if v >= 0:
-                        be_yr = i + 1
-                        break
-                bi = battery_info[ckwh]
-                summary_rows.append({
-                    "Tariff": f"{sc['pkwh']}p+£{sc['pmo']}/mo",
-                    "Spread": sp,
-                    "Consumption": f"{ckwh:,}",
-                    "Cust Bill £": f"{ue['cust_bill']:.0f}",
-                    "Battery Rev £": f"{ue['battery_rev']:.0f}",
-                    "Total Rev £": f"{ue['total_rev']:.0f}",
-                    "Supply Cost £": f"{ue['supply_cost']:.0f}",
-                    "Opex £": f"{ue['opex']:.0f}",
-                    "EBIT £": f"{ue['ebit']:.0f}",
-                    "Yr1 FCF £": f"{yr1_fcf:.0f}",
-                    f"{MODEL_YEARS}yr Cum £": f"{cum_final:.0f}",
-                    "Break-even": str(be_yr),
-                })
-
-    summary_html = '<table class="data-table summary-table">\n<thead><tr>'
-    for c in summary_rows[0].keys():
-        summary_html += f"<th>{c}</th>"
-    summary_html += "</tr></thead>\n<tbody>\n"
-    for row in summary_rows:
-        be = row["Break-even"]
-        cls = "negative" if be == "Never" else ""
-        summary_html += "<tr>"
-        for k, v in row.items():
-            c = f' class="{cls}"' if k == "Break-even" and cls else ""
-            summary_html += f"<td{c}>{v}</td>"
-        summary_html += "</tr>\n"
-    summary_html += "</tbody></table>\n"
+    # Build JS code for interactive recalculation
+    js_code = _build_report_js(battery_info)
 
     # Build detailed sections
     detail_sections = ""
@@ -857,22 +1106,8 @@ def build_html_report(all_results, battery_info, out_path):
             </details>
             """
 
-        # P&L and cashflow tables for base spread, 5-yr loan
-        for ckwh in CONSUMPTION_LEVELS:
-            key5 = (tk, "Base", ckwh, 5)
-            pl = all_results["pl"][key5]
-            cf = all_results["cf"][key5]
-            detail_sections += f"""
-            <details>
-            <summary>📋 P&L — Base spread, {ckwh:,} kWh/yr, 5-yr loan</summary>
-            {df_to_html(pl)}
-            </details>
-            <details>
-            <summary>📋 Cashflow — Base spread, {ckwh:,} kWh/yr, 5-yr loan</summary>
-            {df_to_html(cf, highlight_col="Free Cash (£)")}
-            </details>
-            """
-
+        # P&L/CF tables rendered by JavaScript
+        detail_sections += f'<div id="detail-tables-{tk}"></div>\n'
         detail_sections += "</div>\n"
 
     # Battery revenue breakdown
@@ -953,6 +1188,17 @@ def build_html_report(all_results, battery_info, out_path):
     .assumption {{ background: #fef3f3; padding: 15px; border-left: 4px solid #e74c3c;
                    border-radius: 4px; margin: 10px 0; font-size: 13px; }}
     img {{ border-radius: 5px; margin: 10px 0; }}
+    .controls {{ position: sticky; top: 0; z-index: 100; background: #2c3e50;
+                 color: white; padding: 12px 20px; border-radius: 8px;
+                 margin-bottom: 15px; display: flex; gap: 24px; align-items: center;
+                 box-shadow: 0 4px 6px rgba(0,0,0,0.2); flex-wrap: wrap; }}
+    .controls label {{ font-size: 13px; font-weight: 600; display: flex;
+                       align-items: center; gap: 6px; }}
+    .controls input {{ width: 70px; padding: 4px 8px; border: 1px solid #7f8c8d;
+                       border-radius: 4px; font-size: 13px; text-align: right; }}
+    .controls .btn {{ background: #3498db; border: none; color: white; padding: 6px 16px;
+                      border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 13px; }}
+    .controls .btn:hover {{ background: #2980b9; }}
 </style>
 </head>
 <body>
@@ -960,6 +1206,15 @@ def build_html_report(all_results, battery_info, out_path):
 <h1>VLP Battery — Electricity Company Model</h1>
 <p>Per-customer unit economics for a behind-the-meter battery operated by a licensed electricity supplier.
    Battery trades on wholesale + ancillary markets. Consumer demand served from grid, offset by battery discharge.</p>
+
+<div class="controls">
+    <span style="font-weight:700; font-size:14px;">Adjust Inputs</span>
+    <label>CAC &pound; <input type="number" id="inp-cac" value="{CAC}" step="10"></label>
+    <label>Staff &pound;/yr <input type="number" id="inp-staff" value="{STAFF_COST}" step="5"></label>
+    <label>Cust Mgmt &pound;/yr <input type="number" id="inp-mgmt" value="{CUST_MGMT}" step="5"></label>
+    <button class="btn" onclick="recalcAll()">Recalculate</button>
+    <span style="font-size:11px; opacity:0.7;">Charts are static &mdash; tables &amp; break-even update live</span>
+</div>
 
 <div class="highlight">
     Battery revenue includes arbitrage (MILP-optimised), frequency response, capacity market, balancing mechanism,
@@ -1003,6 +1258,7 @@ def build_html_report(all_results, battery_info, out_path):
 <tr><td>Corporation tax</td><td>{CORP_TAX*100:.0f}%</td><td>Applied to EBT each year, no loss carry-forward</td></tr>
 <tr><td>Loan periods modelled</td><td>{', '.join(str(y)+'-yr' for y in LOAN_YEARS)}</td><td></td></tr>
 <tr><td>Model horizon</td><td>{MODEL_YEARS} years</td><td>10-yr loan gets 2 post-payoff years</td></tr>
+<tr><td>Annual degradation</td><td>{DEGRADATION_PA*100:.0f}%/yr</td><td>Compound; yr5 retention {degradation_factor(5)*100:.1f}%, yr10 {degradation_factor(10)*100:.1f}%, yr12 {degradation_factor(12)*100:.1f}%</td></tr>
 </tbody>
 </table>
 
@@ -1083,10 +1339,10 @@ A real dispatch algorithm would achieve a lower spread, potentially 10-30% below
 </div>
 
 <div class="assumption">
-<strong>2. No battery degradation.</strong>
-Capacity and efficiency are held constant across all {MODEL_YEARS} years. Real lithium batteries degrade ~2-3%/yr;
-by year 10 arbitrage revenue and grid services capacity could be 20-25% lower.
-The spread compression scenarios partially capture market-level effects but not individual battery decline.
+<strong>2. Battery degradation modelled at {DEGRADATION_PA*100:.0f}%/yr.</strong>
+Capacity declines {DEGRADATION_PA*100:.0f}% per year (compound). By year 10, retention is
+{degradation_factor(11)*100:.1f}%. All battery revenue (arbitrage, FR, CM, BM, avoided network charges)
+is scaled by the degradation factor each year, in addition to spread compression.
 </div>
 
 <div class="assumption">
@@ -1172,15 +1428,20 @@ obligations conflict with arbitrage/FR, actual revenue would be lower.
 
 <div class="section">
 <h2>Summary Dashboard (5-yr loan)</h2>
-{summary_html}
+<div id="summary-dashboard"><p>Loading...</p></div>
 </div>
 
 {detail_sections}
+
+<div id="breakeven-section"></div>
 
 <div class="section" style="text-align: center; color: #999; font-size: 12px;">
 Generated by VLP Battery Electricity Company Model  |  UK wholesale prices Jul 2024 - Jun 2025
 </div>
 
+<script>
+{js_code}
+</script>
 </body>
 </html>"""
 
@@ -1311,9 +1572,23 @@ def main():
                        OUT_DIR / "chart_summary.png")
     print("    chart_summary.png")
 
-    # ── Step 6: HTML report ──
+    # ── Step 6: break-even tariff analysis ──
+    print("  Computing break-even tariffs...")
+    base_sf = all_scaling["Base"]
+    breakeven_data = {}
+    for loan_yr in [5, 7, 10]:
+        for ckwh in CONSUMPTION_LEVELS:
+            bi = battery_info[ckwh]
+            ue = unit_economics(20, 8, ckwh, bi)  # tariff doesn't matter, we solve for bill
+            be = find_breakeven_tariffs(
+                ue["battery_rev"], ue["supply_cost"], ue["opex"],
+                loan_yr, base_sf)
+            breakeven_data[(loan_yr, ckwh)] = be
+            print(f"    {loan_yr}-yr loan, {ckwh:,} kWh: min bill £{be['min_bill']:,.0f}/yr")
+
+    # ── Step 7: HTML report ──
     print("  Generating HTML report...")
-    build_html_report(all_results, battery_info, OUT_DIR / "report.html")
+    build_html_report(all_results, battery_info, breakeven_data, OUT_DIR / "report.html")
 
     print()
     print(f"  All files written to: {OUT_DIR}")
