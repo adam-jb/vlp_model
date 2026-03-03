@@ -27,3 +27,6 @@ Cost of managing customers per customer per annum if electricity company,10,10,1
 Cost of managing customers per customer per annum if VLP,10,10,10,10
 battery capacity kwh,10,10,10,10
 battery power kw,5,5,5,5
+customer acquisition cost (CAC),100,100,100,100
+annual staff cost per customer,50,50,50,50
+battery replacement cost,200,200,200,200
