@@ -1,0 +1,273 @@
+
+================================================================================================
+VLP BATTERY MODEL — FIXED-TERM LOAN PAYOFF ANALYSIS
+================================================================================================
+  Battery cost (hardware + installation): £2,800.00
+  Loan scenarios compared: 3-year, 5-year, 7-year
+  Tariff: 22p/kWh + £10/month service fee
+  Price data: UK day-ahead wholesale, Jul 2024 – Jun 2025 (365 days used)
+
+================================================================================================
+1. MODEL PARAMETERS
+================================================================================================
+
+  ── Battery Hardware ──
+  Capacity                                             15.36 kWh
+  Inverter power                                       6 kW
+  Duration (capacity / power)                          2.56 hrs
+  Round-trip efficiency                                90%
+  One-way efficiency (√RTE)                            94.87%
+  Charge time (full cycle at BAT_KW)                   2.698 hrs  (2 full hrs + 0.698 partial)
+  Discharge time (full cycle at BAT_KW)                2.429 hrs  (2 full hrs + 0.429 partial)
+  Grid draw per charge (kWh / ETA)                     16.191 kWh
+  Energy delivered per discharge (kWh × ETA)           14.572 kWh
+
+  ── Battery Cost & Financing ──
+  Total cost (hardware + install)                      £2,800.00
+  Economic life                                        10 years
+  Annual depreciation (straight-line)                  £280.00/yr
+  Loan interest rate                                   7% p.a. on outstanding balance
+  Corporation tax                                      25%
+    3-year payoff: annual principal                    £933.33  (total interest ≈ £392.00)
+    5-year payoff: annual principal                    £560.00  (total interest ≈ £588.00)
+    7-year payoff: annual principal                    £400.00  (total interest ≈ £784.00)
+
+  ── Revenue Streams ──
+  Electricity sold to customer                         3,604.4 kWh/yr × 22p/kWh = £792.97/yr
+  Monthly service fee                                  £10/mo × 12 = £120.00/yr
+  Battery arbitrage — buy (cheapest hours)             -£322.96/yr
+  Battery arbitrage — sell (dearest hours)             +£654.22/yr
+  Battery arbitrage — net                              £331.26/yr
+  Frequency response                                   6kW × £34/kW = £204.00/yr
+  Capacity market                                      6kW × £40/kW × 20.94% de-rate = £50.26/yr
+  Balancing mechanism                                  ARB × 10% × 5% uplift = £1.66/yr
+  TOTAL ANNUAL REVENUE                                 £1,500.14/yr
+
+  ── Cost Stack  (Ofgem Q1 2025 methodology) ──
+  Wholesale electricity supply                         £305.88/yr
+  TNUoS — transmission network                         £44.46/yr
+  DUoS  — distribution network                         £157.52/yr
+  BSUoS — balancing services                           £27.03/yr
+  Smart metering obligation                            £32.46/yr
+  Supplier opex (billing, compliance)                  £90.33/yr
+  Bad debt provision (~0.4%)                           £14.78/yr
+  Policy levy (grid_levy)                              £95.00/yr
+  Customer management (CRM)                            £10.00/yr
+  TOTAL COSTS (excl. depreciation)                     £777.47/yr
+
+  ── Unit Economics Summary ──
+  Gross Profit                                         £1,194.25/yr
+  EBITDA                                               £722.67/yr
+  EBIT (after £280/yr depreciation)                    £442.67/yr
+  Customer bill                                        £912.97/yr
+  Competitor bill                                      £1,083.60/yr
+  Customer saving                                      £170.63/yr  (15.7% cheaper)
+
+================================================================================================
+2. P&L, CASH FLOW & LOAN SCHEDULE — EACH SCENARIO
+================================================================================================
+
+  ======================================================================
+  3-YEAR LOAN PAYOFF  (annual principal £933.33)
+  ======================================================================
+
+  PROFIT & LOSS (Income Statement)
+ Year  Revenue (£)  COGS (£)  Gross Profit (£)  EBITDA (£)  Depreciation (£)  EBIT (£)  Interest (£)  EBT (£)  Tax 25% (£)  Net Income (£)
+    1      1500.14    305.88           1194.25      722.67             280.0    442.67        196.00   246.67        61.67           185.0
+    2      1500.14    305.88           1194.25      722.67             280.0    442.67        130.67   312.00        78.00           234.0
+    3      1500.14    305.88           1194.25      722.67             280.0    442.67         65.33   377.33        94.33           283.0
+    4      1500.14    305.88           1194.25      722.67             280.0    442.67          0.00   442.67       110.67           332.0
+    5      1500.14    305.88           1194.25      722.67             280.0    442.67          0.00   442.67       110.67           332.0
+    6      1500.14    305.88           1194.25      722.67             280.0    442.67          0.00   442.67       110.67           332.0
+    7      1500.14    305.88           1194.25      722.67             280.0    442.67          0.00   442.67       110.67           332.0
+    8      1500.14    305.88           1194.25      722.67             280.0    442.67          0.00   442.67       110.67           332.0
+    9      1500.14    305.88           1194.25      722.67             280.0    442.67          0.00   442.67       110.67           332.0
+   10      1500.14    305.88           1194.25      722.67             280.0    442.67          0.00   442.67       110.67           332.0
+
+  CASH FLOW STATEMENT
+ Year  Net Income (£)  Add: Depreciation (£)  Operating CF (£)  Principal Repaid (£)  Financing CF (£)  Free Cash (£)  Cumulative Cash (£)
+    1           185.0                  280.0             465.0                933.33           -933.33        -468.33              -468.33
+    2           234.0                  280.0             514.0                933.33           -933.33        -419.33              -887.67
+    3           283.0                  280.0             563.0                933.33           -933.33        -370.33             -1258.00
+    4           332.0                  280.0             612.0                  0.00             -0.00         612.00              -646.00
+    5           332.0                  280.0             612.0                  0.00             -0.00         612.00               -34.00
+    6           332.0                  280.0             612.0                  0.00             -0.00         612.00               578.00
+    7           332.0                  280.0             612.0                  0.00             -0.00         612.00              1190.00
+    8           332.0                  280.0             612.0                  0.00             -0.00         612.00              1802.00
+    9           332.0                  280.0             612.0                  0.00             -0.00         612.00              2414.00
+   10           332.0                  280.0             612.0                  0.00             -0.00         612.00              3025.99
+
+  LOAN PAYOFF SCHEDULE
+ Year Opening Balance (£)  Interest Payment (£)  Principal Payment (£)  Total Payment (£) Closing Balance (£)
+    1              2800.0                196.00                 933.33            1129.33             1866.67
+    2             1866.67                130.67                 933.33            1064.00              933.34
+    3              933.34                 65.33                 933.33             998.66                0.01
+TOTAL                                    392.00                2799.99            3191.99                    
+
+  Cash-flow-negative years   : [1, 2, 3]
+  Break-even (cum cash > 0)  : Year 6
+  10-yr cumulative cash      : £3,025.99
+  Total interest cost        : £392.00
+
+  ======================================================================
+  5-YEAR LOAN PAYOFF  (annual principal £560.00)
+  ======================================================================
+
+  PROFIT & LOSS (Income Statement)
+ Year  Revenue (£)  COGS (£)  Gross Profit (£)  EBITDA (£)  Depreciation (£)  EBIT (£)  Interest (£)  EBT (£)  Tax 25% (£)  Net Income (£)
+    1      1500.14    305.88           1194.25      722.67             280.0    442.67         196.0   246.67        61.67           185.0
+    2      1500.14    305.88           1194.25      722.67             280.0    442.67         156.8   285.87        71.47           214.4
+    3      1500.14    305.88           1194.25      722.67             280.0    442.67         117.6   325.07        81.27           243.8
+    4      1500.14    305.88           1194.25      722.67             280.0    442.67          78.4   364.27        91.07           273.2
+    5      1500.14    305.88           1194.25      722.67             280.0    442.67          39.2   403.47       100.87           302.6
+    6      1500.14    305.88           1194.25      722.67             280.0    442.67           0.0   442.67       110.67           332.0
+    7      1500.14    305.88           1194.25      722.67             280.0    442.67           0.0   442.67       110.67           332.0
+    8      1500.14    305.88           1194.25      722.67             280.0    442.67           0.0   442.67       110.67           332.0
+    9      1500.14    305.88           1194.25      722.67             280.0    442.67           0.0   442.67       110.67           332.0
+   10      1500.14    305.88           1194.25      722.67             280.0    442.67           0.0   442.67       110.67           332.0
+
+  CASH FLOW STATEMENT
+ Year  Net Income (£)  Add: Depreciation (£)  Operating CF (£)  Principal Repaid (£)  Financing CF (£)  Free Cash (£)  Cumulative Cash (£)
+    1           185.0                  280.0             465.0                 560.0            -560.0          -95.0               -95.00
+    2           214.4                  280.0             494.4                 560.0            -560.0          -65.6              -160.60
+    3           243.8                  280.0             523.8                 560.0            -560.0          -36.2              -196.80
+    4           273.2                  280.0             553.2                 560.0            -560.0           -6.8              -203.60
+    5           302.6                  280.0             582.6                 560.0            -560.0           22.6              -181.00
+    6           332.0                  280.0             612.0                   0.0              -0.0          612.0               431.00
+    7           332.0                  280.0             612.0                   0.0              -0.0          612.0              1043.00
+    8           332.0                  280.0             612.0                   0.0              -0.0          612.0              1655.00
+    9           332.0                  280.0             612.0                   0.0              -0.0          612.0              2267.00
+   10           332.0                  280.0             612.0                   0.0              -0.0          612.0              2878.99
+
+  LOAN PAYOFF SCHEDULE
+ Year Opening Balance (£)  Interest Payment (£)  Principal Payment (£)  Total Payment (£) Closing Balance (£)
+    1              2800.0                 196.0                  560.0              756.0              2240.0
+    2              2240.0                 156.8                  560.0              716.8              1680.0
+    3              1680.0                 117.6                  560.0              677.6              1120.0
+    4              1120.0                  78.4                  560.0              638.4               560.0
+    5               560.0                  39.2                  560.0              599.2                 0.0
+TOTAL                                     588.0                 2800.0             3388.0                    
+
+  Cash-flow-negative years   : [1, 2, 3, 4]
+  Break-even (cum cash > 0)  : Year 6
+  10-yr cumulative cash      : £2,878.99
+  Total interest cost        : £588.00
+
+  ======================================================================
+  7-YEAR LOAN PAYOFF  (annual principal £400.00)
+  ======================================================================
+
+  PROFIT & LOSS (Income Statement)
+ Year  Revenue (£)  COGS (£)  Gross Profit (£)  EBITDA (£)  Depreciation (£)  EBIT (£)  Interest (£)  EBT (£)  Tax 25% (£)  Net Income (£)
+    1      1500.14    305.88           1194.25      722.67             280.0    442.67         196.0   246.67        61.67           185.0
+    2      1500.14    305.88           1194.25      722.67             280.0    442.67         168.0   274.67        68.67           206.0
+    3      1500.14    305.88           1194.25      722.67             280.0    442.67         140.0   302.67        75.67           227.0
+    4      1500.14    305.88           1194.25      722.67             280.0    442.67         112.0   330.67        82.67           248.0
+    5      1500.14    305.88           1194.25      722.67             280.0    442.67          84.0   358.67        89.67           269.0
+    6      1500.14    305.88           1194.25      722.67             280.0    442.67          56.0   386.67        96.67           290.0
+    7      1500.14    305.88           1194.25      722.67             280.0    442.67          28.0   414.67       103.67           311.0
+    8      1500.14    305.88           1194.25      722.67             280.0    442.67           0.0   442.67       110.67           332.0
+    9      1500.14    305.88           1194.25      722.67             280.0    442.67           0.0   442.67       110.67           332.0
+   10      1500.14    305.88           1194.25      722.67             280.0    442.67           0.0   442.67       110.67           332.0
+
+  CASH FLOW STATEMENT
+ Year  Net Income (£)  Add: Depreciation (£)  Operating CF (£)  Principal Repaid (£)  Financing CF (£)  Free Cash (£)  Cumulative Cash (£)
+    1           185.0                  280.0             465.0                 400.0            -400.0           65.0                65.00
+    2           206.0                  280.0             486.0                 400.0            -400.0           86.0               151.00
+    3           227.0                  280.0             507.0                 400.0            -400.0          107.0               258.00
+    4           248.0                  280.0             528.0                 400.0            -400.0          128.0               386.00
+    5           269.0                  280.0             549.0                 400.0            -400.0          149.0               535.00
+    6           290.0                  280.0             570.0                 400.0            -400.0          170.0               705.00
+    7           311.0                  280.0             591.0                 400.0            -400.0          191.0               896.00
+    8           332.0                  280.0             612.0                   0.0              -0.0          612.0              1508.00
+    9           332.0                  280.0             612.0                   0.0              -0.0          612.0              2120.00
+   10           332.0                  280.0             612.0                   0.0              -0.0          612.0              2731.99
+
+  LOAN PAYOFF SCHEDULE
+ Year Opening Balance (£)  Interest Payment (£)  Principal Payment (£)  Total Payment (£) Closing Balance (£)
+    1              2800.0                 196.0                  400.0              596.0              2400.0
+    2              2400.0                 168.0                  400.0              568.0              2000.0
+    3              2000.0                 140.0                  400.0              540.0              1600.0
+    4              1600.0                 112.0                  400.0              512.0              1200.0
+    5              1200.0                  84.0                  400.0              484.0               800.0
+    6               800.0                  56.0                  400.0              456.0               400.0
+    7               400.0                  28.0                  400.0              428.0                 0.0
+TOTAL                                     784.0                 2800.0             3584.0                    
+
+  Cash-flow-negative years   : none
+  Break-even (cum cash > 0)  : Year 1
+  10-yr cumulative cash      : £2,731.99
+  Total interest cost        : £784.00
+
+================================================================================================
+3. SIDE-BY-SIDE SUMMARY
+================================================================================================
+
+  Metric                                         3-year       5-year       7-year
+  ────────────────────────────────────────────────────────────────────────────
+  Annual principal (£)                           933.33       560.00       400.00
+  Total interest paid (£)                        392.00       588.00       784.00
+  Year 1 free cashflow (£)                      -468.33       -95.00        65.00
+  CF-negative years                           [1, 2, 3] [1, 2, 3, 4]         none
+  10-yr cumulative cash (£)                    3,025.99     2,878.99     2,731.99
+  Post-payoff annual free CF (£)                 612.00       612.00       612.00
+
+================================================================================================
+4. LIMITATIONS & ASSUMPTIONS
+================================================================================================
+
+  1. Single cycle per day
+    The model assumes one full charge–discharge cycle every day throughout the year. In
+    practice, arbitrage opportunities vary by season and market conditions. Days with flat
+    price curves yield little or no spread.
+
+  2. Perfect foresight on prices
+    The algorithm selects the cheapest charging hours and most expensive discharging hours
+    using the actual historical price series — an upper bound on achievable arbitrage. Real
+    dispatch would require forecasting and would capture a smaller spread.
+
+  3. No battery degradation
+    Capacity and efficiency are held constant for 10 years. Real lithium batteries degrade
+    ~2–3% per year; by year 10 usable capacity and therefore arbitrage revenue could be
+    20–30% lower.
+
+  4. Static tariff and competitor pricing
+    Customer revenue is modelled at a fixed 22p/kWh + £10/mo throughout. Energy prices,
+    network charges, and competitor tariffs will change.
+
+  5. Grid services assumed available 100%
+    Frequency response and capacity market revenues are modelled as guaranteed annual
+    contracts. In practice, contracts are won/lost competitively and availability may be
+    constrained by arbitrage cycles.
+
+  6. Balancing Mechanism simplification
+    BM revenue is estimated as a fixed percentage uplift on arbitrage net. Actual BM
+    participation is volume-based and highly variable.
+
+  7. Fixed loan interest rate
+    A flat 7% p.a. on the declining balance is assumed. Rates may vary; a fixed-rate term
+    loan would have equal total payments but different interest/principal splits.
+
+  8. Corporation tax simplified
+    Tax is applied at 25% on each year's EBT independently. Group relief, loss carry-
+    forward, R&D credits, and capital allowances are excluded.
+
+  9. Single customer / single battery
+    All figures are per-customer, per-battery. Portfolio effects (diversification,
+    operational leverage) are not modelled here.
+
+  10. No working capital or capex variation
+    The model does not include cash locked in receivables, payables, or unexpected capex
+    such as inverter replacement or grid connection costs.
+
+  11. EUR/GBP exchange rate held constant
+    All EUR wholesale prices converted at 0.85 throughout. Currency movements affect both
+    supply cost and arbitrage revenue.
+
+  12. UK use profile applied
+    Annual demand of 3,604 kWh is based on the UK use profile from use_profiles.csv, as
+    instructed when no country-specific profile exists.
+
+================================================================================================
+END OF REPORT
+================================================================================================

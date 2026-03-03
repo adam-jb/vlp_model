@@ -161,6 +161,20 @@ NATIONS = {
 # Battery size optimization step (kWh) - could also be added to model_input.csv if needed
 BATTERY_SIZE_STEP = 2.5
 
+# Loan repayment: battery financed over this many years
+LOAN_YEARS = 5
+BATTERY_LIFE_YEARS = 15  # Assumed battery lifespan for ROI calculations
+
+# UK Electricity Provider — our pricing vs standard market
+UK_OUR_RATE_PENCE_PER_KWH = 19.0        # vs standard ~25p/kWh
+UK_OUR_STANDING_CHARGE_PER_MONTH = 8.00  # vs ~£15.25/month (Ofgem 50p/day cap)
+UK_STANDARD_RATE_PENCE_PER_KWH = 25.0
+UK_STANDARD_STANDING_CHARGE_PER_MONTH = 15.25  # 50p/day × 30.5 avg days
+
+GBP_TO_EUR = 1.17  # Conversion rate for UK revenues/costs
+
+OUTPUT_DIR = PROJECT_ROOT / "output"
+
 # UK Capacity Market de-rating factors (Source: EMR DB 2024/25 Scaled EFC methodology)
 # These represent the fraction of nameplate capacity that receives CM payment
 UK_CM_DERATING_FACTORS = {
@@ -1099,6 +1113,84 @@ def calculate_upfront_investment(params):
     return params["battery install cost"]
 
 
+def calculate_loan_cashflows(annual_profit, total_investment, loan_years=LOAN_YEARS):
+    """
+    Calculate year-by-year cashflows with battery loan repaid over loan_years.
+    Uses straight-line (interest-free) repayment.
+
+    Returns list of annual cashflow dicts through end of battery life.
+    """
+    annual_repayment = total_investment / loan_years
+
+    cashflows = []
+    cumulative = 0
+
+    for year in range(1, BATTERY_LIFE_YEARS + 1):
+        in_loan_period = year <= loan_years
+        loan_payment = annual_repayment if in_loan_period else 0
+        net = annual_profit - loan_payment
+        cumulative += net
+        cashflows.append({
+            "year": year,
+            "loan_payment": loan_payment,
+            "profit": annual_profit,
+            "net_cashflow": net,
+            "cumulative": cumulative,
+            "in_loan_period": in_loan_period,
+        })
+
+    return cashflows
+
+
+def print_loan_repayment_plan(annual_profit, total_investment, scenario_name, loan_years=LOAN_YEARS):
+    """
+    Print year-by-year cashflow plan: loan repayment for loan_years years,
+    then cashflow-positive through end of battery life.
+    """
+    annual_repayment = total_investment / loan_years
+
+    print(f"\n  [{scenario_name}] {loan_years}-Year Loan Repayment Plan")
+    print(f"  Total investment (loan): €{total_investment:.0f}")
+    print(f"  Annual loan repayment:   €{annual_repayment:.0f}/year (straight-line, no interest)")
+    print(f"  Annual profit:           €{annual_profit:.2f}/year")
+
+    cashflows = calculate_loan_cashflows(annual_profit, total_investment, loan_years)
+
+    first_positive_year = next(
+        (cf["year"] for cf in cashflows if cf["net_cashflow"] >= 0), None
+    )
+
+    print()
+    print(f"  {'Yr':<3} | {'Loan Repmt':>11} | {'Profit':>9} | {'Net CF':>10} | {'Cumulative':>12} | Phase")
+    print(f"  {'-'*65}")
+
+    for cf in cashflows:
+        if cf["year"] == loan_years + 1:
+            print(f"  {'---':<3} | {'  LOAN PAID OFF':>35} | {'':>12} |")
+
+        loan_str = f"-€{cf['loan_payment']:.0f}" if cf["loan_payment"] > 0 else "      €0"
+        profit_str = f"€{cf['profit']:.0f}"
+        net_val = cf["net_cashflow"]
+        net_str = f"+€{net_val:.0f}" if net_val >= 0 else f"-€{-net_val:.0f}"
+        cum_val = cf["cumulative"]
+        cum_str = f"+€{cum_val:.0f}" if cum_val >= 0 else f"-€{-cum_val:.0f}"
+        phase = "LOAN" if cf["in_loan_period"] else "FREE "
+
+        print(f"  {cf['year']:<3} | {loan_str:>11} | {profit_str:>9} | {net_str:>10} | {cum_str:>12} | {phase}")
+
+    print(f"  {'-'*65}")
+    if first_positive_year:
+        if first_positive_year <= loan_years:
+            print(f"  >>> Cashflow positive from year {first_positive_year} (even during loan period)")
+        else:
+            print(f"  >>> Cashflow positive from year {first_positive_year} (after loan paid off)")
+    else:
+        print(f"  >>> WARNING: Never cashflow positive within battery life")
+    total_net = cashflows[-1]["cumulative"]
+    sign = "+" if total_net >= 0 else ""
+    print(f"  >>> {BATTERY_LIFE_YEARS}-year net position: {sign}€{total_net:.0f}")
+
+
 def calculate_battery_ceiling(params):
     """
     Calculate effective battery size ceiling based on TWO constraints:
@@ -1249,9 +1341,9 @@ def optimize_battery_size(nation, params, prices_df, use_profile):
         install_cost = params["battery install cost"]
         total_investment = battery_cost + install_cost
 
-        # Simple ROI over 8 years
-        roi_vpp = (vpp_profit * 8 - total_investment) / total_investment if total_investment > 0 else 0
-        roi_elec = (elec_profit * 8 - total_investment) / total_investment if total_investment > 0 else 0
+        # ROI over battery life
+        roi_vpp = (vpp_profit * BATTERY_LIFE_YEARS - total_investment) / total_investment if total_investment > 0 else 0
+        roi_elec = (elec_profit * BATTERY_LIFE_YEARS - total_investment) / total_investment if total_investment > 0 else 0
 
         results.append({
             "size_kwh": size,
@@ -1548,14 +1640,26 @@ def run_model_for_nation(nation, params, use_profile):
     print(f"\n>>> ELEC COMPANY ANNUAL PROFIT PER CUSTOMER: €{elec_profit:.2f}")
 
     # =========================================
-    # UPFRONT INVESTMENT
+    # UPFRONT INVESTMENT & LOAN REPAYMENT PLAN
     # =========================================
     print(f"\n{'-'*40}")
-    print("UPFRONT INVESTMENT (battery already owned)")
+    print("UPFRONT INVESTMENT")
     print(f"{'-'*40}")
 
-    investment = calculate_upfront_investment(p)
-    print(f"Installation Cost: €{investment:.2f}")
+    battery_cost_total = get_battery_cost_per_kwh(p) * battery_kwh
+    install_cost = p["battery install cost"]
+    total_investment = battery_cost_total + install_cost
+    print(f"  Battery cost: €{get_battery_cost_per_kwh(p):.0f}/kWh × {battery_kwh:.0f} kWh = €{battery_cost_total:.0f}")
+    print(f"  Install cost: €{install_cost:.0f}")
+    print(f"  TOTAL:        €{total_investment:.0f}")
+
+    print(f"\n{'-'*40}")
+    print(f"LOAN REPAYMENT PLAN ({LOAN_YEARS}-year payoff)")
+    print(f"{'-'*40}")
+    print("Assumes full battery cost financed; straight-line repayment, no interest.")
+
+    print_loan_repayment_plan(vpp_profit, total_investment, "VPP")
+    print_loan_repayment_plan(elec_profit, total_investment, "Elec Company")
 
     # =========================================
     # BATTERY SIZE OPTIMIZATION
@@ -1574,8 +1678,8 @@ def run_model_for_nation(nation, params, use_profile):
     best_vpp = opt_results.loc[opt_results["roi_vpp_8yr"].idxmax()]
     best_elec = opt_results.loc[opt_results["roi_elec_8yr"].idxmax()]
 
-    print(f"\nOptimal for VPP: {best_vpp['size_kwh']:.1f} kWh (8yr ROI: {best_vpp['roi_vpp_8yr']*100:.1f}%)")
-    print(f"Optimal for Elec Company: {best_elec['size_kwh']:.1f} kWh (8yr ROI: {best_elec['roi_elec_8yr']*100:.1f}%)")
+    print(f"\nOptimal for VPP: {best_vpp['size_kwh']:.1f} kWh ({BATTERY_LIFE_YEARS}yr ROI: {best_vpp['roi_vpp_8yr']*100:.1f}%)")
+    print(f"Optimal for Elec Company: {best_elec['size_kwh']:.1f} kWh ({BATTERY_LIFE_YEARS}yr ROI: {best_elec['roi_elec_8yr']*100:.1f}%)")
 
     return {
         "nation": nation,
@@ -1586,13 +1690,271 @@ def run_model_for_nation(nation, params, use_profile):
         "vpp_costs": total_vpp_costs,
         "elec_operating_costs": operating_costs,
         "elec_levy": levy,
-        "upfront_investment": investment,
+        "upfront_investment": total_investment,
         "optimal_vpp_kwh": best_vpp["size_kwh"],
         "optimal_vpp_roi": best_vpp["roi_vpp_8yr"],
         "optimal_vpp_strategy": best_vpp["vpp_strategy"],
         "optimal_elec_kwh": best_elec["size_kwh"],
         "optimal_elec_roi": best_elec["roi_elec_8yr"],
         "optimal_elec_strategy": best_elec.get("elec_strategy", ""),
+    }
+
+
+def generate_uk_business_plan(params, prices_df, use_profile):
+    """
+    Generate full P&L and 15-year cashflow for UK as a fixed-rate electricity provider.
+
+    Tariff:  UK_OUR_RATE_PENCE_PER_KWH per kWh  +  UK_OUR_STANDING_CHARGE_PER_MONTH/month
+    Battery: optimised via MILP (VPP model); income treated as separate revenue stream.
+    Wholesale cost: consumption-weighted average hourly price from price data.
+    Currency: all values in GBP (EUR amounts converted at GBP_TO_EUR).
+    """
+    p = params["UK"]
+    battery_kwh = p["battery capacity kwh"]
+    battery_kw  = p["battery power kw"]
+    annual_kwh  = p["Mean electricity residential consumption annual (kWH)"]
+    vat_rate    = p["VAT on electricity %"] / 100  # 0.05
+
+    lines = []
+    def L(s=""):
+        lines.append(s)
+
+    # -------------------------------------------------------------------------
+    # HEADER
+    # -------------------------------------------------------------------------
+    L("=" * 80)
+    L("UK ELECTRICITY PROVIDER — FULL BUSINESS PLAN")
+    L(f"Analysis period : {DATE_START} to {DATE_END}")
+    L(f"Generated       : {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+    L("=" * 80)
+
+    # -------------------------------------------------------------------------
+    # TARIFF COMPARISON
+    # -------------------------------------------------------------------------
+    standard_annual = (UK_STANDARD_RATE_PENCE_PER_KWH / 100) * annual_kwh + \
+                      UK_STANDARD_STANDING_CHARGE_PER_MONTH * 12
+    our_annual = (UK_OUR_RATE_PENCE_PER_KWH / 100) * annual_kwh + \
+                 UK_OUR_STANDING_CHARGE_PER_MONTH * 12
+    saving_annual = standard_annual - our_annual
+
+    L("")
+    L("TARIFF COMPARISON  (vs Ofgem price cap standard rate)")
+    L("-" * 60)
+    L(f"  {'':38} {'Ours':>8} {'Standard':>10} {'Saving':>9}")
+    L(f"  {'Unit rate (inc 5% VAT)':38} {UK_OUR_RATE_PENCE_PER_KWH:>7.0f}p {UK_STANDARD_RATE_PENCE_PER_KWH:>9.0f}p {UK_STANDARD_RATE_PENCE_PER_KWH - UK_OUR_RATE_PENCE_PER_KWH:>8.0f}p")
+    L(f"  {'Standing charge / month':38} £{UK_OUR_STANDING_CHARGE_PER_MONTH:>6.2f}  £{UK_STANDARD_STANDING_CHARGE_PER_MONTH:>8.2f}  £{UK_STANDARD_STANDING_CHARGE_PER_MONTH - UK_OUR_STANDING_CHARGE_PER_MONTH:>7.2f}")
+    L(f"  {'Annual bill ({:,} kWh)'.format(int(annual_kwh)):38} £{our_annual:>6.0f}  £{standard_annual:>8.0f}  £{saving_annual:>7.0f}")
+    L(f"  {'Saving per month':38} {'':>8} {'':>10} £{saving_annual/12:>8.2f}")
+
+    # -------------------------------------------------------------------------
+    # BATTERY TRADING INCOME  (MILP optimisation)
+    # -------------------------------------------------------------------------
+    L("")
+    L("-" * 60)
+    L("Running MILP optimisation for battery trading income...")
+    vpp = optimize_battery_allocation_vpp(prices_df, p, battery_kwh, battery_kw, "UK")
+
+    # The MILP mixes EUR-priced arbitrage with GBP-denominated FR/CM.
+    # Divide total by GBP_TO_EUR to convert to GBP (conservative; FR/CM slightly under-stated).
+    arb_gbp   = vpp["arbitrage_with_bm"]    / GBP_TO_EUR
+    fr_gbp    = vpp["frequency_response"]   / GBP_TO_EUR
+    cm_gbp    = vpp["capacity_market"]      / GBP_TO_EUR
+    bm_gbp    = vpp["balancing_mechanism"]  / GBP_TO_EUR
+    bat_gbp   = vpp["total_revenue"]        / GBP_TO_EUR
+
+    # -------------------------------------------------------------------------
+    # REVENUE
+    # -------------------------------------------------------------------------
+    elec_gross   = (UK_OUR_RATE_PENCE_PER_KWH / 100) * annual_kwh
+    elec_vat     = elec_gross * vat_rate / (1 + vat_rate)
+    elec_net     = elec_gross / (1 + vat_rate)
+
+    standing_gross = UK_OUR_STANDING_CHARGE_PER_MONTH * 12
+    standing_vat   = standing_gross * vat_rate / (1 + vat_rate)
+    standing_net   = standing_gross / (1 + vat_rate)
+
+    consumer_rev   = elec_net + standing_net
+    total_rev      = consumer_rev + bat_gbp
+
+    # -------------------------------------------------------------------------
+    # COSTS
+    # -------------------------------------------------------------------------
+    # Wholesale electricity: actual consumption-weighted average (EUR→GBP)
+    wholesale_eur = calculate_wholesale_cost_for_consumer(prices_df, annual_kwh, use_profile)
+    wholesale_gbp = wholesale_eur / GBP_TO_EUR
+
+    # Grid / network per-kWh charge
+    grid_p_per_kwh = p.get("residential min grid cost p/kwh avg daily (lowest hour)", 0)
+    grid_gbp       = (grid_p_per_kwh / 100) * annual_kwh
+
+    levy      = p.get("electricity company annual levy per customer", 0)  # GBP
+    cust_mgmt = p["Cost of managing customers per customer per annum if electricity company"]
+
+    total_costs = wholesale_gbp + grid_gbp + levy + cust_mgmt
+
+    # -------------------------------------------------------------------------
+    # P&L
+    # -------------------------------------------------------------------------
+    ebitda            = total_rev - total_costs
+    batt_invest_eur   = get_battery_cost_per_kwh(p) * battery_kwh + p["battery install cost"]
+    batt_invest_gbp   = batt_invest_eur / GBP_TO_EUR
+    annual_amort      = batt_invest_gbp / BATTERY_LIFE_YEARS
+    net_profit        = ebitda - annual_amort
+    annual_loan_repmt = batt_invest_gbp / LOAN_YEARS
+
+    # -------------------------------------------------------------------------
+    # OUTPUT — P&L
+    # -------------------------------------------------------------------------
+    W = 54  # inner column width
+
+    L("")
+    L("=" * 80)
+    L("PROFIT & LOSS ACCOUNT  (per customer, per year — GBP)")
+    L("=" * 80)
+
+    L("")
+    L("REVENUE")
+    L(f"  Electricity sales ({UK_OUR_RATE_PENCE_PER_KWH:.0f}p/kWh x {int(annual_kwh):,} kWh)")
+    L(f"    Gross (inc VAT)                              £{elec_gross:>8,.2f}")
+    L(f"    Less VAT (5%)                               -£{elec_vat:>8,.2f}")
+    L(f"    Net electricity revenue                      £{elec_net:>8,.2f}")
+    L(f"  Standing charge (£{UK_OUR_STANDING_CHARGE_PER_MONTH:.0f}/month x 12)")
+    L(f"    Gross (inc VAT)                              £{standing_gross:>8,.2f}")
+    L(f"    Less VAT (5%)                               -£{standing_vat:>8,.2f}")
+    L(f"    Net standing charge revenue                  £{standing_net:>8,.2f}")
+    L(f"  {'─'*W}")
+    L(f"  Total consumer revenue                         £{consumer_rev:>8,.2f}")
+    L("")
+    L(f"  Battery trading income  ({vpp['num_days']} days of data, MILP optimised)")
+    L(f"    Arbitrage (with BM uplift)                   £{arb_gbp:>8,.2f}")
+    L(f"    Frequency Response (FR)                      £{fr_gbp:>8,.2f}")
+    L(f"    Capacity Market (CM)                         £{cm_gbp:>8,.2f}")
+    L(f"    Balancing Mechanism (BM) uplift              £{bm_gbp:>8,.2f}")
+    L(f"  {'─'*W}")
+    L(f"  Total battery trading income                   £{bat_gbp:>8,.2f}")
+    L("")
+    L(f"  {'═'*W}")
+    L(f"  TOTAL REVENUE                                  £{total_rev:>8,.2f}")
+
+    L("")
+    L("COSTS")
+    L(f"  Wholesale electricity (consumption-weighted)  -£{wholesale_gbp:>8,.2f}")
+    if grid_gbp > 0:
+        L(f"  Grid / network charges ({grid_p_per_kwh:.1f}p/kWh)          -£{grid_gbp:>8,.2f}")
+    L(f"  Electricity company levy                      -£{levy:>8,.2f}")
+    L(f"  Customer management                           -£{cust_mgmt:>8,.2f}")
+    L(f"  {'─'*W}")
+    L(f"  TOTAL OPERATING COSTS                         -£{total_costs:>8,.2f}")
+
+    L("")
+    L(f"  {'═'*W}")
+    L(f"  EBITDA  (= annual operating cash flow)         £{ebitda:>8,.2f}")
+    L("")
+    L(f"  Battery amortisation ({BATTERY_LIFE_YEARS} years)            -£{annual_amort:>8,.2f}")
+    L(f"  {'─'*W}")
+    L(f"  NET PROFIT                                     £{net_profit:>8,.2f}")
+
+    # -------------------------------------------------------------------------
+    # OUTPUT — CASHFLOW FORECAST
+    # -------------------------------------------------------------------------
+    L("")
+    L("=" * 80)
+    L(f"{BATTERY_LIFE_YEARS}-YEAR CASHFLOW FORECAST  ({LOAN_YEARS}-year loan, straight-line, 0% interest)")
+    L("=" * 80)
+    L("")
+    L(f"  Battery investment   : £{batt_invest_gbp:,.0f}  (financed via {LOAN_YEARS}-year loan)")
+    L(f"  Annual loan repayment: £{annual_loan_repmt:,.0f} / year")
+    L(f"  Annual operating CF  : £{ebitda:,.0f} / year  (= EBITDA; amortisation is non-cash)")
+    L("")
+    L(f"  {'Yr':>3} | {'Loan Repmt':>11} | {'Op. CF':>9} | {'Net CF':>10} | {'Cumulative':>12} | Status")
+    L(f"  {'-'*70}")
+
+    cumulative = 0.0
+    first_pos_year = None
+    cf_rows = []
+
+    for year in range(1, BATTERY_LIFE_YEARS + 1):
+        in_loan  = year <= LOAN_YEARS
+        repmt    = annual_loan_repmt if in_loan else 0.0
+        net_cf   = ebitda - repmt
+        cumulative += net_cf
+        if first_pos_year is None and net_cf >= 0:
+            first_pos_year = year
+        cf_rows.append((year, in_loan, repmt, net_cf, cumulative))
+
+    for (year, in_loan, repmt, net_cf, cum) in cf_rows:
+        if year == LOAN_YEARS + 1:
+            L(f"  {'':3} | {'-- LOAN PAID OFF --':>43} |")
+
+        repmt_s = f"-£{repmt:,.0f}" if repmt > 0 else "       £0"
+        opcf_s  = f"+£{ebitda:,.0f}"
+        net_s   = (f"+£{net_cf:,.0f}" if net_cf >= 0 else f"-£{-net_cf:,.0f}")
+        cum_s   = (f"+£{cum:,.0f}"    if cum    >= 0 else f"-£{-cum:,.0f}")
+        flag    = "LOSS" if net_cf < 0 else ("POSITIVE  <-- first" if year == first_pos_year and year > 1 else "POSITIVE")
+
+        L(f"  {year:>3} | {repmt_s:>11} | {opcf_s:>9} | {net_s:>10} | {cum_s:>12} | {flag}")
+
+    L(f"  {'-'*70}")
+    total_15yr = cf_rows[-1][4]
+    if first_pos_year:
+        if first_pos_year <= LOAN_YEARS:
+            L(f"  >>> Cashflow positive from year {first_pos_year} (even while repaying loan)")
+        else:
+            L(f"  >>> Cashflow positive from year {first_pos_year} (after loan fully repaid in year {LOAN_YEARS})")
+    else:
+        L(f"  >>> WARNING: Net cashflow never positive within {BATTERY_LIFE_YEARS}-year battery life")
+    sign = "+" if total_15yr >= 0 else ""
+    L(f"  >>> {BATTERY_LIFE_YEARS}-year cumulative net: {sign}£{total_15yr:,.0f}")
+    L(f"  >>> Cumulative loan paid: £{batt_invest_gbp:,.0f}  (battery replacement not modelled)")
+
+    # -------------------------------------------------------------------------
+    # CUSTOMER VALUE PROPOSITION
+    # -------------------------------------------------------------------------
+    L("")
+    L("=" * 80)
+    L("CUSTOMER VALUE PROPOSITION")
+    L("=" * 80)
+    L("")
+    L(f"  Standard tariff ({UK_STANDARD_RATE_PENCE_PER_KWH:.0f}p/kWh + £{UK_STANDARD_STANDING_CHARGE_PER_MONTH:.2f}/month):  £{standard_annual:,.0f} / year")
+    L(f"  Our tariff       ({UK_OUR_RATE_PENCE_PER_KWH:.0f}p/kWh + £{UK_OUR_STANDING_CHARGE_PER_MONTH:.2f}/month):  £{our_annual:,.0f} / year")
+    L(f"  Annual saving per customer                              :  £{saving_annual:,.0f} / year")
+    L(f"  Monthly saving                                          :  £{saving_annual/12:.2f} / month")
+    L(f"  Saving as % of standard bill                            :  {saving_annual/standard_annual*100:.1f}%")
+    L("")
+    L(f"  Battery size : {battery_kwh:.0f} kWh / {battery_kw:.0f} kW")
+    L(f"  Battery life : {BATTERY_LIFE_YEARS} years")
+    L(f"  Loan term    : {LOAN_YEARS} years")
+
+    # -------------------------------------------------------------------------
+    # NOTES & ASSUMPTIONS
+    # -------------------------------------------------------------------------
+    L("")
+    L("=" * 80)
+    L("NOTES & ASSUMPTIONS")
+    L("=" * 80)
+    L(f"  1. Battery hardware : £{get_battery_cost_per_kwh(p)*battery_kwh/GBP_TO_EUR:,.0f}  (£{get_battery_cost_per_kwh(p)/GBP_TO_EUR:.0f}/kWh x {battery_kwh:.0f} kWh, inc 15% wholesale discount)")
+    L(f"     Installation     : £{p['battery install cost']/GBP_TO_EUR:,.0f}")
+    L(f"     Total investment : £{batt_invest_gbp:,.0f}")
+    L(f"  2. Loan             : {LOAN_YEARS}-year straight-line, 0% interest (add ~5-8% for realistic finance cost)")
+    L(f"  3. Battery trading  : MILP-optimised daily strategy across {vpp['num_days']} days of actual price data")
+    L(f"                        {vpp['pure_arb_days']} pure-arb days | {vpp['mixed_days']} mixed days | {vpp['pure_fr_days']} pure-FR days")
+    L(f"  4. Wholesale cost   : Actual hourly prices weighted by UK consumption profile")
+    L(f"  5. Currency         : EUR wholesale prices converted to GBP at 1 GBP = {GBP_TO_EUR} EUR")
+    L(f"  6. Tax              : Corporation tax not modelled")
+    L(f"  7. Scale            : All figures are per-customer (battery per installation)")
+    L(f"  8. Consumption      : {int(annual_kwh):,} kWh/year (UK average)")
+    L("")
+
+    return {
+        "lines": lines,
+        "total_revenue_gbp": total_rev,
+        "total_costs_gbp": total_costs,
+        "ebitda": ebitda,
+        "net_profit": net_profit,
+        "batt_invest_gbp": batt_invest_gbp,
+        "annual_loan_repmt": annual_loan_repmt,
+        "first_pos_year": first_pos_year,
+        "cumulative_15yr": total_15yr,
     }
 
 
@@ -1644,7 +2006,7 @@ def main():
     print("\n" + "="*120)
     print("COMPREHENSIVE SUMMARY TABLE")
     print("="*120)
-    print(f"{'Nation':<12} | {'Scenario':<12} | {'Battery':<8} | {'Strategy':<20} | {'Upfront':<10} | {'Profit/yr':<10} | {'8yr ROI':<8} | {'Payback':<8}")
+    print(f"{'Nation':<12} | {'Scenario':<12} | {'Battery':<8} | {'Strategy':<20} | {'Upfront':<10} | {'Profit/yr':<10} | {f'{BATTERY_LIFE_YEARS}yr ROI':<8} | {'Payback':<8}")
     print("-"*120)
 
     for nation in summary_df.index:
@@ -1830,6 +2192,31 @@ def main():
     print("  - Elec Company: Battery serves consumer first, only leftover for trading")
     print("  - Consumer Margin = Retail (net of VAT/tax) - Wholesale (at min price)")
     print("  - Levy subtracted at end of Elec Company profit")
+
+    # =========================================================================
+    # UK ELECTRICITY PROVIDER — FULL BUSINESS PLAN
+    # =========================================================================
+    print("\n\n" + "=" * 80)
+    print("UK ELECTRICITY PROVIDER — FULL BUSINESS PLAN")
+    print(f"  Tariff: {UK_OUR_RATE_PENCE_PER_KWH:.0f}p/kWh  +  £{UK_OUR_STANDING_CHARGE_PER_MONTH:.0f}/month  "
+          f"(vs {UK_STANDARD_RATE_PENCE_PER_KWH:.0f}p + £{UK_STANDARD_STANDING_CHARGE_PER_MONTH:.2f}/mo standard)")
+    print("=" * 80)
+
+    uk_prices_df = load_hourly_prices("UK")
+    uk_plan = generate_uk_business_plan(params, uk_prices_df, use_profile)
+
+    # Print to screen
+    for line in uk_plan["lines"]:
+        print(line)
+
+    # Save to file
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    output_file = OUTPUT_DIR / "uk_business_plan.txt"
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("\n".join(uk_plan["lines"]))
+        f.write("\n")
+
+    print(f"\n>>> Business plan saved to: {output_file}")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,177 @@
+
+============================================================================================
+VLP BATTERY — THREE-STATEMENT MODEL v3  (UK, Jul 2024–Jun 2025 wholesale)
+============================================================================================
+
+BATTERY SPECS
+  Capacity   : 15.36 kWh  |  Inverter: 6 kW  |  Duration: 2.56 hrs
+  Cost       : 15.36 × £220/kWh + £400 install = £3,779.20
+  Loan       : 7% p.a.  |  Life: 10 yrs  |  Dep: £377.92/yr
+
+CHARGING TIME MODEL  (inverter-constrained, hourly price data)
+  Grid draw to charge : 16.191 kWh  →  2.698 hrs at 6 kW
+  Energy discharged   : 14.572 kWh  →  2.429 hrs at 6 kW
+  Strategy            : buy cheapest 2.70 hrs/day, sell dearest 2.43 hrs/day
+  (uses 2 full + 0.698 partial hour charging; 2 full + 0.429 partial discharging)
+
+BATTERY MARKET REVENUES  (direct wholesale, Jul 2024–Jun 2025)
+  Charge cost (buy)  : £322.96/yr  at daily cheapest hours
+  Sell revenue       : £654.22/yr  at daily dearest hours
+  Net arbitrage      : £331.26/yr
+
+GRID SERVICES  (6 kW battery)
+  Frequency response : 6kW × £34/kW            = £204.00/yr
+  Capacity market    : 6kW × £40/kW × 20.94% de-rate = £50.26/yr
+  Balancing mech     : arb £331.26 × 10% × 5%     = £1.66/yr
+  Total              :                               £255.91/yr
+
+FULL COST STACK  (Ofgem Q1 2025 methodology)
+  Cost line                                    £/yr
+  ──────────────────────────────────────────────────
+  Wholesale electricity supply             £  305.88
+  Policy levy (grid_levy)                  £   95.00
+  Customer management                      £   10.00
+  TNUoS (transmission network)             £   44.46
+  DUoS  (distribution network)             £  157.52
+  BSUoS (balancing services)               £   27.03
+  Smart metering obligation                £   32.46
+  Supplier opex (billing/compl.)           £   90.33
+  Bad debt provision (~0.4%)               £   14.78
+  ──────────────────────────────────────────────────
+  TOTAL COSTS                              £  777.47
+
+  Competitor: 25p/kWh + 50p/day = £1,083.60/yr  (3604 kWh)
+
+────────────────────────────────────────────────────────────────────────────────────────────
+PRICING SENSITIVITY
+────────────────────────────────────────────────────────────────────────────────────────────
+  Tariff                      Cust Bill  Saving £  Saving%    EBITDA     EBIT   Yr1 NI   Yr1 OCF
+────────────────────────────────────────────────────────────────────────────────────────────
+  19p/kWh + £8/mo            £  780.84  £ 302.76    27.9% £ 590.53 £212.61 £   -52~ £    326
+  20p/kWh + £8/mo            £  816.88  £ 266.72    24.6% £ 626.58 £248.66 £   -16~ £    362
+  21p/kWh + £8/mo            £  852.92  £ 230.68    21.3% £ 662.62 £284.70 £    15✓ £    393
+  22p/kWh + £10/mo  ★ base case £  912.97  £ 170.63    15.7% £ 722.67 £344.75 £    60✓ £    438
+  23p/kWh + £10/mo           £  949.01  £ 134.59    12.4% £ 758.71 £380.79 £    87✓ £    465
+  24p/kWh + £10/mo           £  985.06  £  98.54     9.1% £ 794.75 £416.83 £   114✓ £    492
+
+  ✓ = profitable from year 1   ~ = cashflow positive but NI negative yr1
+
+============================================================================================
+ANNUAL UNIT ECONOMICS — 22p/kWh + £10/month  (base case)
+============================================================================================
+  Customer bill: £912.97/yr  vs competitor £1,083.60/yr  →  saves £170.63  (15.7% cheaper)
+
+  ── INCOME STATEMENT ──
+  REVENUE
+    Electricity sales (3604 kWh × 22p/kWh)               £  792.97
+    Monthly service fee (£10/mo × 12)                    £  120.00
+    Battery arbitrage — net (direct wholesale market)    £  331.26
+        Sell revenue  (15.36kWh × eff × 2.43h daily peak)  £  654.22
+        Charge cost   (15.36kWh / eff × 2.70h daily trough)-£  322.96
+    Frequency response (6kW × £34/kW)                    £  204.00
+    Capacity market    (6kW × £40 × 20.94% de-rate)      £   50.26
+    Balancing mechanism                                  £    1.66
+    ────────────────────────────────────────────────────────────
+    Total Revenue                                        £1,500.14
+
+  COST OF REVENUE
+    Wholesale electricity (3604kWh × 8.49p/kWh)         -£  305.88
+    ────────────────────────────────────────────────────────────
+    Gross Profit                                         £1,194.25
+
+  OPERATING EXPENSES
+    Policy levy (grid_levy per customer)                -£   95.00
+    Customer management (CRM)                           -£   10.00
+    TNUoS — transmission network                        -£   44.46
+    DUoS  — distribution network                        -£  157.52
+    BSUoS — balancing services                          -£   27.03
+    Smart metering obligation                           -£   32.46
+    Supplier opex (billing, compliance, hedging)        -£   90.33
+    Bad debt provision                                  -£   14.78
+    ────────────────────────────────────────────────────────────
+    EBITDA                                               £  722.67
+    Depreciation (£3,779 / 10yr)                        -£  377.92
+    ────────────────────────────────────────────────────────────
+    EBIT                                                 £  344.75
+    Interest — year 1  (7% × £3,779)                    -£  264.54
+    ────────────────────────────────────────────────────────────
+    EBT — year 1                                         £   80.20
+    Tax 25%                                             -£   20.05
+    ────────────────────────────────────────────────────────────
+    Net Income — year 1                                  £   60.15
+
+============================================================================================
+THREE-STATEMENT FORECAST — 22p/kWh + £10/mo  (battery 100% loan-funded, max repayment each year)
+============================================================================================
+
+  ── INCOME STATEMENT (£, single customer) ──
+ Year  Revenue  COGS  Gross Profit  EBITDA  Depreciation  EBIT  Interest  EBT  Tax (25%)  Net Income
+    1    1,500   306         1,194     723           378   345       265   80         20          60
+    2    1,500   306         1,194     723           378   345       234  111         28          83
+    3    1,500   306         1,194     723           378   345       202  143         36         107
+    4    1,500   306         1,194     723           378   345       168  177         44         133
+    5    1,500   306         1,194     723           378   345       132  213         53         160
+    6    1,500   306         1,194     723           378   345        94  250         63         188
+    7    1,500   306         1,194     723           378   345        55  290         73         218
+    8    1,500   306         1,194     723           378   345        13  332         83         249
+    9    1,500   306         1,194     723           378   345         0  345         86         259
+   10    1,500   306         1,194     723           378   345         0  345         86         259
+
+  ── CASH FLOW STATEMENT (£) ──
+ Year  Operating CF  Principal  Financing CF  Free Cash  Cum Cash
+    1           438        438          -438          0         0
+    2           461        461          -461          0         0
+    3           485        485          -485          0         0
+    4           511        511          -511          0         0
+    5           538        538          -538          0         0
+    6           566        566          -566          0         0
+    7           595        595          -595          0         0
+    8           627        185          -185        442       442
+    9           636          0            -0        636     1,078
+   10           636          0            -0        636     1,715
+  Note: interest paid included in Operating CF (indirect method)
+
+  ── BALANCE SHEET (£) ──
+ Year  Cum Cash  Battery NBV  Total Assets  Loan Balance  Retained Earn  BS Check
+    1         0        3,401         3,401         3,341             60         0
+    2         0        3,023         3,023         2,880            143        -0
+    3         0        2,645         2,645         2,395            251        -0
+    4         0        2,268         2,268         1,884            383        -0
+    5         0        1,890         1,890         1,346            543        -0
+    6         0        1,512         1,512           781            731         0
+    7         0        1,134         1,134           185            949        -0
+    8       442          756         1,197             0          1,197        -0
+    9     1,078          378         1,456             0          1,456        -0
+   10     1,715            0         1,715             0          1,715        -0
+
+  Loan paid off            : Year 8
+  Post-payoff free cashflow: £572/yr/customer
+  Total interest paid      : £1,161
+  Total tax paid           : £572
+  10-yr cumulative cash    : £1,715
+
+============================================================================================
+PORTFOLIO FORECAST — 22p/kWh + £10/mo  (illustrative 50→1,050 customers, years 1–5)
+============================================================================================
+ Year  New Custs  Total Custs  EBITDA    EBIT  Interest     EBT    Tax  Net Income   Op CF  Free Cash  Cum Cash  Loan Bal
+    1         50           50  36,133  17,237    13,227   4,010  1,003       3,008  21,904          0         0   167,056
+    2        100          150 108,400  51,712    38,148  13,564  3,391      10,173  66,861          0         0   478,116
+    3        200          350 252,933 120,661    86,377  34,284  8,571      25,713 157,985          0         0 1,075,971
+    4        300          650 469,733 224,085   154,681  69,404 17,351      52,053 297,701          0         0 1,912,030
+    5        400         1050 758,799 361,983   239,660 122,324 30,581      91,743 488,559          0         0 2,935,151
+    6          0         1050 758,799 361,983   205,461 156,523 39,131     117,392 514,208          0         0 2,420,943
+    7          0         1050 758,799 361,983   169,466 192,517 48,129     144,388 541,204          0         0 1,879,739
+    8          0         1050 758,799 361,983   131,582 230,402 57,600     172,801 569,617          0         0 1,310,122
+    9          0         1050 758,799 361,983    91,709 270,275 67,569     202,706 599,522          0         0   710,600
+   10          0         1050 758,799 361,983    49,742 312,241 78,060     234,181 630,997          0         0    79,603
+   11          0         1050 758,799 361,983     5,572 356,411 89,103     267,308 664,124    584,521   584,521         0
+   12          0         1050 758,799 361,983         0 361,983 90,496     271,487 668,303    668,303 1,252,825         0
+
+  At 1,050 customers (steady state):
+    Annual EBITDA     : £   758,799
+    Annual Net Income : £   271,487  (approx, post-payoff)
+    Annual Free CF    : £   758,799  (EBITDA, post-payoff)
+    Post-payoff OCF   : £   584,521/yr
+
+  Saved: /home/moley/ionic/vlp_model/results/pl_cashflow_base_case_3.csv
+  Saved: /home/moley/ionic/vlp_model/results/pl_cashflow_portfolio_3.csv

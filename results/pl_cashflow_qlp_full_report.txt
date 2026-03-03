@@ -1,0 +1,191 @@
+
+====================================================================================================
+VLP BATTERY — QUICK LOAN PAYOFF COMPARISON  (Base Case, UK Jul 2024–Jun 2025)
+====================================================================================================
+
+BATTERY SPECS
+  Capacity   : 15.36 kWh  |  Inverter: 6 kW  |  Duration: 2.56 hrs
+  Cost       : 15.36 × £220/kWh + £400 install = £3,779.20
+  Loan rate  : 7% p.a.  |  Battery life: 10 yrs  |  Dep: £377.92/yr
+
+LOAN SCENARIOS COMPARED
+  3-year payoff : £1,259.73/yr principal  (total interest ≈ £529.09)
+  4-year payoff : £944.80/yr principal  (total interest ≈ £661.36)
+  5-year payoff : £755.84/yr principal  (total interest ≈ £793.63)
+
+ARBITRAGE  (UK wholesale, Jul 2024–Jun 2025)
+  Charge cost : £322.96/yr   Sell revenue : £654.22/yr
+  Net arbitrage : £331.26/yr
+
+UNIT ECONOMICS  (22p/kWh + £10/month)
+  Annual revenue   : £1,500.14
+  Annual EBITDA    : £722.67
+  Annual EBIT      : £344.75
+  Customer bill    : £912.97/yr  vs competitor £1,083.60/yr
+  Saving           : £170.63  (15.7% cheaper)
+
+  3-YEAR LOAN PAYOFF  —  annual principal £1,259.73
+  ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  Income Statement (£/yr, single customer):
+ Year  Revenue  EBITDA  EBIT  Interest  EBT  Tax (25%)  Net Income
+    1    1,500     723   345       265   80         20          60
+    2    1,500     723   345       176  168         42         126
+    3    1,500     723   345        88  257         64         192
+    4    1,500     723   345         0  345         86         259
+    5    1,500     723   345         0  345         86         259
+    6    1,500     723   345         0  345         86         259
+    7    1,500     723   345         0  345         86         259
+    8    1,500     723   345         0  345         86         259
+    9    1,500     723   345         0  345         86         259
+   10    1,500     723   345         0  345         86         259
+
+  Cash Flow & Balance Sheet (£):
+ Year  Operating CF   Principal  Free Cash     Cum Cash  Loan Balance
+    1    438.071492 1259.733333   *** -822  -821.661841   2519.466667
+    2    504.207492 1259.733333   *** -756 -1577.187683   1259.733333
+    3    570.343492 1259.733333   *** -689 -2266.577524      0.000000
+    4    636.479492    0.000000        636 -1630.098032      0.000000
+    5    636.479492    0.000000        636  -993.618541      0.000000
+    6    636.479492    0.000000        636  -357.139049      0.000000
+    7    636.479492    0.000000        636   279.340443      0.000000
+    8    636.479492    0.000000        636   915.819935      0.000000
+    9    636.479492    0.000000        636  1552.299427      0.000000
+   10    636.479492    0.000000        636  2188.778919      0.000000
+  *** = negative free cashflow year (fixed principal > OCF)
+
+  Loan fully repaid    : Year 3
+  Cashflow-negative yrs: [1, 2, 3]
+  Total interest paid  : £529
+  Total tax paid       : £730
+  10-yr cumulative cash: £2,189
+  Post-payoff free CF  : £471/yr
+
+  4-YEAR LOAN PAYOFF  —  annual principal £944.80
+  ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  Income Statement (£/yr, single customer):
+ Year  Revenue  EBITDA  EBIT  Interest  EBT  Tax (25%)  Net Income
+    1    1,500     723   345       265   80         20          60
+    2    1,500     723   345       198  146         37         110
+    3    1,500     723   345       132  212         53         159
+    4    1,500     723   345        66  279         70         209
+    5    1,500     723   345         0  345         86         259
+    6    1,500     723   345         0  345         86         259
+    7    1,500     723   345         0  345         86         259
+    8    1,500     723   345         0  345         86         259
+    9    1,500     723   345         0  345         86         259
+   10    1,500     723   345         0  345         86         259
+
+  Cash Flow & Balance Sheet (£):
+ Year  Operating CF  Principal  Free Cash     Cum Cash  Loan Balance
+    1    438.071492      944.8   *** -507  -506.728508        2834.4
+    2    487.673492      944.8   *** -457  -963.855016        1889.6
+    3    537.275492      944.8   *** -408 -1371.379524         944.8
+    4    586.877492      944.8   *** -358 -1729.302032           0.0
+    5    636.479492        0.0        636 -1092.822541           0.0
+    6    636.479492        0.0        636  -456.343049           0.0
+    7    636.479492        0.0        636   180.136443           0.0
+    8    636.479492        0.0        636   816.615935           0.0
+    9    636.479492        0.0        636  1453.095427           0.0
+   10    636.479492        0.0        636  2089.574919           0.0
+  *** = negative free cashflow year (fixed principal > OCF)
+
+  Loan fully repaid    : Year 4
+  Cashflow-negative yrs: [1, 2, 3, 4]
+  Total interest paid  : £661
+  Total tax paid       : £697
+  10-yr cumulative cash: £2,090
+  Post-payoff free CF  : £494/yr
+
+  5-YEAR LOAN PAYOFF  —  annual principal £755.84
+  ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  Income Statement (£/yr, single customer):
+ Year  Revenue  EBITDA  EBIT  Interest  EBT  Tax (25%)  Net Income
+    1    1,500     723   345       265   80         20          60
+    2    1,500     723   345       212  133         33         100
+    3    1,500     723   345       159  186         47         140
+    4    1,500     723   345       106  239         60         179
+    5    1,500     723   345        53  292         73         219
+    6    1,500     723   345         0  345         86         259
+    7    1,500     723   345         0  345         86         259
+    8    1,500     723   345         0  345         86         259
+    9    1,500     723   345         0  345         86         259
+   10    1,500     723   345         0  345         86         259
+
+  Cash Flow & Balance Sheet (£):
+ Year  Operating CF  Principal  Free Cash     Cum Cash  Loan Balance
+    1    438.071492     755.84   *** -318  -317.768508       3023.36
+    2    477.753092     755.84   *** -278  -595.855416       2267.52
+    3    517.434692     755.84   *** -238  -834.260724       1511.68
+    4    557.116292     755.84   *** -199 -1032.984432        755.84
+    5    596.797892     755.84   *** -159 -1192.026541          0.00
+    6    636.479492       0.00        636  -555.547049          0.00
+    7    636.479492       0.00        636    80.932443          0.00
+    8    636.479492       0.00        636   717.411935          0.00
+    9    636.479492       0.00        636  1353.891427          0.00
+   10    636.479492       0.00        636  1990.370919          0.00
+  *** = negative free cashflow year (fixed principal > OCF)
+
+  Loan fully repaid    : Year 5
+  Cashflow-negative yrs: [1, 2, 3, 4, 5]
+  Total interest paid  : £794
+  Total tax paid       : £663
+  10-yr cumulative cash: £1,990
+  Post-payoff free CF  : £504/yr
+
+====================================================================================================
+SIDE-BY-SIDE COMPARISON  —  Free Cashflow & Cumulative Cash (£, single customer)
+====================================================================================================
+
+ Year  OCF 3yr  Principal 3yr  FreeCF 3yr  CumCash 3yr  OCF 4yr  Principal 4yr  FreeCF 4yr  CumCash 4yr  OCF 5yr  Principal 5yr  FreeCF 5yr  CumCash 5yr
+    1      438          1,260        -822         -822      438            945        -507         -507      438            756        -318         -318
+    2      504          1,260        -756       -1,577      488            945        -457         -964      478            756        -278         -596
+    3      570          1,260        -689       -2,267      537            945        -408       -1,371      517            756        -238         -834
+    4      636              0         636       -1,630      587            945        -358       -1,729      557            756        -199       -1,033
+    5      636              0         636         -994      636              0         636       -1,093      597            756        -159       -1,192
+    6      636              0         636         -357      636              0         636         -456      636              0         636         -556
+    7      636              0         636          279      636              0         636          180      636              0         636           81
+    8      636              0         636          916      636              0         636          817      636              0         636          717
+    9      636              0         636        1,552      636              0         636        1,453      636              0         636        1,354
+   10      636              0         636        2,189      636              0         636        2,090      636              0         636        1,990
+
+  CASHFLOW-NEGATIVE YEARS (fixed principal exceeds OCF):
+    3-year payoff: [1, 2, 3]
+    4-year payoff: [1, 2, 3, 4]
+    5-year payoff: [1, 2, 3, 4, 5]
+
+  10-YEAR CUMULATIVE FREE CASH:
+    3-year payoff: £2,189
+    4-year payoff: £2,090
+    5-year payoff: £1,990
+
+  TOTAL INTEREST COST:
+    3-year payoff: £529
+    4-year payoff: £661
+    5-year payoff: £794
+
+  BREAK-EVEN (cum cash turns positive):
+    3-year payoff: Year 7
+    4-year payoff: Year 7
+    5-year payoff: Year 7
+
+====================================================================================================
+SUMMARY & RECOMMENDATION
+====================================================================================================
+
+  Key trade-off: shorter payoff = higher near-term cash drain but
+  less total interest and faster route to free cash generation.
+
+  Scenario         Ann. Principal Total Interest   CF-neg yrs  10yr Cum Cash
+  ────────────────────────────────────────────────────────────────────────
+  3-year payoff   £    1,259.73  £      529.09    [1, 2, 3]   £       2,189
+  4-year payoff   £      944.80  £      661.36    [1, 2, 3, 4]  £       2,090
+  5-year payoff   £      755.84  £      793.63    [1, 2, 3, 4, 5]  £       1,990
+
+  Note: all scenarios use same EBIT — pricing and battery economics unchanged.
+  EBIT per customer per year: £344.75
+  Battery cost funded: £3,779.20
+
+  Saved: /home/moley/ionic/vlp_model/results/pl_cashflow_qlp_base_case.csv

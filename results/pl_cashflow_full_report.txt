@@ -1,0 +1,99 @@
+
+==========================================================================================
+VLP BATTERY BUSINESS — P&L & CASHFLOW MODEL  (UK, 2025 Agile actuals)
+==========================================================================================
+
+Key assumptions:
+  Battery: 10kWh / 5kW  |  Cost: £2,600 inc install  |  Loan: 7% p.a.
+  Customer annual consumption: 3604 kWh
+  Wholesale cost (no battery): £775.07/yr  →  with battery: £442.76/yr  (arbitrage saves £332.31/yr)
+  Grid services: freq response £170.0 + capacity market £200.0 + BM £12 = £382.0/yr
+  Grid levy: £95/yr  |  Customer mgmt: £10/yr
+
+  Competitor: 25p/kWh + 50p/day = £1,083.60/yr  (3604 kWh)
+  Note: Agile 2025 prices used. Wholesale prices are variable-rate Octopus Agile.
+
+=====================================================================================
+PRICING SENSITIVITY  |  Competitor: 25p/kWh + 50p/day = £1,083.60/yr for 3604 kWh
+=====================================================================================
+Tariff                      Cust Bill  Saving £  Saving %    EBITDA  Loan off
+-------------------------------------------------------------------------------------
+18p/kWh + £8/mo            £  744.79  £ 338.81     31.3%  £ 579.03      6 yrs
+19p/kWh + £8/mo            £  780.84  £ 302.76     27.9%  £ 615.08      6 yrs
+20p/kWh + £8/mo            £  816.88  £ 266.72     24.6%  £ 651.12      5 yrs
+20p/kWh + £10/mo  ★ base case £  840.88  £ 242.72     22.4%  £ 675.12      5 yrs
+21p/kWh + £10/mo           £  876.92  £ 206.68     19.1%  £ 711.16      5 yrs
+22p/kWh + £10/mo           £  912.97  £ 170.63     15.7%  £ 747.21      5 yrs
+22p/kWh + £12/mo           £  936.97  £ 146.63     13.5%  £ 771.21      4 yrs
+
+
+==========================================================================================
+DETAILED FORECAST  |  20p/kWh + £10/month (base case)
+Customer tariff: 20p/kWh + £10/month
+Customer annual bill: £840.88  vs competitor £1,083.60  (saves £242.72 = 22.4% cheaper)
+==========================================================================================
+
+── ANNUAL UNIT ECONOMICS (per customer) ──
+  REVENUE
+    Electricity sales (3604 kWh × 20p):   £  720.88
+    Monthly service fee (£10/mo × 12):           £  120.00
+    Frequency response (5kW × £34/kW):    £  170.00
+    Capacity market (5kW × £40/kW):       £  200.00
+    Balancing mechanism (est.):                    £   12.00
+    ──────────────────────────────────────────
+    Total Revenue:                                 £1,222.88
+
+  COST OF ELECTRICITY
+    Wholesale (Agile, no battery):                 £  775.07
+    Battery arbitrage saving:                     -£  332.31
+    Net wholesale cost:                            £  442.76
+
+  OPERATING COSTS
+    Grid levy (electricity co. levy/cust):         £   95.00
+    Customer management:                           £   10.00
+    Total OpEx:                                    £  105.00
+
+  EBITDA (pre battery debt service):               £  675.12
+    Battery depreciation (£2,600/10yr):            -£ 260.00
+  EBIT:                                            £  415.12
+
+── BATTERY LOAN SCHEDULE (£2,600 @ 7%, max repayment) ──
+  Battery is 100% loan-funded (zero equity outlay).
+  All EBITDA applied to debt until paid off, then flows to equity.
+
+  Year   Loan Bal   Interest   Principal    Net P&L   Cashflow    Cum Cash
+  ────   ────────   ────────   ─────────    ───────    ───────    ────────
+     1  £  2,600   £    182   £     493   £    233   £      0   £       0
+     2  £  2,107   £    147   £     528   £    268   £      0   £       0
+     3  £  1,579   £    111   £     565   £    305   £      0   £       0
+     4  £  1,015   £     71   £     604   £    344   £      0   £       0
+     5  £    411   £     29   £     411   £    386   £    236   £     236 ← loan repaid
+     6  £      0   £      0   £       0   £    415   £    675   £     911
+     7  £      0   £      0   £       0   £    415   £    675   £   1,586
+     8  £      0   £      0   £       0   £    415   £    675   £   2,261
+     9  £      0   £      0   £       0   £    415   £    675   £   2,936
+    10  £      0   £      0   £       0   £    415   £    675   £   3,611
+
+  Battery loan paid off: Year 5
+  Post-payoff annual net profit: £415.12  |  post-payoff cashflow: £675.12/year
+  Total interest paid over loan life: £539.80
+
+==========================================================================================
+PORTFOLIO FORECAST  |  Illustrative portfolio growth  |  20p/kWh + £10/mo
+==========================================================================================
+
+  Year  New Custs  Total Custs      EBITDA   Interest   Principal   Net Cash    Cum Cash
+  ────   ────────   ──────────      ──────   ────────   ─────────    ───────    ────────
+     1         50           50  £  33,756  £  9,100  £  24,656  £      0  £       0
+     2        100          150  £ 101,268  £ 25,574  £  75,694  £      0  £       0
+     3        200          350  £ 236,292  £ 56,676  £ 179,616  £      0  £       0
+     4        300          650  £ 438,828  £ 98,702  £ 340,126  £      0  £       0
+     5        400        1,050  £ 708,876  £147,694  £ 561,182  £     -0  £      -0
+     6          0        1,050  £ 708,876  £108,411  £ 600,465  £      0  £      -0
+     7          0        1,050  £ 708,876  £ 66,378  £ 642,498  £      0  £      -0
+     8          0        1,050  £ 708,876  £ 21,403  £ 305,762  £381,710  £ 381,710
+     9          0        1,050  £ 708,876  £      0  £       0  £708,876  £1,090,586
+    10          0        1,050  £ 708,876  £      0  £       0  £708,876  £1,799,462
+
+Base case saved to results/pl_cashflow_base_case.csv
+
