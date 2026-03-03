@@ -199,6 +199,8 @@ COMP_PD    = 50
 
 # ── aggressive tariff scenarios ───────────────────────────────────────────────
 TARIFF_SCENARIOS = {
+    "D": dict(label="Scenario D — Premium",
+              pkwh=22, pmo=21, saving_target="~5%"),
     "A": dict(label="Scenario A — Entry aggressive",
               pkwh=20, pmo=8,  saving_target="~25%"),
     "B": dict(label="Scenario B — Mid aggressive",
@@ -209,7 +211,7 @@ TARIFF_SCENARIOS = {
 
 # ── chart colours ─────────────────────────────────────────────────────────────
 LOAN_COLORS  = {3: "#E04B3A", 5: "#F5A623", 7: "#4A90D9", 10: "#27AE60"}
-SC_COLORS    = {"A": "#4A90D9", "B": "#F5A623", "C": "#E04B3A"}
+SC_COLORS    = {"D": "#8E44AD", "A": "#4A90D9", "B": "#F5A623", "C": "#E04B3A"}
 CONS_COLORS  = {4000: "#4A90D9", 5000: "#F5A623", 6000: "#E04B3A"}
 SPREAD_COLORS = {"Best": "#27AE60", "Base": "#F5A623", "Worst": "#E04B3A"}
 
@@ -778,10 +780,12 @@ def plot_summary_chart(all_results, spread_name, consumption, out_path):
     )
 
     years   = np.arange(1, MODEL_YEARS + 1)
-    bar_w   = 0.25
-    offsets = [-0.25, 0.0, 0.25]
+    sc_keys = list(TARIFF_SCENARIOS.keys())
+    n_sc    = len(sc_keys)
+    bar_w   = 0.8 / n_sc
+    offsets = np.linspace(-(n_sc-1)/2, (n_sc-1)/2, n_sc) * bar_w
 
-    for i, sc_key in enumerate(["A", "B", "C"]):
+    for i, sc_key in enumerate(sc_keys):
         sc    = TARIFF_SCENARIOS[sc_key]
         key   = (sc_key, spread_name, consumption, 5)
         cf    = all_results["cf"][key]
