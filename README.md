@@ -1,109 +1,108 @@
 # Battery Storage Economics Model
 
-Optimisation model for a home battery Virtual Power Plant (VPP) / Electricity Company business. Calculates optimal revenue across multiple streams (arbitrage, frequency response, capacity market, balancing mechanism) for several European nations.
+Optimisation model for a home battery business. Calculates optimal revenue across multiple streams (arbitrage, frequency response, capacity market, balancing mechanism) using MILP-based daily dispatch.
+
+There are **two business models**, each with its own self-contained model and HTML report:
+
+| Model | Directory | Command | Description |
+|-------|-----------|---------|-------------|
+| **Electricity Company** | `qlp_aggressive/` | `python qlp_aggressive/model.py` | Company is a licensed electricity supplier. Sets customer tariff (18–22p/kWh), buys wholesale, pays network charges + levy. Battery serves customer demand first, leftover capacity earns grid services. |
+| **VLP + Agile Consumer** | `vlp_agile/` | `python vlp_agile/model.py` | Company is a Virtual Lead Party (no supply licence). Consumer stays on Octopus Agile and gets battery savings from Agile arbitrage. Company earns wholesale arb + FR + CM + BM on remaining capacity. No supply cost, no network charges, no levy. |
 
 ## Quick Start
 
 ```bash
 pip install -r requirements.txt
-python run_model.py          # Run main model (2025 baseline)
-python run_scenarios.py      # Project revenues 2026-2033 under best/base/worst cases
+
+# Run either or both models:
+python qlp_aggressive/model.py    # Electricity Company model
+python vlp_agile/model.py         # VLP + Agile Consumer model
 ```
 
+Each model outputs to its own directory:
+- **CSV files** — P&L, cashflow, and loan schedules for every scenario combination
+- **report.html** — interactive report with sticky controls (CAC, staff cost, management cost) that recalculate tables and dashboards live
 
-## Files which feed into model
+## How the Models Differ
 
-  - data/inputs/model_input.csv - All nation parameters (costs, tariffs, FR rates, CM prices, battery specs)
-  - data/inputs/use_profiles.csv - Hourly kWh consumption profile per nation
-  - data/inputs/uk_market_inputs.csv - UK-specific CM de-rating factors (optional, falls back to defaults)                                                                                                                                           
-  - data/inputs/capacity_forecasts.csv - BESS/renewable capacity forecast data from FES System Transformation Scenario
-  - data/prices/nl_hourly.csv - Netherlands hourly wholesale prices                                                                                                                                                                                  
-  - data/prices/Germany.csv - Germany hourly wholesale prices                                                                                                                                                                                      
-  - data/prices/Spain.csv - Spain hourly wholesale prices
-  - data/prices/United Kingdom.csv - UK hourly wholesale prices
+| Aspect | Electricity Company (`qlp_aggressive/`) | VLP + Agile (`vlp_agile/`) |
+|--------|----------------------------------------|---------------------------|
+| Consumer tariff | Company sets tariff (18–22p/kWh) | Consumer stays on Octopus Agile |
+| Consumer saving | Lower tariff vs competitor | Battery arbitrage on Agile rates |
+| Company revenue | Customer bill + battery revenue | VLP income only (wholesale arb + FR + CM + BM) |
+| Supply cost (COGS) | Wholesale cost of electricity supplied | None (company doesn't supply) |
+| Network charges | TNUoS + DUoS + BSUoS + smart metering | None (consumer pays via Agile) |
+| Grid levy | £95/yr | £0 |
+| Scenario dimensions | 4 tariffs × 3 spreads × 3 consumptions × 4 loans = 144 | 3 spreads × 3 consumptions × 4 loans = 36 |
 
-
-
-
-## How It Works
-
-The model solves 365 separate Mixed Integer Linear Programming (MILP) problems - one per day - each with 24 hourly decision variables. Each day gets its own optimal strategy based on that day's actual wholesale price curve.
-
-### Revenue Streams
+## Revenue Streams
 
 | Stream | Description |
 |--------|-------------|
 | **Wholesale Arbitrage** | Buy low, sell high on day-ahead market |
 | **Frequency Response (FR)** | Capacity commitment to grid stability (partial day prorated) |
-| **Capacity Market (CM)** | Annual de-rated capacity payment (UK uses T-4/T-1 auctions) |
+| **Capacity Market (CM)** | Annual de-rated capacity payment (UK T-4/T-1 auctions) |
 | **Balancing Mechanism (BM)** | Multiplier on arbitrage when BM bids accepted |
 
-### Two Business Models
+## How the MILP Works
 
-1. **VPP (Virtual Power Plant)**: Battery earns from grid services only. Customer keeps their existing supplier.
-2. **Electricity Company**: Battery serves customer demand first (margin on retail spread), leftover capacity earns grid services.
+Both models solve 365 separate Mixed Integer Linear Programming problems — one per day — each with 24 hourly decision variables. Each day gets its own optimal strategy based on that day's actual price curve.
+
+The VLP + Agile model uses a **joint MILP** that splits discharge between consumer (saves Agile rate) and grid (earns wholesale rate) hour-by-hour, with FR commitment as a binary choice.
 
 ### Key Assumptions
 
+- 15.36 kWh / 6 kW battery, £2,800 installed cost
 - 90% round-trip efficiency (sqrt split per leg)
-- SoC limits: 10%-90% for cycling, ~50% during FR commitment
-- 8-year battery life for ROI calculations
+- 2% annual degradation (compound)
+- One cycle per day limit
 - CM stress events rare enough that battery is usually available
-- Battery size optimised from model_input minimum to ceiling in 2.5 kWh steps
+- Spread compression applied year-over-year using capacity forecast data
 
-## Running Scenarios
+## Input Data
 
-`python run_scenarios.py` projects revenues for 2026-2030 using spread compression research:
+| File | Description |
+|------|-------------|
+| `data/inputs/model_input.csv` | All nation parameters (costs, tariffs, FR rates, CM prices, battery specs) |
+| `data/inputs/use_profiles.csv` | Hourly kWh consumption profile per nation |
+| `data/inputs/capacity_forecasts.csv` | BESS/renewable capacity forecasts (FES System Transformation) |
+| `data/prices/United Kingdom.csv` | UK hourly wholesale prices |
+| `data/prices/nl_hourly.csv` | Netherlands hourly wholesale prices |
+| `data/prices/Germany.csv` | Germany hourly wholesale prices |
+| `data/prices/Spain.csv` | Spain hourly wholesale prices |
+| `data/agile/agile_rates_2025_cache.csv` | UK Octopus Agile half-hourly rates (used by VLP model) |
 
-```
-Spread = Floor + (S0 - Floor) * (C0/C)^alpha * (R/R0)^beta
-```
-
-| Scenario | alpha | beta | Rationale |
-|----------|-------|------|-----------|
-| **Best** | 0.46 | 0.4 | Slower BESS compression (German data), wind widens spreads |
-| **Base** | 0.50 | 0.3 | Central estimates |
-| **Worst** | 0.65 | 0.0 | Fast compression (CAISO data), no renewable benefit |
-
-Arbitrage revenue scales with the spread ratio; FR and CM are held constant.
+If no use profile is available for a country, the UK one is used and noted in output.
 
 ## Project Structure
 
 ```
 elec/
+├── qlp_aggressive/            # Electricity Company model
+│   ├── model.py                   Self-contained model + report generator
+│   ├── report.html                Interactive HTML report
+│   ├── pl_*.csv, cashflow_*.csv   P&L and cashflow by scenario
+│   └── chart_*.png                Static charts
+├── vlp_agile/                 # VLP + Agile Consumer model
+│   ├── model.py                   Self-contained model + report generator
+│   ├── report.html                Interactive HTML report
+│   ├── pl_*.csv, cashflow_*.csv   P&L and cashflow by scenario
+│   └── loan_schedule.csv          Amortisation schedules
 ├── data/
-│   ├── inputs/              # Model configuration
-│   │   ├── model_input.csv      Parameters by nation (costs, rates, tariffs)
-│   │   ├── use_profiles.csv     Hourly consumption profiles
-│   │   ├── uk_market_inputs.csv UK-specific CM de-rating data
-│   │   └── capacity_forecasts.csv BESS/renewable capacity forecasts
-│   ├── prices/              # Wholesale hourly price data
-│   │   ├── nl_hourly.csv       Netherlands (also used as multi-nation source)
-│   │   ├── United Kingdom.csv
-│   │   ├── Germany.csv, Spain.csv, France.csv, Italy.csv
-│   └── agile/               # UK Agile tariff cache
-│       └── agile_rates_2025_cache.csv
-├── models/
-│   ├── battery_model.py         Main VPP/Elec Company optimiser
-│   └── battery_model_agile_consumer.py  Joint consumer + VPP (UK Agile)
-├── analysis/                # UK Agile tariff analysis scripts
-├── investors/               # IUK investor research
-├── docs/                    # Project notes, comparisons, outreach
-├── results/                 # Generated output CSVs
-├── run_model.py             # Entry point
-├── run_scenarios.py         # Scenario projections
+│   ├── inputs/                    Model configuration CSVs
+│   ├── prices/                    Wholesale hourly price data
+│   └── agile/                     UK Agile tariff cache
+├── models/                    # Earlier/experimental model scripts
+├── analysis/                  # UK Agile tariff analysis scripts
+├── investors/                 # Investor research
+├── docs/                      # Project notes
 └── requirements.txt
 ```
 
 ## Data Sources
 
 - **Wholesale prices**: Hourly day-ahead prices from ENTSO-E (via CSV exports)
-- **model_input.csv**: All nation-specific parameters - consumer tariffs, FR rates, CM clearing prices, costs, battery specs
-- **use_profiles.csv**: Hourly kWh consumption by nation (UK profile used as fallback if unavailable for a country - noted in output)
 - **Agile rates**: Scraped from Octopus Energy Agile tariff via agilebuddy.uk
-- **capacity_forecasts.csv**: BESS capacity (GWh), renewable capacity (GWh), and spread projections based on market research
-
-## Nations Modelled
-
-Netherlands, Germany, Spain, UK (configurable via `NATIONS` dict in `battery_model.py`).
-France and Italy have price data available but are not yet configured in model_input.csv.
+- **Capacity forecasts**: BESS capacity (GWh), renewable capacity (GWh) based on market research
+- **model_input.csv**: All nation-specific parameters — consumer tariffs, FR rates, CM clearing prices, costs, battery specs
+- **use_profiles.csv**: Hourly kWh consumption by nation (UK profile used as fallback)
